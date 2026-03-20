@@ -1,0 +1,15 @@
+* {
+  @apply transition-colors duration-300;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  @apply bg-white dark:bg-slate-900 text-gray-900 dark:text-slate-100;
+}
