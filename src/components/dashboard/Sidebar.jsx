@@ -29,7 +29,7 @@ export default function Sidebar({ isOpen, onClose, activeTab, setActiveTab }) {
 
       {/* Sidebar */}
       <aside
-        className={`fixed lg:static top-0 left-0 h-screen w-64 bg-white dark:bg-slate-800 border-r border-gray-200 dark:border-slate-700 p-6 z-50 transition-transform duration-300 ease-in-out flex flex-col ${
+        className={`fixed lg:static top-0 left-0 min-h-screen w-64 bg-white dark:bg-slate-800 border-r border-gray-200 dark:border-slate-700 p-6 z-50 transition-transform duration-300 ease-in-out flex flex-col ${
           isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         }`}
       >
