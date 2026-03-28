@@ -108,7 +108,8 @@ html.dark ::selection {
 .glass-card-bright,
 .glass-sidebar,
 .glass-navbar,
-.glass-dropdown {
+.glass-dropdown,
+.glass-modal {
   border-radius: 16px;
   transition: all 0.25s ease;
 }
@@ -196,6 +197,23 @@ html.dark .glass-dropdown {
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+}
+
+/* Modal */
+html.light .glass-modal {
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(26px) saturate(190%);
+  -webkit-backdrop-filter: blur(26px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.96);
+  box-shadow: 0 20px 60px rgba(37, 99, 235, 0.18), 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+html.dark .glass-modal {
+  background: rgba(14, 14, 14, 0.92);
+  backdrop-filter: blur(26px) saturate(185%);
+  -webkit-backdrop-filter: blur(26px) saturate(185%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 /* Inputs */
