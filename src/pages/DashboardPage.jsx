@@ -63,8 +63,8 @@ export default function DashboardPage() {
           {dailyDriveData && (
             <div className={`mx-4 lg:mx-6 my-6 p-4 lg:p-6 rounded-lg border-l-4 ${
               dailyDriveData.lastCompleted === new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
-                ? 'bg-green-50 dark:bg-gradient-to-br dark:from-[rgba(34,197,94,0.1)] dark:to-[rgba(34,197,94,0.05)] border-l-green-500 border border-green-200 dark:border-[rgba(34,197,94,0.3)]'
-                : 'bg-orange-50 dark:bg-gradient-to-br dark:from-[rgba(234,88,12,0.15)] dark:to-[rgba(239,68,68,0.1)] border-l-orange-500 border border-orange-200 dark:border-[rgba(234,88,12,0.3)]'
+                ? 'bg-green-50 dark:bg-[linear-gradient(135deg,rgba(9,17,12,0.95),rgba(12,26,18,0.9))] border-l-green-500 border border-green-200 dark:border-[rgba(34,197,94,0.35)] dark:shadow-[0_8px_28px_rgba(16,185,129,0.16)]'
+                : 'bg-orange-50 dark:bg-[linear-gradient(135deg,rgba(22,12,6,0.96),rgba(38,15,8,0.9))] border-l-orange-500 border border-orange-200 dark:border-[rgba(249,115,22,0.38)] dark:shadow-[0_8px_28px_rgba(249,115,22,0.18)]'
             }`}>
               <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
                 <div className="flex-1">
@@ -86,7 +86,7 @@ export default function DashboardPage() {
                 {dailyDriveData.lastCompleted !== new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) && (
                   <button
                     onClick={() => navigate('/daily-drive')}
-                    className="w-full lg:w-auto bg-orange-600 hover:bg-orange-700 dark:bg-orange-600 dark:hover:bg-orange-700 text-white font-semibold py-2 px-4 lg:px-6 rounded-lg transition-colors flex items-center justify-center gap-2 min-h-[44px]"
+                    className="w-full lg:w-auto bg-orange-600 hover:bg-orange-700 dark:bg-[linear-gradient(90deg,#F97316,#EA580C)] dark:hover:bg-[linear-gradient(90deg,#FB923C,#F97316)] text-white font-semibold py-2 px-4 lg:px-6 rounded-lg transition-all duration-200 dark:shadow-[0_6px_20px_rgba(249,115,22,0.35)] dark:border dark:border-[rgba(255,255,255,0.18)] flex items-center justify-center gap-2 min-h-[44px]"
                   >
                     <Zap className="w-4 h-4" />
                     Start Now
