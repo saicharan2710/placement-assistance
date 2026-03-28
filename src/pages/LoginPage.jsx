@@ -100,7 +100,7 @@ export default function LoginPage() {
                 Email Address
               </label>
               <div className="relative">
-                <Mail className="absolute left-4 top-3.5 w-5 h-5 text-gray-400 dark:text-[#71717A]" />
+                <Mail className="absolute left-4 top-3.5 z-10 pointer-events-none w-5 h-5 text-gray-400 dark:text-[#A1A1AA]" />
                 <input
                   id="email"
                   type="email"
@@ -131,7 +131,7 @@ export default function LoginPage() {
                 </a>
               </div>
               <div className="relative">
-                <Lock className="absolute left-4 top-3.5 w-5 h-5 text-gray-400 dark:text-[#71717A]" />
+                <Lock className="absolute left-4 top-3.5 z-10 pointer-events-none w-5 h-5 text-gray-400 dark:text-[#A1A1AA]" />
                 <input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
@@ -148,7 +148,7 @@ export default function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-3.5 text-gray-500 dark:text-[#71717A] hover:text-gray-700 dark:hover:text-[#F4F4F5] transition-colors"
+                  className="absolute right-4 top-3.5 z-10 text-gray-500 dark:text-[#A1A1AA] hover:text-gray-700 dark:hover:text-[#F4F4F5] transition-colors"
                   aria-label={showPassword ? 'Hide password' : 'Show password'}
                 >
                   {showPassword ? (
