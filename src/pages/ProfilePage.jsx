@@ -149,7 +149,7 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-white dark:bg-slate-900 overflow-x-hidden">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-white dark:bg-[#000000] overflow-x-hidden">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Main Content */}
@@ -158,7 +158,7 @@ export default function ProfilePage() {
         <TopBar userName={formData.fullName || userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
         {/* Content Area */}
-        <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-slate-900">
+        <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-[#000000]">
           <div className="max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-8">
             {/* Page Header */}
             <div className="mb-8">
@@ -178,7 +178,7 @@ export default function ProfilePage() {
             </div>
 
             {/* Card 1: Profile Header */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-slate-700">
+            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]">
               <div className="flex flex-col items-center">
                 {/* Profile Photo */}
                 <div className="relative mb-6">
@@ -221,7 +221,7 @@ export default function ProfilePage() {
             </div>
 
             {/* Card 2: Academic Information */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-slate-700">
+            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]">
               <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">
                 Academic Profile
               </h2>
@@ -238,7 +238,7 @@ export default function ProfilePage() {
                     value={formData.fullName}
                     onChange={handleInputChange}
                     placeholder="Your full name"
-                    className="w-full px-4 py-3 bg-white dark:bg-slate-700 text-gray-900 dark:text-slate-100 border-2 border-gray-300 dark:border-slate-600 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
+                    className="w-full px-4 py-3 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-slate-100 border-2 border-gray-300 dark:border-[#2A2A2A] rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
                   />
                 </div>
 
@@ -253,7 +253,7 @@ export default function ProfilePage() {
                     value={formData.collegeName}
                     onChange={handleInputChange}
                     placeholder="Your college name"
-                    className="w-full px-4 py-3 bg-white dark:bg-slate-700 text-gray-900 dark:text-slate-100 border-2 border-gray-300 dark:border-slate-600 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
+                    className="w-full px-4 py-3 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-slate-100 border-2 border-gray-300 dark:border-[#2A2A2A] rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
                   />
                 </div>
 
@@ -269,7 +269,7 @@ export default function ProfilePage() {
                       value={formData.branch}
                       onChange={handleInputChange}
                       placeholder="e.g., CSE"
-                      className="w-full px-4 py-3 bg-white dark:bg-slate-700 text-gray-900 dark:text-slate-100 border-2 border-gray-300 dark:border-slate-600 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
+                      className="w-full px-4 py-3 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-slate-100 border-2 border-gray-300 dark:border-[#2A2A2A] rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
                     />
                   </div>
                   <div>
@@ -280,7 +280,7 @@ export default function ProfilePage() {
                       name="yearOfStudy"
                       value={formData.yearOfStudy}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white dark:bg-slate-700 text-gray-900 dark:text-slate-100 border-2 border-gray-300 dark:border-slate-600 rounded-lg focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
+                      className="w-full px-4 py-3 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-slate-100 border-2 border-gray-300 dark:border-[#2A2A2A] rounded-lg focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
                     >
                       <option value="">Select year</option>
                       <option value="1st Year">1st Year</option>
@@ -302,7 +302,7 @@ export default function ProfilePage() {
                       type="email"
                       value={formData.email}
                       disabled
-                      className="w-full pl-12 pr-4 py-3 bg-gray-200 dark:bg-slate-700/50 text-gray-600 dark:text-slate-400 border-2 border-gray-300 dark:border-slate-600 rounded-lg cursor-not-allowed opacity-60"
+                      className="w-full pl-12 pr-4 py-3 bg-gray-200 dark:bg-[rgba(26,26,26,0.7)] text-gray-600 dark:text-slate-400 border-2 border-gray-300 dark:border-[#2A2A2A] rounded-lg cursor-not-allowed opacity-60"
                     />
                   </div>
                   <p className="text-xs text-gray-600 dark:text-slate-400 mt-2">
@@ -321,20 +321,20 @@ export default function ProfilePage() {
                     value={formData.linkedIn}
                     onChange={handleInputChange}
                     placeholder="linkedin.com/in/yourprofile"
-                    className="w-full px-4 py-3 bg-white dark:bg-slate-700 text-gray-900 dark:text-slate-100 border-2 border-gray-300 dark:border-slate-600 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
+                    className="w-full px-4 py-3 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-slate-100 border-2 border-gray-300 dark:border-[#2A2A2A] rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
                   />
                 </div>
               </div>
             </div>
 
             {/* Card 3: Resume Upload */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-slate-700">
+            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]">
               <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">
                 Your Resume
               </h2>
 
               {!resumeFile ? (
-                <div className="border-2 border-dashed border-gray-300 dark:border-slate-600 rounded-lg p-12 text-center hover:border-blue-500 transition-colors cursor-pointer">
+                <div className="border-2 border-dashed border-gray-300 dark:border-[#2A2A2A] rounded-lg p-12 text-center hover:border-blue-500 transition-colors cursor-pointer">
                   <Upload className="w-12 h-12 text-gray-400 dark:text-slate-500 mx-auto mb-3" />
                   <p className="text-gray-700 dark:text-slate-300 font-semibold mb-1">
                     Drop your PDF here or click to browse
@@ -371,12 +371,12 @@ export default function ProfilePage() {
                     </div>
                   </div>
                   <div className="flex flex-col sm:flex-row gap-3">
-                    <button className="px-4 py-2 bg-white dark:bg-slate-700 border-2 border-blue-600 text-blue-600 dark:text-blue-400 font-semibold rounded-lg hover:bg-blue-50 dark:hover:bg-slate-600 transition-colors">
+                    <button className="px-4 py-2 bg-white dark:bg-[#1A1A1A] border-2 border-blue-600 text-blue-600 dark:text-blue-400 font-semibold rounded-lg hover:bg-blue-50 dark:hover:bg-slate-600 transition-colors">
                       View Resume
                     </button>
                     <button
                       onClick={() => resumeInputRef.current?.click()}
-                      className="px-4 py-2 bg-white dark:bg-slate-700 border-2 border-blue-600 text-blue-600 dark:text-blue-400 font-semibold rounded-lg hover:bg-blue-50 dark:hover:bg-slate-600 transition-colors"
+                      className="px-4 py-2 bg-white dark:bg-[#1A1A1A] border-2 border-blue-600 text-blue-600 dark:text-blue-400 font-semibold rounded-lg hover:bg-blue-50 dark:hover:bg-slate-600 transition-colors"
                     >
                       Replace
                     </button>
@@ -400,13 +400,13 @@ export default function ProfilePage() {
             </div>
 
             {/* Card 4: Skills */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-slate-700">
+            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]">
               <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">
                 Your Skills
               </h2>
 
               <div>
-                <div className="flex flex-wrap gap-2 mb-4 p-4 bg-white dark:bg-slate-700/50 rounded-lg min-h-12 items-center border-2 border-gray-300 dark:border-slate-600">
+                <div className="flex flex-wrap gap-2 mb-4 p-4 bg-white dark:bg-[rgba(26,26,26,0.7)] rounded-lg min-h-12 items-center border-2 border-gray-300 dark:border-[#2A2A2A]">
                   {skills.map((skill) => (
                     <div
                       key={skill}

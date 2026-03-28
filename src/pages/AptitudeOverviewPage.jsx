@@ -114,14 +114,14 @@ export default function AptitudeOverviewPage() {
   ];
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-slate-900 overflow-x-hidden">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-[#000000] overflow-x-hidden">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
-        <div className="flex-1 overflow-y-auto bg-slate-900">
+        <div className="flex-1 overflow-y-auto bg-[#000000]">
           <div className="max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-8">
             {/* Header */}
             <div className="mb-8">
@@ -146,31 +146,31 @@ export default function AptitudeOverviewPage() {
 
             {/* Stats Row */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-              <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
+              <div className="bg-[#111111] rounded-xl p-6 border border-[#222222]">
                 <p className="text-slate-400 text-sm mb-2">High Score</p>
                 <p className="text-3xl font-bold text-blue-400">85%</p>
               </div>
-              <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
+              <div className="bg-[#111111] rounded-xl p-6 border border-[#222222]">
                 <p className="text-slate-400 text-sm mb-2">Average Score</p>
                 <p className="text-3xl font-bold text-blue-400">71%</p>
               </div>
-              <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
+              <div className="bg-[#111111] rounded-xl p-6 border border-[#222222]">
                 <p className="text-slate-400 text-sm mb-2">Total Sessions</p>
                 <p className="text-3xl font-bold text-blue-400">8</p>
               </div>
-              <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
+              <div className="bg-[#111111] rounded-xl p-6 border border-[#222222]">
                 <p className="text-slate-400 text-sm mb-2">Current Streak</p>
                 <p className="text-3xl font-bold text-blue-400">3 days <span className="text-xl">🔥</span></p>
               </div>
             </div>
 
             {/* Next Target */}
-            <div className="bg-slate-800 rounded-xl p-8 border border-slate-700 mb-8">
+            <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
               <h2 className="text-2xl font-bold text-slate-100 mb-6">Next Target</h2>
               <div className="flex items-center justify-between mb-6">
                 <div className="flex gap-4">
                   <div className="flex flex-col items-center">
-                    <span className="px-4 py-2 bg-slate-700 text-slate-300 rounded-lg font-semibold mb-2">Silver</span>
+                    <span className="px-4 py-2 bg-[#1A1A1A] text-slate-300 rounded-lg font-semibold mb-2">Silver</span>
                     <p className="text-sm text-slate-400">Current Level</p>
                   </div>
                   <div className="flex items-center">
@@ -183,7 +183,7 @@ export default function AptitudeOverviewPage() {
                 </div>
                 <p className="text-sm text-blue-300 font-semibold">71% / 80%</p>
               </div>
-              <div className="w-full h-2 bg-slate-700 rounded-full overflow-hidden mb-4">
+              <div className="w-full h-2 bg-[#1A1A1A] rounded-full overflow-hidden mb-4">
                 <div className="h-full bg-blue-600 rounded-full transition-all" style={{ width: '71%' }} />
               </div>
               <p className="text-slate-300 mb-6">
@@ -198,7 +198,7 @@ export default function AptitudeOverviewPage() {
             </div>
 
             {/* Score Trend */}
-            <div className="bg-slate-800 rounded-xl p-8 border border-slate-700 mb-8">
+            <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
               <h2 className="text-2xl font-bold text-slate-100 mb-6">Score Trend</h2>
               <div className="flex items-end justify-center gap-6 h-48">
                 {scoreTrendData.map((item, idx) => (
@@ -217,7 +217,7 @@ export default function AptitudeOverviewPage() {
             </div>
 
             {/* Skill Breakdown */}
-            <div className="bg-slate-800 rounded-xl p-8 border border-slate-700 mb-8">
+            <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
               <h2 className="text-2xl font-bold text-slate-100 mb-6">Skill Breakdown</h2>
               <div className="space-y-6">
                 {skillBreakdown.map((skill, idx) => (
@@ -229,7 +229,7 @@ export default function AptitudeOverviewPage() {
                       </span>
                     </div>
                     <div className="flex items-center gap-4">
-                      <div className="flex-1 h-3 bg-slate-700 rounded-full overflow-hidden">
+                      <div className="flex-1 h-3 bg-[#1A1A1A] rounded-full overflow-hidden">
                         <div
                           className="h-full bg-blue-600 rounded-full transition-all"
                           style={{ width: `${skill.score}%` }}
@@ -243,18 +243,18 @@ export default function AptitudeOverviewPage() {
             </div>
 
             {/* Recent Sessions */}
-            <div className="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden mb-8">
-              <div className="p-8 border-b border-slate-700">
+            <div className="bg-[#111111] rounded-xl border border-[#222222] overflow-hidden mb-8">
+              <div className="p-8 border-b border-[#222222]">
                 <h2 className="text-2xl font-bold text-slate-100">Recent Sessions</h2>
               </div>
               <div>
                 {recentSessions.map((session) => (
-                  <div key={session.id} className="border-b border-slate-700 last:border-0">
+                  <div key={session.id} className="border-b border-[#222222] last:border-0">
                     <div
                       onClick={() =>
                         setExpandedSessionId(expandedSessionId === session.id ? null : session.id)
                       }
-                      className="p-6 hover:bg-slate-700/50 transition-colors cursor-pointer"
+                      className="p-6 hover:bg-[rgba(26,26,26,0.5)] transition-colors cursor-pointer"
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex-1">
@@ -263,7 +263,7 @@ export default function AptitudeOverviewPage() {
                             <span className="px-3 py-1 bg-blue-900/30 text-blue-300 text-xs font-semibold rounded-full">
                               {session.category}
                             </span>
-                            <span className="px-3 py-1 bg-slate-700 text-slate-300 text-xs font-semibold rounded-full">
+                            <span className="px-3 py-1 bg-[#1A1A1A] text-slate-300 text-xs font-semibold rounded-full">
                               {session.difficulty}
                             </span>
                           </div>
@@ -283,11 +283,11 @@ export default function AptitudeOverviewPage() {
 
                       {/* Expanded Details */}
                       {expandedSessionId === session.id && (
-                        <div className="mt-6 pt-6 border-t border-slate-700">
+                        <div className="mt-6 pt-6 border-t border-[#222222]">
                           <h4 className="font-bold text-slate-100 mb-4">Question Breakdown</h4>
                           <div className="space-y-4 mb-6">
                             {session.questions.map((q, qIdx) => (
-                              <div key={qIdx} className="p-4 bg-slate-700/50 rounded-lg border border-slate-600">
+                              <div key={qIdx} className="p-4 bg-[rgba(26,26,26,0.5)] rounded-lg border border-[#2A2A2A]">
                                 <div className="flex gap-2 items-center mb-2">
                                   {q.correct ? (
                                     <CheckCircle className="w-5 h-5 text-green-400" />

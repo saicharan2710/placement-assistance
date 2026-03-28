@@ -133,8 +133,8 @@ export default function ProgressPage() {
     <div
       className={`p-6 rounded-xl border-2 ${
         isAttempted
-          ? 'bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700'
-          : 'bg-gray-50 dark:bg-slate-800/50 border-gray-200 dark:border-slate-700/50 opacity-70'
+          ? 'bg-white dark:bg-[#111111] border-gray-200 dark:border-[#222222]'
+          : 'bg-gray-50 dark:bg-[rgba(17,17,17,0.5)] border-gray-200 dark:border-[rgba(34,34,34,0.5)] opacity-70'
       } transition-all`}
     >
       <div className="flex items-center justify-between mb-4">
@@ -150,7 +150,7 @@ export default function ProgressPage() {
       {isAttempted ? (
         <>
           {/* Progress bar */}
-          <div className="w-full h-2 bg-gray-200 dark:bg-slate-700 rounded-full overflow-hidden mb-3">
+          <div className="w-full h-2 bg-gray-200 dark:bg-[#1A1A1A] rounded-full overflow-hidden mb-3">
             <div
               className="h-full bg-blue-600 dark:bg-blue-500 transition-all duration-500"
               style={{ width: `${score}%` }}
@@ -162,7 +162,7 @@ export default function ProgressPage() {
         </>
       ) : (
         <div className="text-center">
-          <span className="inline-block px-3 py-1 bg-gray-300 dark:bg-slate-700 text-gray-700 dark:text-slate-300 text-xs font-semibold rounded-full">
+          <span className="inline-block px-3 py-1 bg-gray-300 dark:bg-[#1A1A1A] text-gray-700 dark:text-slate-300 text-xs font-semibold rounded-full">
             Not attempted yet
           </span>
         </div>
@@ -179,7 +179,7 @@ export default function ProgressPage() {
         </label>
         <span className="text-sm font-bold text-blue-600 dark:text-blue-400">{current}%</span>
       </div>
-      <div className="relative h-6 bg-gray-100 dark:bg-slate-700/50 rounded-full overflow-hidden">
+      <div className="relative h-6 bg-gray-100 dark:bg-[rgba(26,26,26,0.7)] rounded-full overflow-hidden">
         <div
           className="h-full bg-blue-600 dark:bg-blue-500 rounded-full transition-all"
           style={{ width: `${current}%` }}
@@ -205,12 +205,12 @@ export default function ProgressPage() {
           </span>
         </div>
       </div>
-      <div className="h-px bg-gray-200 dark:bg-slate-700" />
+      <div className="h-px bg-gray-200 dark:bg-[#1A1A1A]" />
     </>
   );
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-white dark:bg-slate-900 overflow-x-hidden">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-white dark:bg-[#000000] overflow-x-hidden">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Main Content */}
@@ -219,7 +219,7 @@ export default function ProgressPage() {
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
         {/* Content Area */}
-        <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-slate-900">
+        <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-[#000000]">
           <div className="max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-8">
             {/* Page Header */}
             <div className="mb-8">
@@ -239,7 +239,7 @@ export default function ProgressPage() {
             </div>
 
             {/* Card 1: Overall Readiness Ring */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-slate-700">
+            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]">
               <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-slate-100 mb-8 text-center">
                 Overall Placement Readiness
               </h2>
@@ -249,7 +249,7 @@ export default function ProgressPage() {
             </div>
 
             {/* Card 2: Round wise Performance */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-slate-700">
+            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]">
               <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">
                 Performance by Round
               </h2>
@@ -286,7 +286,7 @@ export default function ProgressPage() {
             </div>
 
             {/* Card 3: Skill Improvement */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-slate-700">
+            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]">
               <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">
                 Skill Assessment
               </h2>
@@ -304,8 +304,8 @@ export default function ProgressPage() {
 
             {/* Card 4: Session History */}
             {sessionHistory.length > 0 && (
-              <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm mb-6 border border-gray-200 dark:border-slate-700 overflow-hidden">
-                <div className="p-8 border-b border-gray-200 dark:border-slate-700">
+              <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm mb-6 border border-gray-200 dark:border-[#222222] overflow-hidden">
+                <div className="p-8 border-b border-gray-200 dark:border-[#222222]">
                   <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-slate-100">
                     Recent Sessions
                   </h2>
@@ -343,7 +343,7 @@ export default function ProgressPage() {
             )}
 
             {sessionHistory.length === 0 && (
-              <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-12 border border-gray-200 dark:border-slate-700 text-center">
+              <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-12 border border-gray-200 dark:border-[#222222] text-center">
                 <p className="text-lg text-gray-600 dark:text-slate-400 mb-4">
                   📋 No sessions yet — start your first practice!
                 </p>

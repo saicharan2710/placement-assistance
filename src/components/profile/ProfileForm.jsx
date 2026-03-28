@@ -10,7 +10,7 @@ export default function ProfileForm({ formData, onFormChange }) {
   };
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 md:p-8 m-4 md:m-6">
+    <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 md:p-8 m-4 md:m-6">
       <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">
         Academic Profile
       </h2>
@@ -27,7 +27,7 @@ export default function ProfileForm({ formData, onFormChange }) {
             value={formData.fullName || ''}
             onChange={handleInputChange}
             placeholder="Your full name"
-            className="w-full px-4 py-3 bg-gray-100 dark:bg-slate-700 border-2 border-transparent dark:text-slate-100 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
+            className="w-full px-4 py-3 bg-gray-100 dark:bg-[#1A1A1A] border-2 border-transparent dark:text-slate-100 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
           />
         </div>
 
@@ -42,7 +42,7 @@ export default function ProfileForm({ formData, onFormChange }) {
             value={formData.collegeName || ''}
             onChange={handleInputChange}
             placeholder="Your college name"
-            className="w-full px-4 py-3 bg-gray-100 dark:bg-slate-700 border-2 border-transparent dark:text-slate-100 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
+            className="w-full px-4 py-3 bg-gray-100 dark:bg-[#1A1A1A] border-2 border-transparent dark:text-slate-100 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
           />
         </div>
 
@@ -59,7 +59,7 @@ export default function ProfileForm({ formData, onFormChange }) {
               value={formData.branch || ''}
               onChange={handleInputChange}
               placeholder="e.g., CSE"
-              className="w-full px-4 py-3 bg-gray-100 dark:bg-slate-700 border-2 border-transparent dark:text-slate-100 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
+              className="w-full px-4 py-3 bg-gray-100 dark:bg-[#1A1A1A] border-2 border-transparent dark:text-slate-100 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
             />
           </div>
 
@@ -72,7 +72,7 @@ export default function ProfileForm({ formData, onFormChange }) {
               name="yearOfStudy"
               value={formData.yearOfStudy || ''}
               onChange={handleInputChange}
-              className="w-full px-4 py-3 bg-gray-100 dark:bg-slate-700 border-2 border-transparent dark:text-slate-100 rounded-lg focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
+              className="w-full px-4 py-3 bg-gray-100 dark:bg-[#1A1A1A] border-2 border-transparent dark:text-slate-100 rounded-lg focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
             >
               <option value="">Select year</option>
               <option value="1st Year">1st Year</option>
@@ -92,7 +92,7 @@ export default function ProfileForm({ formData, onFormChange }) {
             type="email"
             value={formData.email || ''}
             disabled
-            className="w-full px-4 py-3 bg-gray-200 dark:bg-slate-700 text-gray-600 dark:text-slate-400 border-2 border-transparent rounded-lg cursor-not-allowed opacity-60"
+            className="w-full px-4 py-3 bg-gray-200 dark:bg-[#1A1A1A] text-gray-600 dark:text-slate-400 border-2 border-transparent rounded-lg cursor-not-allowed opacity-60"
           />
         </div>
 
@@ -107,7 +107,7 @@ export default function ProfileForm({ formData, onFormChange }) {
             value={formData.linkedIn || ''}
             onChange={handleInputChange}
             placeholder="linkedin.com/in/yourprofile"
-            className="w-full px-4 py-3 bg-gray-100 dark:bg-slate-700 border-2 border-transparent dark:text-slate-100 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
+            className="w-full px-4 py-3 bg-gray-100 dark:bg-[#1A1A1A] border-2 border-transparent dark:text-slate-100 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
           />
         </div>
       </div>

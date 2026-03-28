@@ -303,12 +303,12 @@ export default function TechnicalAssessmentPage() {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-slate-900 overflow-x-hidden">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-[#000000] overflow-x-hidden">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
-        <div className="flex-1 overflow-y-auto bg-slate-900">
+        <div className="flex-1 overflow-y-auto bg-[#000000]">
           {stage === 'landing' && (
             <div className="max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-8">
               {/* Header */}
@@ -326,26 +326,26 @@ export default function TechnicalAssessmentPage() {
 
               {/* Stats Row */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                <div className="bg-slate-800 rounded-xl p-4 lg:p-6 border border-slate-700">
+                <div className="bg-[#111111] rounded-xl p-4 lg:p-6 border border-[#222222]">
                   <p className="text-slate-400 text-xs lg:text-sm mb-2">Best Score</p>
                   <p className="text-2xl lg:text-3xl font-bold text-blue-400">{technicalData?.bestScore || 0}%</p>
                 </div>
-                <div className="bg-slate-800 rounded-xl p-4 lg:p-6 border border-slate-700">
+                <div className="bg-[#111111] rounded-xl p-4 lg:p-6 border border-[#222222]">
                   <p className="text-slate-400 text-xs lg:text-sm mb-2">Average Score</p>
                   <p className="text-2xl lg:text-3xl font-bold text-blue-400">{technicalData?.averageScore || 0}%</p>
                 </div>
-                <div className="bg-slate-800 rounded-xl p-4 lg:p-6 border border-slate-700">
+                <div className="bg-[#111111] rounded-xl p-4 lg:p-6 border border-[#222222]">
                   <p className="text-slate-400 text-xs lg:text-sm mb-2">Total Attempts</p>
                   <p className="text-2xl lg:text-3xl font-bold text-blue-400">{technicalData?.totalAttempts || 0}</p>
                 </div>
-                <div className="bg-slate-800 rounded-xl p-4 lg:p-6 border border-slate-700">
+                <div className="bg-[#111111] rounded-xl p-4 lg:p-6 border border-[#222222]">
                   <p className="text-slate-400 text-xs lg:text-sm mb-2">Last Attempted</p>
                   <p className="text-xs lg:text-sm font-semibold text-blue-400">{technicalData?.attempts?.[0]?.date || 'Never'}</p>
                 </div>
               </div>
 
               {/* Configuration Card */}
-              <div className="bg-slate-800 rounded-xl p-4 lg:p-8 border border-slate-700 mb-8">
+              <div className="bg-[#111111] rounded-xl p-4 lg:p-8 border border-[#222222] mb-8">
                 <h2 className="text-xl lg:text-2xl font-bold text-slate-100 mb-6">Configure Your Assessment</h2>
 
                 {/* Number of Questions */}
@@ -359,7 +359,7 @@ export default function TechnicalAssessmentPage() {
                         className={`px-6 py-2 rounded-full font-semibold transition-colors ${
                           numQuestions === num
                             ? 'bg-blue-600 text-white'
-                            : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                            : 'bg-[#1A1A1A] text-slate-300 hover:bg-slate-600'
                         }`}
                       >
                         {num}
@@ -379,7 +379,7 @@ export default function TechnicalAssessmentPage() {
                         className={`px-6 py-2 rounded-full font-semibold transition-colors ${
                           difficulty === diff
                             ? 'bg-blue-600 text-white'
-                            : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                            : 'bg-[#1A1A1A] text-slate-300 hover:bg-slate-600'
                         }`}
                       >
                         {diff}
@@ -389,7 +389,7 @@ export default function TechnicalAssessmentPage() {
                 </div>
 
                 {/* Topic Mix */}
-                <div className="p-4 bg-slate-700/50 rounded-lg border border-slate-600 mb-8">
+                <div className="p-4 bg-[rgba(26,26,26,0.5)] rounded-lg border border-[#2A2A2A] mb-8">
                   <p className="text-slate-300 text-sm font-semibold mb-3">Questions will be randomly picked from:</p>
                   <div className="flex flex-wrap gap-2 mb-3">
                     <span className="px-3 py-1 bg-blue-900/30 text-blue-300 text-sm rounded-full">🧮 DSA</span>
@@ -410,14 +410,14 @@ export default function TechnicalAssessmentPage() {
 
               {/* Previous Attempts */}
               {technicalData?.attempts && technicalData.attempts.length > 0 && (
-                <div className="bg-slate-800 rounded-xl p-8 border border-slate-700">
+                <div className="bg-[#111111] rounded-xl p-8 border border-[#222222]">
                   <h2 className="text-2xl font-bold text-slate-100 mb-6">Previous Attempts</h2>
                   <div className="space-y-3">
                     {technicalData.attempts.slice(0, 3).map((attempt, idx) => (
                       <div key={idx}>
                         <div
                           onClick={() => setExpandedAttempt(expandedAttempt === idx ? null : idx)}
-                          className="p-4 bg-slate-700/50 rounded-lg border border-slate-600 hover:bg-slate-700 transition-colors cursor-pointer flex items-center justify-between"
+                          className="p-4 bg-[rgba(26,26,26,0.5)] rounded-lg border border-[#2A2A2A] hover:bg-[#1A1A1A] transition-colors cursor-pointer flex items-center justify-between"
                         >
                           <div className="flex-1">
                             <div className="flex items-center gap-4 mb-2">
@@ -442,7 +442,7 @@ export default function TechnicalAssessmentPage() {
                         </div>
 
                         {expandedAttempt === idx && (
-                          <div className="p-4 bg-slate-700/25 border-l-2 border-blue-600 ml-4 mt-2 rounded text-sm text-slate-300">
+                          <div className="p-4 bg-[rgba(26,26,26,0.25)] border-l-2 border-blue-600 ml-4 mt-2 rounded text-sm text-slate-300">
                             <p className="mb-2">Time: {attempt.timeTaken}</p>
                             <p className="mb-3 font-semibold">Topic Breakdown:</p>
                             {Object.entries(attempt.topicBreakdown).map(([topic, data]) => (
@@ -463,7 +463,7 @@ export default function TechnicalAssessmentPage() {
           {stage === 'question' && (
             <div className="flex flex-col min-h-[calc(100vh-80px)]">
               {/* Top Bar */}
-              <div className="bg-slate-800 border-b border-slate-700 sticky top-0 z-50">
+              <div className="bg-[#111111] border-b border-[#222222] sticky top-0 z-50">
                 <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
                   <h2 className="text-lg font-bold text-slate-100">Technical Assessment</h2>
                   <p className="text-sm text-slate-300">Q {currentQuestionIndex + 1} / {assessmentQuestions.length}</p>
@@ -472,7 +472,7 @@ export default function TechnicalAssessmentPage() {
                   </div>
                 </div>
                 {/* Progress Bar */}
-                <div className="h-1 bg-slate-700">
+                <div className="h-1 bg-[#1A1A1A]">
                   <div
                     className="h-full bg-gradient-to-r from-blue-600 to-green-600 transition-all duration-300"
                     style={{ width: `${((currentQuestionIndex + 1) / assessmentQuestions.length) * 100}%` }}
@@ -483,7 +483,7 @@ export default function TechnicalAssessmentPage() {
               {/* Question */}
               <div className="flex-1 flex items-center justify-center p-6">
                 <div className="max-w-2xl w-full">
-                  <div className="bg-slate-800 rounded-xl p-8 border border-slate-700">
+                  <div className="bg-[#111111] rounded-xl p-8 border border-[#222222]">
                     {/* Topic Tag */}
                     <div className="mb-6">
                       <span
@@ -517,10 +517,10 @@ export default function TechnicalAssessmentPage() {
                                 ? 'bg-green-600 border border-green-500 text-white'
                                 : selectedAnswer === idx
                                 ? 'bg-red-600 border border-red-500 text-white'
-                                : 'bg-slate-700 border border-slate-600 text-slate-300'
+                                : 'bg-[#1A1A1A] border border-[#2A2A2A] text-slate-300'
                               : selectedAnswer === idx
                               ? 'bg-blue-600 border-2 border-blue-500 text-white'
-                              : 'bg-slate-700 border border-slate-600 text-slate-300 hover:border-blue-400'
+                              : 'bg-[#1A1A1A] border border-[#2A2A2A] text-slate-300 hover:border-blue-400'
                           }`}
                         >
                           <div className="flex items-center justify-between">
@@ -538,7 +538,7 @@ export default function TechnicalAssessmentPage() {
 
                     {/* Explanation */}
                     {isAnswered && (
-                      <div className="p-4 bg-slate-700/50 border border-slate-600 rounded-lg">
+                      <div className="p-4 bg-[rgba(26,26,26,0.5)] border border-[#2A2A2A] rounded-lg">
                         <p className="text-slate-100 font-semibold mb-1">Explanation:</p>
                         <p className="text-slate-300 text-sm">{assessmentQuestions[currentQuestionIndex].explanation}</p>
                       </div>
@@ -552,7 +552,7 @@ export default function TechnicalAssessmentPage() {
           {stage === 'result' && (
             <div className="max-w-4xl mx-auto px-4 md:px-6 py-8">
               {/* Result Card */}
-              <div className="bg-slate-800 rounded-xl p-8 border border-slate-700 mb-8 text-center">
+              <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8 text-center">
                 <div className="text-5xl mb-4">{getPerformanceBadge().emoji}</div>
                 <h2 className={`text-3xl font-bold mb-8 ${getPerformanceColor(Math.round((score / assessmentQuestions.length) * 100))}`}>
                   {getPerformanceBadge().text}
@@ -576,7 +576,7 @@ export default function TechnicalAssessmentPage() {
 
               {/* Topic Breakdown */}
               {technicalData?.attempts?.[0]?.topicBreakdown && (
-                <div className="bg-slate-800 rounded-xl p-8 border border-slate-700 mb-8">
+                <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
                   <h3 className="text-xl font-bold text-slate-100 mb-6">Topic Breakdown</h3>
                   <div className="space-y-4">
                     {Object.entries(technicalData.attempts[0].topicBreakdown).map(([topic, data]) => {
@@ -588,7 +588,7 @@ export default function TechnicalAssessmentPage() {
                             <span className="text-slate-300 font-medium">{topicName}</span>
                             <span className="text-blue-400 font-semibold">{data.correct}/{data.total}</span>
                           </div>
-                          <div className="w-full h-2 bg-slate-700 rounded-full overflow-hidden">
+                          <div className="w-full h-2 bg-[#1A1A1A] rounded-full overflow-hidden">
                             <div
                               className="h-full bg-blue-600 rounded-full transition-all"
                               style={{ width: `${percentage}%` }}
@@ -602,11 +602,11 @@ export default function TechnicalAssessmentPage() {
               )}
 
               {/* Question Breakdown */}
-              <div className="bg-slate-800 rounded-xl p-8 border border-slate-700 mb-8">
+              <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
                 <h3 className="text-xl font-bold text-slate-100 mb-6">Question Breakdown</h3>
                 <div className="space-y-3">
                   {assessmentQuestions.map((q, idx) => (
-                    <div key={idx} className="p-4 bg-slate-700/50 rounded-lg border border-slate-600">
+                    <div key={idx} className="p-4 bg-[rgba(26,26,26,0.5)] rounded-lg border border-[#2A2A2A]">
                       <div className="flex items-center justify-between">
                         <div className="flex-1 flex items-center gap-3">
                           <span
@@ -649,11 +649,11 @@ export default function TechnicalAssessmentPage() {
                 </button>
                 <button
                   onClick={() => navigate('/dashboard')}
-                  className="bg-slate-700 hover:bg-slate-600 text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
+                  className="bg-[#1A1A1A] hover:bg-slate-600 text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
                 >
                   Back to Dashboard
                 </button>
-                <button className="bg-slate-700 hover:bg-slate-600 text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors">
+                <button className="bg-[#1A1A1A] hover:bg-slate-600 text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors">
                   View All Attempts
                 </button>
               </div>
@@ -672,7 +672,7 @@ function NavItem({ icon: Icon, label, isActive, onClick }) {
       className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors font-medium ${
         isActive
           ? 'bg-blue-900/30 text-blue-400'
-          : 'text-slate-300 hover:bg-slate-700'
+          : 'text-slate-300 hover:bg-[#1A1A1A]'
       }`}
     >
       <Icon className="w-5 h-5" />

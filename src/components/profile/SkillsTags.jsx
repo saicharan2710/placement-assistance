@@ -24,7 +24,7 @@ export default function SkillsTags({ skills, onSkillsChange }) {
   };
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 md:p-8 m-4 md:m-6">
+    <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 md:p-8 m-4 md:m-6">
       <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">
         Practice Settings
       </h2>
@@ -35,7 +35,7 @@ export default function SkillsTags({ skills, onSkillsChange }) {
         </h3>
 
         {/* Skill Tags and Input */}
-        <div className="flex flex-wrap gap-2 mb-4 p-4 bg-gray-50 dark:bg-slate-700/50 rounded-lg min-h-12 items-center">
+        <div className="flex flex-wrap gap-2 mb-4 p-4 bg-gray-50 dark:bg-[rgba(26,26,26,0.7)] rounded-lg min-h-12 items-center">
           {/* Existing Skills */}
           {skills.map((skill) => (
             <div

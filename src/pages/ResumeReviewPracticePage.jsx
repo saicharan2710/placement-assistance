@@ -178,7 +178,7 @@ export default function ResumeReviewPracticePage() {
       case 'missing':
         return 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 border border-red-300 dark:border-red-700';
       default:
-        return 'bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300';
+        return 'bg-gray-100 dark:bg-[#1A1A1A] text-gray-700 dark:text-slate-300';
     }
   };
 
@@ -202,7 +202,7 @@ export default function ResumeReviewPracticePage() {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-white dark:bg-slate-900 overflow-x-hidden">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-white dark:bg-[#000000] overflow-x-hidden">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
@@ -225,7 +225,7 @@ export default function ResumeReviewPracticePage() {
                 </div>
 
                 {/* Upload Area */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl border-2 border-dashed border-gray-300 dark:border-slate-600 p-8 lg:p-12 text-center mb-8" onDragOver={handleDragOver} onDrop={handleDrop}>
+                <div className="bg-white dark:bg-[#111111] rounded-xl border-2 border-dashed border-gray-300 dark:border-[#2A2A2A] p-8 lg:p-12 text-center mb-8" onDragOver={handleDragOver} onDrop={handleDrop}>
                   <div className="mb-4 flex justify-center">
                     <CloudUpload className="w-12 lg:w-16 h-12 lg:h-16 text-blue-600 dark:text-blue-400" />
                   </div>
@@ -247,13 +247,13 @@ export default function ResumeReviewPracticePage() {
                 </div>
 
                 {isAnalyzing && (
-                  <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-slate-700">
+                  <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222]">
                     <div className="text-center mb-4">
                       <FileText className="w-10 lg:w-12 h-10 lg:h-12 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
                       <p className="text-base lg:text-lg font-semibold text-gray-900 dark:text-slate-100 mb-2">{fileName}</p>
                       <p className="text-xs lg:text-sm text-gray-600 dark:text-slate-400 mb-4">Analyzing your resume...</p>
                     </div>
-                    <div className="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2 overflow-hidden">
+                    <div className="w-full bg-gray-200 dark:bg-[#1A1A1A] rounded-full h-2 overflow-hidden">
                       <div className="bg-blue-600 h-full rounded-full animate-pulse" style={{ width: '65%' }} />
                     </div>
                   </div>
@@ -287,7 +287,7 @@ export default function ResumeReviewPracticePage() {
                 </div>
 
                 {/* ATS Score Card */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-slate-700 mb-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
                   <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-8 text-center">ATS Compatibility Score</h3>
                   <div className="flex flex-col items-center mb-8">
                     <ScoreCircle score={72} />
@@ -310,7 +310,7 @@ export default function ResumeReviewPracticePage() {
                 {/* Quick Summary */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   {/* What's Good */}
-                  <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-slate-700">
+                  <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 border border-gray-200 dark:border-[#222222]">
                     <h3 className="text-lg font-bold text-green-700 dark:text-green-300 mb-4 flex items-center gap-2">
                       <CheckCircle className="w-5 h-5" />
                       What's Good
@@ -332,7 +332,7 @@ export default function ResumeReviewPracticePage() {
                   </div>
 
                   {/* Critical Issues */}
-                  <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-slate-700">
+                  <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 border border-gray-200 dark:border-[#222222]">
                     <h3 className="text-lg font-bold text-red-700 dark:text-red-300 mb-4 flex items-center gap-2">
                       <XCircle className="w-5 h-5" />
                       Critical Issues
@@ -355,7 +355,7 @@ export default function ResumeReviewPracticePage() {
                 </div>
 
                 {/* Section by Section Analysis */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-slate-700 mb-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
                   <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Line by Line Section Feedback</h3>
                   <div className="space-y-3">
                     {sections.map((section) => (
@@ -365,7 +365,7 @@ export default function ResumeReviewPracticePage() {
                 </div>
 
                 {/* Keyword Analysis */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-slate-700 mb-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
                   <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Keyword Analysis for CSE Placements</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
@@ -395,11 +395,11 @@ export default function ResumeReviewPracticePage() {
                 </div>
 
                 {/* Priority List */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-slate-700 mb-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
                   <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Fix These First — Priority Order</h3>
                   <div className="space-y-3">
                     {priorities.map((item) => (
-                      <div key={item.priority} className="flex items-start gap-4 p-3 bg-gray-50 dark:bg-slate-700/50 rounded-lg border border-gray-200 dark:border-slate-600">
+                      <div key={item.priority} className="flex items-start gap-4 p-3 bg-gray-50 dark:bg-[rgba(26,26,26,0.7)] rounded-lg border border-gray-200 dark:border-[#2A2A2A]">
                         <div className="flex-shrink-0 text-lg font-bold text-gray-600 dark:text-slate-400">{item.priority}.</div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-1">
@@ -435,7 +435,7 @@ export default function ResumeReviewPracticePage() {
                 </div>
 
                 {/* Score Breakdown */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-slate-700 mb-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
                   <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Your Resume Score Breakdown</h3>
                   <div className="space-y-4">
                     {scoreBreakdown.map((item, idx) => (
@@ -444,7 +444,7 @@ export default function ResumeReviewPracticePage() {
                           <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">{item.label}</p>
                           <p className="text-sm font-bold text-gray-900 dark:text-slate-100">{item.score}%</p>
                         </div>
-                        <div className="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2 overflow-hidden">
+                        <div className="w-full bg-gray-200 dark:bg-[#1A1A1A] rounded-full h-2 overflow-hidden">
                           <div className={`h-full rounded-full transition-all ${getScoreColor(item.score)}`} style={{ width: `${item.score}%` }} />
                         </div>
                       </div>
@@ -460,7 +460,7 @@ export default function ResumeReviewPracticePage() {
                       setFileName('');
                       setFileSize(0);
                     }}
-                    className="flex-1 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-900 dark:text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
+                    className="flex-1 bg-gray-200 dark:bg-[#1A1A1A] hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-900 dark:text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
                   >
                     Re-upload Resume
                   </button>
@@ -486,7 +486,7 @@ export default function ResumeReviewPracticePage() {
       {/* Tips Modal */}
       {showTipsModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg max-w-2xl w-full max-h-96 overflow-y-auto border border-gray-200 dark:border-slate-700">
+          <div className="bg-white dark:bg-[#111111] rounded-xl shadow-lg max-w-2xl w-full max-h-96 overflow-y-auto border border-gray-200 dark:border-[#222222]">
             <div className="p-8">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">Resume Tips for Campus Placements</h2>
               <div className="space-y-4">
@@ -554,7 +554,7 @@ function ProgressBar({ label, score, color }) {
         <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">{label}</p>
         <p className="text-sm font-bold text-gray-900 dark:text-slate-100">{score}%</p>
       </div>
-      <div className="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2 overflow-hidden">
+      <div className="w-full bg-gray-200 dark:bg-[#1A1A1A] rounded-full h-2 overflow-hidden">
         <div className={`h-full rounded-full transition-all ${colorClasses[color]}`} style={{ width: `${score}%` }} />
       </div>
     </div>
@@ -563,10 +563,10 @@ function ProgressBar({ label, score, color }) {
 
 function SectionAccordion({ section, isExpanded, onToggle, statusBadgeColor, statusIcon }) {
   return (
-    <div className="border border-gray-200 dark:border-slate-700 rounded-lg overflow-hidden">
+    <div className="border border-gray-200 dark:border-[#222222] rounded-lg overflow-hidden">
       <button
         onClick={() => onToggle(section.id)}
-        className="w-full p-4 hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors text-left flex items-center justify-between gap-4"
+        className="w-full p-4 hover:bg-gray-50 dark:hover:bg-[rgba(26,26,26,0.5)] transition-colors text-left flex items-center justify-between gap-4"
       >
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-3 mb-1">
@@ -582,11 +582,11 @@ function SectionAccordion({ section, isExpanded, onToggle, statusBadgeColor, sta
       </button>
 
       {isExpanded && (
-        <div className="bg-gray-50 dark:bg-slate-700/30 p-4 border-t border-gray-200 dark:border-slate-700">
+        <div className="bg-gray-50 dark:bg-[rgba(26,26,26,0.5)] p-4 border-t border-gray-200 dark:border-[#222222]">
           <p className="text-sm text-gray-700 dark:text-slate-300 mb-3">{section.feedback}</p>
 
           {section.currentText && (
-            <div className="mb-3 p-3 bg-gray-200 dark:bg-slate-600 rounded italic text-sm text-gray-700 dark:text-slate-300">
+            <div className="mb-3 p-3 bg-gray-200 dark:bg-[#262626] rounded italic text-sm text-gray-700 dark:text-slate-300">
               {section.currentText}
             </div>
           )}

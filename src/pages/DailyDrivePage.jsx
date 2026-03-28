@@ -202,14 +202,14 @@ export default function DailyDrivePage() {
   const isCompletedToday = dailyDriveData?.lastCompleted && dailyDriveData.lastCompleted === getTodayDate();
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-slate-900 overflow-x-hidden">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-[#000000] overflow-x-hidden">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
-        <div className="flex-1 overflow-y-auto bg-slate-900">
+        <div className="flex-1 overflow-y-auto bg-[#000000]">
           {stage === 'landing' && (
             <div className="flex items-center justify-center min-h-[calc(100vh-80px)] p-6">
               <div className="max-w-2xl w-full">
@@ -225,13 +225,13 @@ export default function DailyDrivePage() {
                   <div className="px-6 py-3 bg-orange-900/30 border border-orange-800 rounded-full text-center">
                     <p className="text-orange-400 font-bold text-lg">🔥 {dailyDriveData?.streak || 0} Day Streak</p>
                   </div>
-                  <div className="px-6 py-3 bg-slate-700 border border-slate-600 rounded-full text-center">
+                  <div className="px-6 py-3 bg-[#1A1A1A] border border-[#2A2A2A] rounded-full text-center">
                     <p className="text-slate-300 font-semibold">Best: {dailyDriveData?.bestStreak || 0} days</p>
                   </div>
                 </div>
 
                 {/* Challenge Card */}
-                <div className="bg-slate-800 rounded-xl p-8 border border-slate-700 mb-8">
+                <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
                   <div className="mb-6">
                     <p className="text-slate-400 text-sm font-semibold uppercase mb-2">Today's Challenge</p>
                     <p className="text-2xl font-bold text-slate-100">{getTodayDate()}</p>
@@ -256,7 +256,7 @@ export default function DailyDrivePage() {
                     </span>
                   </div>
 
-                  <div className="h-px bg-slate-700 mb-6" />
+                  <div className="h-px bg-[#1A1A1A] mb-6" />
 
                   {/* Stats Row */}
                   <div className="grid grid-cols-3 gap-4">
@@ -291,7 +291,7 @@ export default function DailyDrivePage() {
                   disabled={isCompletedToday}
                   className={`w-full py-4 px-6 rounded-lg font-bold text-lg transition-colors ${
                     isCompletedToday
-                      ? 'bg-slate-700 text-slate-400 cursor-not-allowed'
+                      ? 'bg-[#1A1A1A] text-slate-400 cursor-not-allowed'
                       : 'bg-blue-600 hover:bg-blue-700 text-white'
                   }`}
                 >
@@ -304,7 +304,7 @@ export default function DailyDrivePage() {
           {stage === 'question' && (
             <div className="flex flex-col min-h-[calc(100vh-80px)]">
               {/* Top Bar */}
-              <div className="bg-slate-800 border-b border-slate-700 sticky top-0 z-50">
+              <div className="bg-[#111111] border-b border-[#222222] sticky top-0 z-50">
                 <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
                   <h2 className="text-lg font-bold text-slate-100">Daily Drive</h2>
                   <p className="text-sm text-slate-300">{currentQuestionIndex + 1} / {questions.length}</p>
@@ -313,7 +313,7 @@ export default function DailyDrivePage() {
                   </div>
                 </div>
                 {/* Progress Bar */}
-                <div className="h-1 bg-slate-700">
+                <div className="h-1 bg-[#1A1A1A]">
                   <div
                     className="h-full bg-gradient-to-r from-blue-600 to-green-600 transition-all duration-300"
                     style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
@@ -324,7 +324,7 @@ export default function DailyDrivePage() {
               {/* Question Card */}
               <div className="flex-1 flex items-center justify-center p-6">
                 <div className="max-w-2xl w-full">
-                  <div className="bg-slate-800 rounded-xl p-8 border border-slate-700">
+                  <div className="bg-[#111111] rounded-xl p-8 border border-[#222222]">
                     {/* Type Tag */}
                     <div className="mb-6">
                       <span
@@ -357,10 +357,10 @@ export default function DailyDrivePage() {
                                   ? 'bg-green-600 border border-green-500 text-white'
                                   : selectedAnswer === idx
                                   ? 'bg-red-600 border border-red-500 text-white'
-                                  : 'bg-slate-700 border border-slate-600 text-slate-300'
+                                  : 'bg-[#1A1A1A] border border-[#2A2A2A] text-slate-300'
                                 : selectedAnswer === idx
                                 ? 'bg-blue-600 border-2 border-blue-500 text-white'
-                                : 'bg-slate-700 border border-slate-600 text-slate-300 hover:border-blue-400'
+                                : 'bg-[#1A1A1A] border border-[#2A2A2A] text-slate-300 hover:border-blue-400'
                             }`}
                           >
                             <div className="flex items-center justify-between">
@@ -380,7 +380,7 @@ export default function DailyDrivePage() {
                         <textarea
                           id="hr-input"
                           placeholder="Type your answer here..."
-                          className="w-full p-4 bg-slate-700 border border-slate-600 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                          className="w-full p-4 bg-[#1A1A1A] border border-[#2A2A2A] rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
                           rows="4"
                           disabled={isAnswered}
                         />
@@ -418,7 +418,7 @@ export default function DailyDrivePage() {
             <div className="flex items-center justify-center min-h-[calc(100vh-80px)] p-6">
               <div className="max-w-2xl w-full">
                 {/* Result Header */}
-                <div className="bg-slate-800 rounded-xl p-8 border border-slate-700 text-center mb-8">
+                <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] text-center mb-8">
                   <p className="text-4xl font-bold text-slate-100 mb-4">{getScoreMessage()}</p>
                   <div className="flex justify-around mb-6">
                     <div>
@@ -445,11 +445,11 @@ export default function DailyDrivePage() {
                 )}
 
                 {/* Question Breakdown */}
-                <div className="bg-slate-800 rounded-xl p-8 border border-slate-700 mb-8">
+                <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
                   <h3 className="text-xl font-bold text-slate-100 mb-4">Question Breakdown</h3>
                   <div className="space-y-3">
                     {questions.map((q, idx) => (
-                      <div key={idx} className="p-4 bg-slate-700/50 rounded-lg border border-slate-600">
+                      <div key={idx} className="p-4 bg-[rgba(26,26,26,0.5)] rounded-lg border border-[#2A2A2A]">
                         <div className="flex items-center justify-between mb-2">
                           <div className="flex items-center gap-3 flex-1">
                             <span
@@ -477,9 +477,9 @@ export default function DailyDrivePage() {
                 </div>
 
                 {/* XP Section */}
-                <div className="bg-slate-800 rounded-xl p-6 border border-slate-700 mb-8 text-center">
+                <div className="bg-[#111111] rounded-xl p-6 border border-[#222222] mb-8 text-center">
                   <p className="text-2xl font-bold text-blue-400 mb-2">🎯 You earned {score * 10} XP today!</p>
-                  <div className="w-full h-2 bg-slate-700 rounded-full overflow-hidden mb-3">
+                  <div className="w-full h-2 bg-[#1A1A1A] rounded-full overflow-hidden mb-3">
                     <div className="h-full bg-blue-600" style={{ width: '45%' }} />
                   </div>
                   <p className="text-slate-300 font-semibold">Level 3 — Placement Warrior</p>
@@ -489,7 +489,7 @@ export default function DailyDrivePage() {
                 <div className="grid grid-cols-3 gap-4">
                   <button
                     onClick={() => navigate('/dashboard')}
-                    className="bg-slate-700 hover:bg-slate-600 text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
+                    className="bg-[#1A1A1A] hover:bg-slate-600 text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
                   >
                     Back to Dashboard
                   </button>
@@ -499,7 +499,7 @@ export default function DailyDrivePage() {
                   >
                     View Progress
                   </button>
-                  <button className="bg-slate-700 hover:bg-slate-600 text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2">
+                  <button className="bg-[#1A1A1A] hover:bg-slate-600 text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2">
                     <Share2 className="w-4 h-4" />
                     Share
                   </button>

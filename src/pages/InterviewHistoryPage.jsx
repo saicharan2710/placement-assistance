@@ -42,9 +42,9 @@ export default function InterviewHistoryPage() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen bg-white dark:bg-slate-900">
+    <div className="flex flex-col md:flex-row min-h-screen bg-white dark:bg-[#000000]">
       {/* Desktop Sidebar */}
-      <aside className="hidden md:flex flex-col w-64 bg-white dark:bg-slate-800 border-r border-gray-200 dark:border-slate-700 p-6">
+      <aside className="hidden md:flex flex-col w-64 bg-white dark:bg-[#111111] border-r border-gray-200 dark:border-[#222222] p-6">
         <div className="flex items-center gap-2 mb-8">
           <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold">P</span>
@@ -104,7 +104,7 @@ export default function InterviewHistoryPage() {
         </nav>
 
         <div className="mt-auto space-y-3">
-          <button className="w-full bg-white dark:bg-slate-700 border-2 border-blue-600 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-slate-600 font-semibold py-3 px-4 rounded-lg transition-colors">
+          <button className="w-full bg-white dark:bg-[#1A1A1A] border-2 border-blue-600 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-slate-600 font-semibold py-3 px-4 rounded-lg transition-colors">
             Start Mock Test
           </button>
           <button
@@ -123,7 +123,7 @@ export default function InterviewHistoryPage() {
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
-        <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-slate-900">
+        <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-[#000000]">
           <div className="max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-8">
             {/* Back Button */}
             <button
@@ -147,19 +147,19 @@ export default function InterviewHistoryPage() {
             {/* Stats Cards */}
             {sessions.length > 0 && (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-slate-700 text-center">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 border border-gray-200 dark:border-[#222222] text-center">
                   <p className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
                     {getHighScore('interview')}%
                   </p>
                   <p className="text-sm text-gray-600 dark:text-slate-400">High Score</p>
                 </div>
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-slate-700 text-center">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 border border-gray-200 dark:border-[#222222] text-center">
                   <p className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
                     {getAverageScore('interview')}%
                   </p>
                   <p className="text-sm text-gray-600 dark:text-slate-400">Average Score</p>
                 </div>
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-slate-700 text-center">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 border border-gray-200 dark:border-[#222222] text-center">
                   <p className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
                     {getTotalSessions('interview')}
                   </p>
@@ -169,7 +169,7 @@ export default function InterviewHistoryPage() {
             )}
 
             {/* Session History */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden">
+            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm border border-gray-200 dark:border-[#222222] overflow-hidden">
               {sessions.length === 0 ? (
                 <div className="p-12 text-center">
                   <p className="text-lg text-gray-600 dark:text-slate-400 mb-4">
@@ -184,9 +184,9 @@ export default function InterviewHistoryPage() {
                 </div>
               ) : (
                 sessions.map((session) => (
-                  <div key={session.id} className="border-b border-gray-200 dark:border-slate-700 last:border-0">
+                  <div key={session.id} className="border-b border-gray-200 dark:border-[#222222] last:border-0">
                     <div
-                      className="p-6 cursor-pointer hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors"
+                      className="p-6 cursor-pointer hover:bg-gray-50 dark:hover:bg-[rgba(26,26,26,0.5)] transition-colors"
                       onClick={() =>
                         setExpandedSessionId(expandedSessionId === session.id ? null : session.id)
                       }
@@ -198,7 +198,7 @@ export default function InterviewHistoryPage() {
                             <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-semibold rounded-full">
                               {session.category || 'Interview'}
                             </span>
-                            <span className="px-3 py-1 bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 text-xs font-semibold rounded-full">
+                            <span className="px-3 py-1 bg-gray-100 dark:bg-[#1A1A1A] text-gray-700 dark:text-slate-300 text-xs font-semibold rounded-full">
                               {session.difficulty}
                             </span>
                           </div>
@@ -217,12 +217,12 @@ export default function InterviewHistoryPage() {
 
                       {/* Expanded Details */}
                       {expandedSessionId === session.id && (
-                        <div className="mt-6 pt-6 border-t border-gray-200 dark:border-slate-700">
+                        <div className="mt-6 pt-6 border-t border-gray-200 dark:border-[#222222]">
                           <h4 className="font-bold text-gray-900 dark:text-slate-100 mb-4">
                             Interview Feedback
                           </h4>
                           <div className="space-y-4">
-                            <div className="p-4 bg-gray-50 dark:bg-slate-700/50 rounded-lg border border-gray-200 dark:border-slate-600">
+                            <div className="p-4 bg-gray-50 dark:bg-[rgba(26,26,26,0.7)] rounded-lg border border-gray-200 dark:border-[#2A2A2A]">
                               <p className="text-sm text-gray-700 dark:text-slate-300">
                                 {session.feedback || 'Detailed feedback will be available after interview completion.'}
                               </p>

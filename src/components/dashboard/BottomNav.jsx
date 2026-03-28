@@ -10,7 +10,7 @@ export default function BottomNav({ activeTab = 'home' }) {
   ];
 
   return (
-    <div className="fixed md:hidden bottom-0 left-0 right-0 bg-white dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700 px-4 py-3">
+    <div className="fixed md:hidden bottom-0 left-0 right-0 bg-white dark:bg-[#111111] border-t border-gray-200 dark:border-[#222222] px-4 py-3">
       <div className="flex items-center justify-around">
         {navItems.map((item) => {
           const Icon = item.icon;
@@ -22,7 +22,7 @@ export default function BottomNav({ activeTab = 'home' }) {
               className={`flex flex-col items-center gap-1 py-2 px-4 rounded-lg transition-all ${
                 isActive
                   ? 'bg-blue-600 text-white'
-                  : 'text-gray-600 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-slate-700'
+                  : 'text-gray-600 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-[#1A1A1A]'
               }`}
             >
               <Icon className="w-5 h-5" />

@@ -209,7 +209,7 @@ export default function MockInterviewPage() {
   const currentQuestion = currentQuestions[currentQuestionIndex];
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-white dark:bg-slate-900 overflow-x-hidden">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-white dark:bg-[#000000] overflow-x-hidden">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
@@ -232,7 +232,7 @@ export default function MockInterviewPage() {
                 </div>
 
                 {/* Interview Mode Selection */}
-                <div className="mb-8 bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-slate-700">
+                <div className="mb-8 bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222]">
                   <h3 className="text-base lg:text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Interview Format</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                     {/* Full Interview */}
@@ -241,7 +241,7 @@ export default function MockInterviewPage() {
                       className={`p-6 rounded-lg border-2 transition-all text-left ${
                         interviewMode === 'full'
                           ? 'bg-blue-50 dark:bg-blue-900/20 border-blue-600'
-                          : 'bg-gray-50 dark:bg-slate-700/50 border-gray-200 dark:border-slate-600'
+                          : 'bg-gray-50 dark:bg-[rgba(26,26,26,0.7)] border-gray-200 dark:border-[#2A2A2A]'
                       }`}
                     >
                       <p className="text-base lg:text-lg font-bold text-gray-900 dark:text-slate-100 mb-2">Full Interview</p>
@@ -255,7 +255,7 @@ export default function MockInterviewPage() {
                       className={`p-6 rounded-lg border-2 transition-all text-left ${
                         interviewMode === 'single'
                           ? 'bg-blue-50 dark:bg-blue-900/20 border-blue-600'
-                          : 'bg-gray-50 dark:bg-slate-700/50 border-gray-200 dark:border-slate-600'
+                          : 'bg-gray-50 dark:bg-[rgba(26,26,26,0.7)] border-gray-200 dark:border-[#2A2A2A]'
                       }`}
                     >
                       <p className="text-base lg:text-lg font-bold text-gray-900 dark:text-slate-100 mb-2">Single Round</p>
@@ -266,7 +266,7 @@ export default function MockInterviewPage() {
 
                   {/* Single Round Type Selection */}
                   {interviewMode === 'single' && (
-                    <div className="mb-8 pb-8 border-b border-gray-200 dark:border-slate-700">
+                    <div className="mb-8 pb-8 border-b border-gray-200 dark:border-[#222222]">
                       <p className="text-xs lg:text-sm font-semibold text-gray-600 dark:text-slate-400 mb-3">Select Round</p>
                       <div className="flex gap-3">
                         {['Technical', 'HR'].map((type) => (
@@ -276,7 +276,7 @@ export default function MockInterviewPage() {
                             className={`px-4 py-2 rounded-lg font-semibold transition-all text-sm ${
                               singleRoundType === type.toLowerCase()
                                 ? 'bg-blue-600 text-white'
-                                : 'bg-gray-200 dark:bg-slate-700 text-gray-900 dark:text-slate-100'
+                                : 'bg-gray-200 dark:bg-[#1A1A1A] text-gray-900 dark:text-slate-100'
                             }`}
                           >
                             {type}
@@ -297,7 +297,7 @@ export default function MockInterviewPage() {
                           className={`px-6 py-2 rounded-lg font-semibold transition-all text-sm ${
                             difficulty === level
                               ? 'bg-blue-600 text-white'
-                              : 'bg-gray-200 dark:bg-slate-700 text-gray-900 dark:text-slate-100'
+                              : 'bg-gray-200 dark:bg-[#1A1A1A] text-gray-900 dark:text-slate-100'
                           }`}
                         >
                           {level}
@@ -318,7 +318,7 @@ export default function MockInterviewPage() {
                       <button
                         onClick={() => setUseResume(!useResume)}
                         className={`w-14 h-8 rounded-full transition-colors ${
-                          useResume ? 'bg-blue-600' : 'bg-gray-300 dark:bg-slate-600'
+                          useResume ? 'bg-blue-600' : 'bg-gray-300 dark:bg-[#262626]'
                         }`}
                       >
                         <div
@@ -361,14 +361,14 @@ export default function MockInterviewPage() {
                     <div className={`h-1.5 flex-1 rounded ${currentRound === 'technical' ? 'bg-blue-600' : 'bg-green-600'}`} />
                     {interviewMode === 'full' && (
                       <>
-                        <div className={`h-1.5 flex-1 rounded ${currentRound === 'hr' ? 'bg-blue-600' : 'bg-gray-300 dark:bg-slate-700'}`} />
+                        <div className={`h-1.5 flex-1 rounded ${currentRound === 'hr' ? 'bg-blue-600' : 'bg-gray-300 dark:bg-[#1A1A1A]'}`} />
                       </>
                     )}
                   </div>
                 </div>
 
                 {/* AI Interviewer Panel */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-slate-700 mb-8 text-center">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222] mb-8 text-center">
                   <div className="mb-6">
                     <div className="relative inline-block">
                       <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mx-auto mb-4">
@@ -381,7 +381,7 @@ export default function MockInterviewPage() {
                     </p>
                   </div>
 
-                  <div className="bg-gray-50 dark:bg-slate-700/50 rounded-lg p-4 lg:p-6 mb-4">
+                  <div className="bg-gray-50 dark:bg-[rgba(26,26,26,0.7)] rounded-lg p-4 lg:p-6 mb-4">
                     <p className="text-xs text-gray-600 dark:text-slate-400 mb-2">
                       Question {currentQuestionIndex + 1} of {currentQuestions.length}
                     </p>
@@ -390,7 +390,7 @@ export default function MockInterviewPage() {
                 </div>
 
                 {/* User Response Panel */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-slate-700">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222]">
                   <label className="block text-xs lg:text-sm font-semibold text-gray-900 dark:text-slate-100 mb-4">Your Answer</label>
 
                   {!showFeedback ? (
@@ -399,7 +399,7 @@ export default function MockInterviewPage() {
                         value={userAnswer}
                         onChange={(e) => setUserAnswer(e.target.value)}
                         placeholder="Type your answer here... Be as detailed as possible"
-                        className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-slate-700 border border-gray-200 dark:border-slate-600 text-gray-900 dark:text-slate-100 placeholder-gray-500 dark:placeholder-slate-400 focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 resize-none"
+                        className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-[#1A1A1A] border border-gray-200 dark:border-[#2A2A2A] text-gray-900 dark:text-slate-100 placeholder-gray-500 dark:placeholder-slate-400 focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 resize-none"
                         rows="6"
                       />
                       <div className="flex justify-between items-center mt-4">
@@ -407,7 +407,7 @@ export default function MockInterviewPage() {
                         <div className="flex gap-3">
                           <button
                             onClick={handleSkipQuestion}
-                            className="bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-900 dark:text-slate-100 font-semibold py-2 px-6 rounded-lg transition-colors"
+                            className="bg-gray-200 dark:bg-[#1A1A1A] hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-900 dark:text-slate-100 font-semibold py-2 px-6 rounded-lg transition-colors"
                           >
                             Skip Question
                           </button>
@@ -422,7 +422,7 @@ export default function MockInterviewPage() {
                     </>
                   ) : (
                     <>
-                      <div className="bg-gray-50 dark:bg-slate-700/50 rounded-lg p-4 mb-6 max-h-40 overflow-y-auto">
+                      <div className="bg-gray-50 dark:bg-[rgba(26,26,26,0.7)] rounded-lg p-4 mb-6 max-h-40 overflow-y-auto">
                         <p className="text-sm text-gray-700 dark:text-slate-300">{userAnswer}</p>
                       </div>
 
@@ -459,7 +459,7 @@ export default function MockInterviewPage() {
                 </div>
 
                 {/* Overall Performance */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-slate-700 mb-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222] mb-6">
                   <h3 className="text-base lg:text-lg font-bold text-gray-900 dark:text-slate-100 mb-8 text-center">Overall Performance</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
                     <ScoreCircle label="Interview Readiness" score={report.overallScore} />
@@ -470,7 +470,7 @@ export default function MockInterviewPage() {
                 </div>
 
                 {/* Technical Round Summary */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-slate-700 mb-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
                   <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Technical Round Feedback</h3>
                   <div className="space-y-3">
                     {technicalQuestions.map((q, idx) => (
@@ -480,7 +480,7 @@ export default function MockInterviewPage() {
                 </div>
 
                 {/* HR Round Summary */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-slate-700 mb-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
                   <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">HR Round Feedback</h3>
                   <div className="space-y-3">
                     {hrQuestions.map((q, idx) => (
@@ -490,7 +490,7 @@ export default function MockInterviewPage() {
                 </div>
 
                 {/* Strengths */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-slate-700 mb-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
                   <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Your Strengths</h3>
                   <div className="space-y-3">
                     <StrengthItem text="Showed good understanding of core concepts" />
@@ -500,7 +500,7 @@ export default function MockInterviewPage() {
                 </div>
 
                 {/* Areas to Improve */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-slate-700 mb-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
                   <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6 flex items-center gap-2">
                     <AlertCircle className="w-5 h-5 text-yellow-600" />
                     Areas to Improve
@@ -534,7 +534,7 @@ export default function MockInterviewPage() {
                   </button>
                   <button
                     onClick={() => navigate('/practice')}
-                    className="flex-1 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-900 dark:text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
+                    className="flex-1 bg-gray-200 dark:bg-[#1A1A1A] hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-900 dark:text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
                   >
                     Back to Practice
                   </button>
@@ -587,7 +587,7 @@ function ScoreCircle({ label, score }) {
 
 function ScorePill({ label, score }) {
   return (
-    <div className="bg-gray-50 dark:bg-slate-700/50 rounded-lg p-4 text-center">
+    <div className="bg-gray-50 dark:bg-[rgba(26,26,26,0.7)] rounded-lg p-4 text-center">
       <p className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">{score}%</p>
       <p className="text-xs font-semibold text-gray-600 dark:text-slate-400">{label}</p>
     </div>
@@ -598,10 +598,10 @@ function FeedbackRow({ question, feedback, index, round }) {
   const [expanded, setExpanded] = React.useState(false);
 
   return (
-    <div className="border border-gray-200 dark:border-slate-700 rounded-lg overflow-hidden">
+    <div className="border border-gray-200 dark:border-[#222222] rounded-lg overflow-hidden">
       <button
         onClick={() => setExpanded(!expanded)}
-        className="w-full p-4 hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors text-left flex items-start justify-between gap-4"
+        className="w-full p-4 hover:bg-gray-50 dark:hover:bg-[rgba(26,26,26,0.5)] transition-colors text-left flex items-start justify-between gap-4"
       >
         <div className="flex-1 min-w-0">
           <p className="font-semibold text-gray-900 dark:text-slate-100 text-sm">Q{index + 1}. {question.substring(0, 60)}...</p>
@@ -611,7 +611,7 @@ function FeedbackRow({ question, feedback, index, round }) {
       </button>
 
       {expanded && (
-        <div className="bg-gray-50 dark:bg-slate-700/30 p-4 border-t border-gray-200 dark:border-slate-700">
+        <div className="bg-gray-50 dark:bg-[rgba(26,26,26,0.5)] p-4 border-t border-gray-200 dark:border-[#222222]">
           <p className="font-semibold text-gray-900 dark:text-slate-100 text-sm mb-2">Question:</p>
           <p className="text-sm text-gray-700 dark:text-slate-300 mb-4">{question}</p>
           <p className="font-semibold text-gray-900 dark:text-slate-100 text-sm mb-2">AI Feedback:</p>
@@ -642,7 +642,7 @@ function ImprovementItem({ text }) {
 
 function TipCard({ emoji, text }) {
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
+    <div className="bg-white dark:bg-[#111111] rounded-lg p-4 border border-blue-200 dark:border-blue-800">
       <p className="text-lg mb-2">{emoji}</p>
       <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">{text}</p>
     </div>

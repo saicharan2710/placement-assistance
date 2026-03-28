@@ -95,7 +95,7 @@ export default function SettingsPage() {
   };
 
   const SettingsRow = ({ icon: Icon, label, description, children }) => (
-    <div className="py-4 flex items-start justify-between border-b border-gray-200 dark:border-slate-700 last:border-0">
+    <div className="py-4 flex items-start justify-between border-b border-gray-200 dark:border-[#222222] last:border-0">
       <div className="flex items-start gap-3 flex-1">
         {Icon && <Icon className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" />}
         <div>
@@ -111,7 +111,7 @@ export default function SettingsPage() {
     <button
       onClick={onChange}
       className={`relative w-14 h-8 rounded-full transition-colors flex-shrink-0 ${
-        checked ? 'bg-blue-600' : 'bg-gray-300 dark:bg-slate-600'
+        checked ? 'bg-blue-600' : 'bg-gray-300 dark:bg-[#262626]'
       }`}
     >
       <div
@@ -123,14 +123,14 @@ export default function SettingsPage() {
   );
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-white dark:bg-slate-900 overflow-x-hidden">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-white dark:bg-[#000000] overflow-x-hidden">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
-        <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-slate-900">
+        <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-[#000000]">
           <div className="max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-8">
             {/* Page Header */}
             <div className="mb-8">
@@ -150,7 +150,7 @@ export default function SettingsPage() {
             </div>
 
             {/* Card 1: Appearance */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 mb-6 border border-gray-200 dark:border-slate-700">
+            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 mb-6 border border-gray-200 dark:border-[#222222]">
               <h2 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Appearance</h2>
               
               <SettingsRow 
@@ -166,14 +166,14 @@ export default function SettingsPage() {
                 label="Language"
                 description="Choose your preferred language"
               >
-                <select className="px-3 py-2 bg-white dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-lg text-gray-900 dark:text-slate-100 text-sm">
+                <select className="px-3 py-2 bg-white dark:bg-[#1A1A1A] border border-gray-300 dark:border-[#2A2A2A] rounded-lg text-gray-900 dark:text-slate-100 text-sm">
                   <option>English</option>
                 </select>
               </SettingsRow>
             </div>
 
             {/* Card 2: Notifications */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 mb-6 border border-gray-200 dark:border-slate-700">
+            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 mb-6 border border-gray-200 dark:border-[#222222]">
               <h2 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Notifications</h2>
               
               <SettingsRow 
@@ -208,7 +208,7 @@ export default function SettingsPage() {
             </div>
 
             {/* Card 3: Account */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 mb-6 border border-gray-200 dark:border-slate-700">
+            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 mb-6 border border-gray-200 dark:border-[#222222]">
               <h2 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Account</h2>
               
               <SettingsRow 
@@ -229,27 +229,27 @@ export default function SettingsPage() {
               </SettingsRow>
 
               {showPasswordForm && (
-                <div className="mt-4 p-4 bg-gray-50 dark:bg-slate-700/50 rounded-lg space-y-4">
+                <div className="mt-4 p-4 bg-gray-50 dark:bg-[rgba(26,26,26,0.7)] rounded-lg space-y-4">
                   <input
                     type="password"
                     placeholder="Current password"
                     value={passwordData.current}
                     onChange={(e) => setPasswordData({...passwordData, current: e.target.value})}
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-slate-100 placeholder-gray-500 dark:placeholder-slate-400"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-[#2A2A2A] rounded-lg bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-slate-100 placeholder-gray-500 dark:placeholder-slate-400"
                   />
                   <input
                     type="password"
                     placeholder="New password"
                     value={passwordData.new}
                     onChange={(e) => setPasswordData({...passwordData, new: e.target.value})}
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-slate-100 placeholder-gray-500 dark:placeholder-slate-400"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-[#2A2A2A] rounded-lg bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-slate-100 placeholder-gray-500 dark:placeholder-slate-400"
                   />
                   <input
                     type="password"
                     placeholder="Confirm password"
                     value={passwordData.confirm}
                     onChange={(e) => setPasswordData({...passwordData, confirm: e.target.value})}
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-slate-100 placeholder-gray-500 dark:placeholder-slate-400"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-[#2A2A2A] rounded-lg bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-slate-100 placeholder-gray-500 dark:placeholder-slate-400"
                   />
                   <div className="flex gap-3">
                     <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
@@ -257,7 +257,7 @@ export default function SettingsPage() {
                     </button>
                     <button 
                       onClick={() => setShowPasswordForm(false)}
-                      className="flex-1 bg-gray-200 dark:bg-slate-600 hover:bg-gray-300 dark:hover:bg-slate-500 text-gray-900 dark:text-slate-100 font-semibold py-2 px-4 rounded-lg transition-colors"
+                      className="flex-1 bg-gray-200 dark:bg-[#262626] hover:bg-gray-300 dark:hover:bg-slate-500 text-gray-900 dark:text-slate-100 font-semibold py-2 px-4 rounded-lg transition-colors"
                     >
                       Cancel
                     </button>
@@ -272,7 +272,7 @@ export default function SettingsPage() {
             </div>
 
             {/* Card 4: Privacy & Data */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 mb-6 border border-gray-200 dark:border-slate-700">
+            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 mb-6 border border-gray-200 dark:border-[#222222]">
               <h2 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Privacy & Data</h2>
               
               <SettingsRow 
@@ -309,10 +309,10 @@ export default function SettingsPage() {
             </div>
 
             {/* Card 5: About */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 mb-6 border border-gray-200 dark:border-slate-700">
+            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 mb-6 border border-gray-200 dark:border-[#222222]">
               <h2 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">About</h2>
               
-              <div className="mb-6 pb-6 border-b border-gray-200 dark:border-slate-700">
+              <div className="mb-6 pb-6 border-b border-gray-200 dark:border-[#222222]">
                 <p className="text-2xl font-bold text-gray-900 dark:text-slate-100">PrepWay</p>
                 <p className="text-gray-600 dark:text-slate-400">Version 1.0.0</p>
               </div>
@@ -338,7 +338,7 @@ export default function SettingsPage() {
       {/* Delete Account Dialog */}
       {showDeleteDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 max-w-sm w-full border border-gray-200 dark:border-slate-700">
+          <div className="bg-white dark:bg-[#111111] rounded-xl shadow-lg p-6 max-w-sm w-full border border-gray-200 dark:border-[#222222]">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100">Delete Account</h3>
               <button 
@@ -354,7 +354,7 @@ export default function SettingsPage() {
             <div className="flex gap-3">
               <button 
                 onClick={() => setShowDeleteDialog(false)}
-                className="flex-1 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-900 dark:text-slate-100 font-semibold py-2 px-4 rounded-lg transition-colors"
+                className="flex-1 bg-gray-200 dark:bg-[#1A1A1A] hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-900 dark:text-slate-100 font-semibold py-2 px-4 rounded-lg transition-colors"
               >
                 Cancel
               </button>

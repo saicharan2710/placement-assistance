@@ -72,7 +72,7 @@ export default function PracticePage() {
   }, [navigate]);
 
   const RoundCard = ({ icon: Icon, title, description, badge, badgeColor, buttonText, onClick, historyPath, hasHistory }) => (
-    <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-slate-700 hover:shadow-md transition-shadow">
+    <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 border border-gray-200 dark:border-[#222222] hover:shadow-md transition-shadow">
       <div className="flex items-start justify-between mb-4">
         <Icon className="w-10 h-10 text-blue-600 dark:text-blue-400" />
         <span className={`px-3 py-1 rounded-full text-xs font-semibold ${badgeColor}`}>
@@ -100,7 +100,7 @@ export default function PracticePage() {
   );
 
   const StatCard = ({ label, value, icon: Icon }) => (
-    <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 lg:p-6 border border-gray-200 dark:border-slate-700 text-center">
+    <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-6 border border-gray-200 dark:border-[#222222] text-center">
       <div className="flex items-center justify-center mb-3">
         {Icon ? <Icon className="w-6 h-6 text-blue-600 dark:text-blue-400" /> : null}
       </div>
@@ -110,7 +110,7 @@ export default function PracticePage() {
   );
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-white dark:bg-slate-900 overflow-x-hidden">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-white dark:bg-[#000000] overflow-x-hidden">
       {/* Sidebar */}
       <Sidebar 
         isOpen={sidebarOpen} 
@@ -125,7 +125,7 @@ export default function PracticePage() {
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
         {/* Content Area */}
-        <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-slate-900">
+        <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-[#000000]">
           <div className="max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-8">
             {/* Page Header */}
             <div className="mb-8">
@@ -164,7 +164,7 @@ export default function PracticePage() {
                   title="Group Discussion"
                   description="Practice speaking, leading and collaborating"
                   badge={gdStarted ? `Last score: ${gdLastScore}%` : 'Not started yet'}
-                  badgeColor={gdStarted ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300' : 'bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300'}
+                  badgeColor={gdStarted ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300' : 'bg-gray-100 dark:bg-[#1A1A1A] text-gray-700 dark:text-slate-300'}
                   buttonText="Enter GD Room"
                   onClick={() => navigate('/practice/gd')}
                   hasHistory={true}

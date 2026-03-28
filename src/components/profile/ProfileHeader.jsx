@@ -26,7 +26,7 @@ export default function ProfileHeader({ userName, stream, yearOfStudy, onPhotoCh
   };
 
   return (
-    <div className="flex flex-col items-center py-8 px-4 bg-white dark:bg-slate-800">
+    <div className="flex flex-col items-center py-8 px-4 bg-white dark:bg-[#111111]">
       {/* Profile Photo with Edit Icon */}
       <div className="relative mb-6">
         <div className="w-32 h-32 rounded-full bg-gradient-to-br from-orange-300 to-orange-500 flex items-center justify-center overflow-hidden">

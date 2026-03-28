@@ -60,14 +60,14 @@ export default function ResumeReviewPage() {
   ];
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-slate-900 overflow-x-hidden">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-[#000000] overflow-x-hidden">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
-        <div className="flex-1 overflow-y-auto bg-slate-900">
+        <div className="flex-1 overflow-y-auto bg-[#000000]">
           <div className="max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-8">
             {/* Header */}
             <div className="mb-8">
@@ -92,7 +92,7 @@ export default function ResumeReviewPage() {
             </div>
 
             {/* Current Resume Status */}
-            <div className="bg-slate-800 rounded-xl p-8 border border-slate-700 mb-8">
+            <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
               <h2 className="text-2xl font-bold text-slate-100 mb-6">Current Resume Status</h2>
               {hasResume ? (
                 <div className="space-y-6">
@@ -113,15 +113,15 @@ export default function ResumeReviewPage() {
                       <Eye className="w-4 h-4" />
                       View Resume
                     </button>
-                    <button className="flex-1 bg-slate-700 hover:bg-slate-600 text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2">
+                    <button className="flex-1 bg-[#1A1A1A] hover:bg-slate-600 text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2">
                       <RefreshCw className="w-4 h-4" />
                       Replace Resume
                     </button>
                   </div>
                 </div>
               ) : (
-                <div className="border-2 border-dashed border-slate-600 rounded-xl p-12 text-center">
-                  <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="border-2 border-dashed border-[#2A2A2A] rounded-xl p-12 text-center">
+                  <div className="w-16 h-16 bg-[#1A1A1A] rounded-full flex items-center justify-center mx-auto mb-4">
                     <Upload className="w-8 h-8 text-slate-400" />
                   </div>
                   <p className="text-slate-300 font-semibold mb-2">Upload your resume to get started</p>
@@ -134,7 +134,7 @@ export default function ResumeReviewPage() {
             </div>
 
             {/* ATS Score */}
-            <div className="bg-slate-800 rounded-xl p-8 border border-slate-700 mb-8">
+            <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
               <h2 className="text-2xl font-bold text-slate-100 mb-8">ATS Compatibility Score</h2>
               <div className="flex flex-col items-center mb-8">
                 <div className="relative w-40 h-40 mb-4">
@@ -164,15 +164,15 @@ export default function ResumeReviewPage() {
 
               {/* Score Pills */}
               <div className="grid grid-cols-3 gap-4">
-                <div className="bg-slate-700 rounded-lg p-4 text-center">
+                <div className="bg-[#1A1A1A] rounded-lg p-4 text-center">
                   <p className="text-slate-400 text-sm mb-2">Keywords</p>
                   <p className="text-2xl font-bold text-yellow-400">68%</p>
                 </div>
-                <div className="bg-slate-700 rounded-lg p-4 text-center">
+                <div className="bg-[#1A1A1A] rounded-lg p-4 text-center">
                   <p className="text-slate-400 text-sm mb-2">Formatting</p>
                   <p className="text-2xl font-bold text-green-400">85%</p>
                 </div>
-                <div className="bg-slate-700 rounded-lg p-4 text-center">
+                <div className="bg-[#1A1A1A] rounded-lg p-4 text-center">
                   <p className="text-slate-400 text-sm mb-2">Readability</p>
                   <p className="text-2xl font-bold text-green-400">75%</p>
                 </div>
@@ -180,7 +180,7 @@ export default function ResumeReviewPage() {
             </div>
 
             {/* Resume Strengths */}
-            <div className="bg-slate-800 rounded-xl p-8 border border-slate-700 mb-8">
+            <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
                   <Check className="w-5 h-5 text-white" />
@@ -189,7 +189,7 @@ export default function ResumeReviewPage() {
               </div>
               <div className="space-y-3">
                 {strengths.map((strength, idx) => (
-                  <div key={idx} className="flex items-start gap-3 p-4 bg-slate-700/50 rounded-lg border border-green-900/30">
+                  <div key={idx} className="flex items-start gap-3 p-4 bg-[rgba(26,26,26,0.5)] rounded-lg border border-green-900/30">
                     <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <p className="text-slate-300">{strength}</p>
                   </div>
@@ -198,7 +198,7 @@ export default function ResumeReviewPage() {
             </div>
 
             {/* Issues Found */}
-            <div className="bg-slate-800 rounded-xl p-8 border border-slate-700 mb-8">
+            <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-8 bg-yellow-600 rounded-full flex items-center justify-center">
                   <AlertCircle className="w-5 h-5 text-white" />
@@ -207,7 +207,7 @@ export default function ResumeReviewPage() {
               </div>
               <div className="space-y-4">
                 {issues.map((issue, idx) => (
-                  <div key={idx} className="p-4 bg-slate-700/50 rounded-lg border border-yellow-900/30">
+                  <div key={idx} className="p-4 bg-[rgba(26,26,26,0.5)] rounded-lg border border-yellow-900/30">
                     <div className="flex items-start gap-3 mb-2">
                       <AlertCircle className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
                       <p className="font-semibold text-slate-100">{issue.title}</p>
@@ -219,7 +219,7 @@ export default function ResumeReviewPage() {
             </div>
 
             {/* Keyword Analysis */}
-            <div className="bg-slate-800 rounded-xl p-8 border border-slate-700 mb-8">
+            <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
               <h2 className="text-2xl font-bold text-slate-100 mb-6">Keyword Analysis for CSE Roles</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
                 {/* Keywords Found */}

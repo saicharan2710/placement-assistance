@@ -218,7 +218,7 @@ export default function GDPracticePage() {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-white dark:bg-slate-900 overflow-x-hidden">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-white dark:bg-[#000000] overflow-x-hidden">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
@@ -242,7 +242,7 @@ export default function GDPracticePage() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
                   {/* Topic Card */}
-                  <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-slate-700">
+                  <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222]">
                     <p className="text-xs lg:text-sm font-semibold text-gray-600 dark:text-slate-400 mb-3">Today's Topic</p>
                     <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4">{selectedTopic}</h2>
                     <div className="flex gap-3 mb-6">
@@ -255,14 +255,14 @@ export default function GDPracticePage() {
                     </div>
                     <button
                       onClick={handleChangeTopic}
-                      className="w-full bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-900 dark:text-slate-100 font-semibold py-2 px-4 rounded-lg transition-colors text-sm"
+                      className="w-full bg-gray-200 dark:bg-[#1A1A1A] hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-900 dark:text-slate-100 font-semibold py-2 px-4 rounded-lg transition-colors text-sm"
                     >
                       Change Topic
                     </button>
                   </div>
 
                   {/* Rules Card */}
-                  <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-slate-700">
+                  <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222]">
                     <h3 className="text-base lg:text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">How It Works</h3>
                     <div className="space-y-4">
                       <RuleRow icon="🕐" text="Discussion lasts 10 minutes" />
@@ -274,7 +274,7 @@ export default function GDPracticePage() {
                 </div>
 
                 {/* Participants Panel */}
-                <div className="mt-8 bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-slate-700">
+                <div className="mt-8 bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222]">
                   <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">You will discuss with:</h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                     {participants.map((p) => (
@@ -303,19 +303,19 @@ export default function GDPracticePage() {
                 {/* Left Column: Stats */}
                 <div className="lg:col-span-1 space-y-4">
                   {/* Topic Card */}
-                  <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 border border-gray-200 dark:border-slate-700">
+                  <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 border border-gray-200 dark:border-[#222222]">
                     <p className="text-xs font-semibold text-gray-600 dark:text-slate-400 mb-2">Topic</p>
                     <p className="text-sm font-bold text-gray-900 dark:text-slate-100">{selectedTopic}</p>
                   </div>
 
                   {/* Timer */}
-                  <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-slate-700 text-center">
+                  <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 border border-gray-200 dark:border-[#222222] text-center">
                     <p className={`text-4xl font-mono font-bold ${getTimeColor()}`}>{formatTime(timeLeft)}</p>
                     <p className="text-xs text-gray-600 dark:text-slate-400 mt-2">Remaining</p>
                   </div>
 
                   {/* Your Stats */}
-                  <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 border border-gray-200 dark:border-slate-700">
+                  <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 border border-gray-200 dark:border-[#222222]">
                     <p className="text-xs font-semibold text-gray-600 dark:text-slate-400 mb-3">Your Stats</p>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
@@ -334,7 +334,7 @@ export default function GDPracticePage() {
                   </div>
 
                   {/* Participants */}
-                  <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 border border-gray-200 dark:border-slate-700">
+                  <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 border border-gray-200 dark:border-[#222222]">
                     <p className="text-xs font-semibold text-gray-600 dark:text-slate-400 mb-3">Participants</p>
                     <div className="space-y-2">
                       {participants.map((p) => (
@@ -353,7 +353,7 @@ export default function GDPracticePage() {
                 </div>
 
                 {/* Right Column: Chat */}
-                <div className="lg:col-span-3 flex flex-col bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-200 dark:border-slate-700">
+                <div className="lg:col-span-3 flex flex-col bg-white dark:bg-[#111111] rounded-xl shadow-sm border border-gray-200 dark:border-[#222222]">
                   {/* Chat Messages */}
                   <div className="flex-1 overflow-y-auto p-6 space-y-4">
                     {messages.map((msg) => (
@@ -375,7 +375,7 @@ export default function GDPracticePage() {
                               className={`rounded-lg px-4 py-2 text-sm ${
                                 msg.type === 'user'
                                   ? 'bg-blue-600 text-white'
-                                  : 'bg-gray-100 dark:bg-slate-700 text-gray-900 dark:text-slate-100'
+                                  : 'bg-gray-100 dark:bg-[#1A1A1A] text-gray-900 dark:text-slate-100'
                               }`}
                             >
                               {msg.text}
@@ -397,7 +397,7 @@ export default function GDPracticePage() {
                   )}
 
                   {/* Input Area */}
-                  <div className="border-t border-gray-200 dark:border-slate-700 p-6">
+                  <div className="border-t border-gray-200 dark:border-[#222222] p-6">
                     <div className="flex flex-col gap-2">
                       <textarea
                         value={userMessage}
@@ -409,7 +409,7 @@ export default function GDPracticePage() {
                           }
                         }}
                         placeholder="Type your point here..."
-                        className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-slate-700 border border-gray-200 dark:border-slate-600 text-gray-900 dark:text-slate-100 placeholder-gray-500 dark:placeholder-slate-400 focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 resize-none"
+                        className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-[#1A1A1A] border border-gray-200 dark:border-[#2A2A2A] text-gray-900 dark:text-slate-100 placeholder-gray-500 dark:placeholder-slate-400 focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 resize-none"
                         rows="3"
                       />
                       <div className="flex justify-between items-center">
@@ -434,7 +434,7 @@ export default function GDPracticePage() {
             {/* STAGE 2: End Overlay */}
             {stage === 2 && showEndOverlay && (
               <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-                <div className="bg-white dark:bg-slate-800 rounded-xl p-8 text-center max-w-md">
+                <div className="bg-white dark:bg-[#111111] rounded-xl p-8 text-center max-w-md">
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-slate-100 mb-6">
                     Discussion Complete! 🎉
                   </h2>
@@ -480,7 +480,7 @@ export default function GDPracticePage() {
                 </div>
 
                 {/* Score Overview */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-slate-700 mb-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
                   <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-8">Score Overview</h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     <ScoreCircle label="Participation" score={feedback.participation} />
@@ -491,7 +491,7 @@ export default function GDPracticePage() {
                 </div>
 
                 {/* Grammar Feedback */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-slate-700 mb-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
                   <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Grammar & Language</h3>
                   <div className="space-y-4">
                     <FeedbackItem color="green" text="✓ Sentence structure was mostly correct" />
@@ -502,7 +502,7 @@ export default function GDPracticePage() {
                 </div>
 
                 {/* Communication Feedback */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-slate-700 mb-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
                   <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Communication Style</h3>
                   <div className="space-y-4">
                     <FeedbackItem color="green" text="✓ Made clear and structured points" />
@@ -513,7 +513,7 @@ export default function GDPracticePage() {
                 </div>
 
                 {/* What to Avoid */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-slate-700 mb-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
                   <h3 className="text-lg font-bold text-red-600 dark:text-red-400 mb-6">⚠️ What To Avoid in GDs</h3>
                   <div className="space-y-3">
                     <WarningItem text="Don't interrupt other speakers" />
@@ -525,7 +525,7 @@ export default function GDPracticePage() {
                 </div>
 
                 {/* What to Improve */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-slate-700 mb-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
                   <h3 className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-6">💡 Focus On These Next Time</h3>
                   <div className="space-y-3">
                     <ImproveItem text="Open the discussion confidently in the first 2 minutes" />
@@ -536,13 +536,13 @@ export default function GDPracticePage() {
                 </div>
 
                 {/* Your Messages Review */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-slate-700 mb-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
                   <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Your Discussion Points</h3>
                   <div className="space-y-4">
                     {messages
                       .filter((m) => m.type === 'user')
                       .map((m, idx) => (
-                        <div key={idx} className="p-4 bg-gray-50 dark:bg-slate-700/50 rounded-lg border border-gray-200 dark:border-slate-600">
+                        <div key={idx} className="p-4 bg-gray-50 dark:bg-[rgba(26,26,26,0.7)] rounded-lg border border-gray-200 dark:border-[#2A2A2A]">
                           <p className="text-sm text-gray-900 dark:text-slate-100 mb-2">{m.text}</p>
                           <p className="text-xs text-blue-600 dark:text-blue-400 italic">
                             💡 {['Good point — try adding a real world example', 'Consider elaborating this point further', 'Strong argument with clear reasoning'][idx % 3]}
@@ -562,7 +562,7 @@ export default function GDPracticePage() {
                   </button>
                   <button
                     onClick={() => navigate('/practice')}
-                    className="flex-1 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-900 dark:text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
+                    className="flex-1 bg-gray-200 dark:bg-[#1A1A1A] hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-900 dark:text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
                   >
                     Back to Practice
                   </button>
@@ -589,7 +589,7 @@ function NavItem({ icon: Icon, label, isActive, onClick }) {
       className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-semibold transition-all ${
         isActive
           ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 border-l-4 border-blue-600'
-          : 'text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-700/50'
+          : 'text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-[rgba(26,26,26,0.5)]'
       }`}
     >
       <Icon className="w-5 h-5" />

@@ -30,13 +30,13 @@ export default function ResumeUpload({ resumeFile, onResumeUpload }) {
   };
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 md:p-8 m-4 md:m-6">
+    <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 md:p-8 m-4 md:m-6">
       <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">
         Your Resume
       </h2>
 
       {!fileName ? (
-        <div className="border-2 border-dashed border-gray-300 dark:border-slate-600 rounded-lg p-8 text-center hover:border-blue-500 transition-colors">
+        <div className="border-2 border-dashed border-gray-300 dark:border-[#2A2A2A] rounded-lg p-8 text-center hover:border-blue-500 transition-colors">
           <Upload className="w-12 h-12 text-gray-400 dark:text-slate-500 mx-auto mb-3" />
           <p className="text-gray-700 dark:text-slate-300 font-semibold mb-2">
             Upload your resume
@@ -77,13 +77,13 @@ export default function ResumeUpload({ resumeFile, onResumeUpload }) {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-3">
-            <button className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-white dark:bg-slate-700 border-2 border-blue-600 text-blue-600 dark:text-blue-400 font-semibold rounded-lg hover:bg-blue-50 dark:hover:bg-slate-600 transition-colors">
+            <button className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-white dark:bg-[#1A1A1A] border-2 border-blue-600 text-blue-600 dark:text-blue-400 font-semibold rounded-lg hover:bg-blue-50 dark:hover:bg-slate-600 transition-colors">
               <Eye className="w-4 h-4" />
               View
             </button>
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-white dark:bg-slate-700 border-2 border-blue-600 text-blue-600 dark:text-blue-400 font-semibold rounded-lg hover:bg-blue-50 dark:hover:bg-slate-600 transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-white dark:bg-[#1A1A1A] border-2 border-blue-600 text-blue-600 dark:text-blue-400 font-semibold rounded-lg hover:bg-blue-50 dark:hover:bg-slate-600 transition-colors"
             >
               Replace
             </button>

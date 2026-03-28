@@ -465,7 +465,7 @@ export default function AptitudePracticePage() {
   const timeColor = timeLeft > 180 ? 'text-green-400' : timeLeft > 60 ? 'text-yellow-400' : 'text-red-400';
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-white dark:bg-slate-900 overflow-x-hidden">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-white dark:bg-[#000000] overflow-x-hidden">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
@@ -487,7 +487,7 @@ export default function AptitudePracticePage() {
                   <p className="text-sm lg:text-base text-gray-600 dark:text-slate-400">Real aptitude questions from company hiring drives</p>
                 </div>
 
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-slate-700">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222]">
                   {/* Category Selector */}
                   <div className="mb-8">
                     <h3 className="text-base lg:text-lg font-semibold text-gray-900 dark:text-slate-100 mb-3">Category</h3>
@@ -499,7 +499,7 @@ export default function AptitudePracticePage() {
                           className={`px-6 py-2 rounded-lg font-semibold transition-all text-sm ${
                             selectedCategory === cat
                               ? 'bg-blue-600 text-white shadow-lg'
-                              : 'bg-gray-100 dark:bg-slate-700 text-gray-900 dark:text-slate-200 hover:bg-gray-200 dark:hover:bg-slate-600'
+                              : 'bg-gray-100 dark:bg-[#1A1A1A] text-gray-900 dark:text-slate-200 hover:bg-gray-200 dark:hover:bg-slate-600'
                           }`}
                         >
                           {cat === 'Logical' ? 'Logical Reasoning' : cat === 'Quantitative' ? 'Quantitative' : cat === 'Verbal' ? 'Verbal Ability' : cat}
@@ -519,7 +519,7 @@ export default function AptitudePracticePage() {
                           className={`px-6 py-2 rounded-lg font-semibold transition-all text-sm ${
                             selectedDifficulty === diff
                               ? 'bg-blue-600 text-white shadow-lg'
-                              : 'bg-gray-100 dark:bg-slate-700 text-gray-900 dark:text-slate-200 hover:bg-gray-200 dark:hover:bg-slate-600'
+                              : 'bg-gray-100 dark:bg-[#1A1A1A] text-gray-900 dark:text-slate-200 hover:bg-gray-200 dark:hover:bg-slate-600'
                           }`}
                         >
                           {diff}
@@ -539,7 +539,7 @@ export default function AptitudePracticePage() {
                           className={`px-6 py-2 rounded-lg font-semibold transition-all text-sm ${
                             selectedQuestionCount === count
                               ? 'bg-blue-600 text-white shadow-lg'
-                              : 'bg-gray-100 dark:bg-slate-700 text-gray-900 dark:text-slate-200 hover:bg-gray-200 dark:hover:bg-slate-600'
+                              : 'bg-gray-100 dark:bg-[#1A1A1A] text-gray-900 dark:text-slate-200 hover:bg-gray-200 dark:hover:bg-slate-600'
                           }`}
                         >
                           {count}
@@ -588,7 +588,7 @@ export default function AptitudePracticePage() {
                   </div>
 
                   {/* Progress Bar */}
-                  <div className="w-full h-2 bg-gray-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                  <div className="w-full h-2 bg-gray-200 dark:bg-[#1A1A1A] rounded-full overflow-hidden">
                     <div
                       className="h-full bg-blue-600 transition-all duration-300"
                       style={{ width: `${((currentQuestionIndex + 1) / questionsToShow.length) * 100}%` }}
@@ -597,7 +597,7 @@ export default function AptitudePracticePage() {
                 </div>
 
                 {/* Question Card */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-slate-700 mb-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222] mb-6">
                   {/* Category Tag */}
                   <div className="mb-4">
                     <span className={`inline-block px-3 py-1 rounded-full text-xs lg:text-sm font-semibold ${
@@ -623,8 +623,8 @@ export default function AptitudePracticePage() {
                       const isCorrect = index === currentQuestion.correct;
                       const showResult = isAnswered;
 
-                      let bgColor = 'bg-gray-50 dark:bg-slate-700/50 hover:bg-gray-100 dark:hover:bg-slate-700';
-                      let borderColor = 'border-gray-200 dark:border-slate-600';
+                      let bgColor = 'bg-gray-50 dark:bg-[rgba(26,26,26,0.7)] hover:bg-gray-100 dark:hover:bg-[#1A1A1A]';
+                      let borderColor = 'border-gray-200 dark:border-[#2A2A2A]';
 
                       if (showResult) {
                         if (isCorrect) {
@@ -655,7 +655,7 @@ export default function AptitudePracticePage() {
 
                   {/* Explanation */}
                   {isAnswered && (
-                    <div className="bg-gray-100 dark:bg-slate-700/50 rounded-lg p-4 border border-gray-300 dark:border-slate-600">
+                    <div className="bg-gray-100 dark:bg-[rgba(26,26,26,0.7)] rounded-lg p-4 border border-gray-300 dark:border-[#2A2A2A]">
                       <p className="text-sm font-semibold text-gray-700 dark:text-slate-300 mb-1">Explanation</p>
                       <p className="text-gray-600 dark:text-slate-400 text-sm">{currentQuestion.explanation}</p>
                     </div>
@@ -673,7 +673,7 @@ export default function AptitudePracticePage() {
                 </div>
 
                 {/* Performance Section */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-slate-700 mb-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222] mb-6">
                   <div className="text-center mb-8">
                     <div className="inline-block">
                       <div className="text-4xl lg:text-6xl font-bold text-blue-600 mb-2">{results.correctAnswers}/{results.totalQuestions}</div>
@@ -685,7 +685,7 @@ export default function AptitudePracticePage() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-8 pt-8 border-t border-gray-200 dark:border-slate-700">
+                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-8 pt-8 border-t border-gray-200 dark:border-[#222222]">
                     <div className="text-center">
                       <p className="text-xs lg:text-sm text-gray-600 dark:text-slate-400">Time Taken</p>
                       <p className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-slate-100">{results.timeTaken}</p>
@@ -702,7 +702,7 @@ export default function AptitudePracticePage() {
                 </div>
 
                 {/* Category Breakdown */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-slate-700 mb-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
                   <h3 className="text-xl font-bold text-gray-900 dark:text-slate-100 mb-6">Category Breakdown</h3>
                   <div className="space-y-6">
                     {Object.entries(results.categoryBreakdown).map(([category, data]) => (
@@ -712,7 +712,7 @@ export default function AptitudePracticePage() {
                             <span className="font-semibold text-gray-900 dark:text-slate-100">{category}</span>
                             <span className="font-bold text-blue-600">{data.correct}/{data.total}</span>
                           </div>
-                          <div className="w-full h-3 bg-gray-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                          <div className="w-full h-3 bg-gray-200 dark:bg-[#1A1A1A] rounded-full overflow-hidden">
                             <div
                               className="h-full bg-blue-600 transition-all duration-500"
                               style={{ width: `${(data.correct / data.total) * 100}%` }}
@@ -725,7 +725,7 @@ export default function AptitudePracticePage() {
                 </div>
 
                 {/* Question Breakdown */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-slate-700 mb-6">
+                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
                   <h3 className="text-xl font-bold text-gray-900 dark:text-slate-100 mb-6">Question Breakdown</h3>
                   <div className="space-y-3">
                     {results.questions.map((q, index) => (
@@ -747,7 +747,7 @@ export default function AptitudePracticePage() {
                   </button>
                   <button
                     onClick={() => navigate('/practice')}
-                    className="flex-1 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-900 dark:text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
+                    className="flex-1 bg-gray-200 dark:bg-[#1A1A1A] hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-900 dark:text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
                   >
                     Back to Practice
                   </button>
@@ -774,7 +774,7 @@ function NavItem({ icon: Icon, label, isActive, onClick }) {
       className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-semibold transition-all ${
         isActive
           ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 border-l-4 border-blue-600'
-          : 'text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-700/50'
+          : 'text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-[rgba(26,26,26,0.5)]'
       }`}
     >
       <Icon className="w-5 h-5" />
@@ -787,10 +787,10 @@ function QuestionBreakdownItem({ question, index }) {
   const [expanded, setExpanded] = React.useState(false);
 
   return (
-    <div className="border border-gray-200 dark:border-slate-700 rounded-lg overflow-hidden">
+    <div className="border border-gray-200 dark:border-[#222222] rounded-lg overflow-hidden">
       <button
         onClick={() => setExpanded(!expanded)}
-        className="w-full p-4 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors text-left"
+        className="w-full p-4 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-[rgba(26,26,26,0.5)] transition-colors text-left"
       >
         <div className="flex items-center gap-3 flex-1">
           {question.isCorrect ? (
@@ -813,7 +813,7 @@ function QuestionBreakdownItem({ question, index }) {
       </button>
 
       {expanded && (
-        <div className="bg-gray-50 dark:bg-slate-700/30 p-4 border-t border-gray-200 dark:border-slate-700">
+        <div className="bg-gray-50 dark:bg-[rgba(26,26,26,0.5)] p-4 border-t border-gray-200 dark:border-[#222222]">
           <div className="mb-4">
             <p className="text-sm font-semibold text-gray-700 dark:text-slate-300 mb-2">Your Answer:</p>
             <p className={`text-sm ${question.isCorrect ? 'text-green-700 dark:text-green-300' : 'text-red-700 dark:text-red-300'}`}>
