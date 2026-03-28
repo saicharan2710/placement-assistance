@@ -7,7 +7,7 @@ export default function TopBar({ userName = 'Rahul', onHamburgerClick }) {
   const { isDark, toggleTheme } = useTheme();
   
   return (
-    <div className="bg-white dark:bg-[rgba(0,0,0,0.8)] dark:backdrop-blur-[12px] px-4 lg:px-6 py-4 border-b border-gray-200 dark:border-[#1A1A1A]">
+    <div className="relative z-30 bg-white dark:bg-[#000000] px-4 lg:px-6 py-4 border-b border-gray-200 dark:border-[#1A1A1A]">
       <div className="flex items-center justify-between">
         {/* Hamburger - Mobile only */}
         <button
