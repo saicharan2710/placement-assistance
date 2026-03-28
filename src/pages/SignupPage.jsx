@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, User, GraduationCap, BookOpen, Users } from 'lucide-react';
 import ToggleSwitch from '../components/ToggleSwitch';
 
@@ -359,9 +360,9 @@ export default function SignupPage() {
           <div className="text-center mt-8">
             <p className="text-gray-700 dark:text-[#A1A1AA]">
               Already have an account?{' '}
-              <a href="/login" className="text-blue-600 dark:text-[#60A5FA] font-semibold hover:text-blue-700 dark:hover:text-[#3B82F6] transition-colors">
+              <Link to="/" className="text-blue-600 dark:text-[#60A5FA] font-semibold hover:text-blue-700 dark:hover:text-[#3B82F6] transition-colors">
                 Login
-              </a>
+              </Link>
             </p>
           </div>
 

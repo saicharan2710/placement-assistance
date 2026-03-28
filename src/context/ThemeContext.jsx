@@ -3,20 +3,13 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [isDark, setIsDark] = useState(false);
-
-  // Initialize theme from localStorage on mount
-  useEffect(() => {
+  const [isDark, setIsDark] = useState(() => {
     const savedTheme = localStorage.getItem('prepway_theme');
     if (savedTheme) {
-      setIsDark(savedTheme === 'dark');
-    } else {
-      // Check system preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setIsDark(prefersDark);
-      localStorage.setItem('prepway_theme', prefersDark ? 'dark' : 'light');
+      return savedTheme === 'dark';
     }
-  }, []);
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
 
   // Update document class and localStorage when theme changes
   useEffect(() => {
