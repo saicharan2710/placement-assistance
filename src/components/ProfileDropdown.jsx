@@ -66,7 +66,7 @@ export default function ProfileDropdown() {
       {isOpen && (
         <div
           ref={dropdownRef}
-          className="absolute right-0 mt-2 w-64 bg-white dark:bg-[#111111] dark:border dark:border-[#222222] border border-gray-200 dark:border-[#222222] rounded-lg dark:shadow-[0_0_0_1px_#222222,0_4px_24px_rgba(0,0,0,0.8)] shadow-xl animate-in fade-in slide-in-from-top-2 duration-200 z-50"
+          className="absolute top-full right-0 mt-3 w-64 overflow-hidden isolate bg-white dark:bg-[#111111] border border-gray-200 dark:border-[#222222] rounded-lg dark:shadow-[0_0_0_1px_#222222,0_4px_24px_rgba(0,0,0,0.8)] shadow-xl animate-in fade-in slide-in-from-top-2 duration-200 z-[70]"
         >
           {/* User Info Section */}
           <div className="px-4 py-4 border-b border-gray-200 dark:border-[#1A1A1A]">
