@@ -7,12 +7,12 @@ export default function TopBar({ userName = 'Rahul', onHamburgerClick }) {
   const { isDark, toggleTheme } = useTheme();
   
   return (
-    <div className="relative z-30 bg-white dark:bg-[#000000] px-4 lg:px-6 py-4 border-b border-gray-200 dark:border-[#1A1A1A]">
+    <div className="glass-navbar relative z-30 px-4 lg:px-6 py-4">
       <div className="flex items-center justify-between">
         {/* Hamburger - Mobile only */}
         <button
           onClick={onHamburgerClick}
-          className="lg:hidden p-2 hover:bg-gray-100 dark:hover:bg-[#0D0D0D] rounded-full transition-colors"
+          className="lg:hidden p-2 glass-button-outline rounded-full"
           aria-label="Open menu"
         >
           <Menu className="w-6 h-6 text-gray-600 dark:text-[#A1A1AA]" />
@@ -31,7 +31,7 @@ export default function TopBar({ userName = 'Rahul', onHamburgerClick }) {
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
-            className="p-2 hover:bg-gray-100 dark:hover:bg-[#0D0D0D] rounded-full transition-colors"
+            className="p-2 glass-button-outline rounded-full"
             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {isDark ? (
@@ -42,7 +42,7 @@ export default function TopBar({ userName = 'Rahul', onHamburgerClick }) {
           </button>
 
           {/* Notification Bell */}
-          <button className="p-2 hover:bg-gray-100 dark:hover:bg-[#0D0D0D] rounded-full transition-colors">
+          <button className="p-2 glass-button-outline rounded-full">
             <Bell className="w-5 h-5 text-gray-600 dark:text-[#A1A1AA]" />
           </button>
 

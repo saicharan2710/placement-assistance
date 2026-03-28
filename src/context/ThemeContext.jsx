@@ -23,9 +23,11 @@ export function ThemeProvider({ children }) {
     const html = document.documentElement;
     if (isDark) {
       html.classList.add('dark');
+      html.classList.remove('light');
       localStorage.setItem('prepway_theme', 'dark');
     } else {
       html.classList.remove('dark');
+      html.classList.add('light');
       localStorage.setItem('prepway_theme', 'light');
     }
   }, [isDark]);

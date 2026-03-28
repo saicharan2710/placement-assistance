@@ -29,7 +29,7 @@ export default function Sidebar({ isOpen, onClose, activeTab, setActiveTab }) {
 
       {/* Sidebar */}
       <aside
-        className={`fixed lg:static top-0 left-0 min-h-screen w-64 bg-white dark:bg-[#000000] border-r border-gray-200 dark:border-[#1A1A1A] p-6 z-50 transition-transform duration-300 ease-in-out flex flex-col ${
+        className={`glass-sidebar fixed lg:static top-0 left-0 min-h-screen w-64 p-6 z-50 transition-transform duration-300 ease-in-out flex flex-col ${
           isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         }`}
       >
@@ -90,14 +90,14 @@ export default function Sidebar({ isOpen, onClose, activeTab, setActiveTab }) {
         <div className="mt-auto space-y-3">
           <button
             onClick={() => handleNavClick('daily-drive', '/daily-drive')}
-            className="w-full bg-orange-600 hover:bg-orange-700 dark:bg-orange-600 dark:hover:bg-orange-700 border-2 border-orange-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
+            className="w-full glass-button-primary text-white font-semibold py-3 px-4 flex items-center justify-center gap-2"
           >
             <Zap className="w-5 h-5" />
             Daily Drive
           </button>
           <button
             onClick={handleLogout}
-            className="w-full bg-red-50 dark:bg-transparent hover:bg-red-100 dark:hover:bg-[#1A0A0A] text-red-600 dark:text-[#EF4444] font-semibold py-3 px-4 rounded-lg transition-colors border border-red-200 dark:border-[#3F1515]"
+            className="w-full glass-button-outline text-red-600 dark:text-[#EF4444] font-semibold py-3 px-4 border border-red-200 dark:border-[#3F1515]"
           >
             Logout
           </button>
@@ -113,7 +113,7 @@ function NavItem({ icon: Icon, label, isActive, onClick }) {
       onClick={onClick}
       className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-semibold transition-all ${
         isActive
-          ? 'bg-blue-50 text-blue-700 border-l-4 border-blue-600 dark:bg-[rgba(37,99,235,0.16)] dark:text-[#60A5FA] dark:border-[#2563EB]'
+          ? 'bg-[rgba(37,99,235,0.08)] text-[#1E3A8A] border-l-2 border-[#2563EB] rounded-r-lg dark:bg-[rgba(37,99,235,0.16)] dark:text-[#60A5FA] dark:border-[#2563EB]'
           : 'text-gray-700 dark:text-[#71717A] hover:bg-gray-50 dark:hover:bg-[#0D0D0D]'
       }`}
     >
