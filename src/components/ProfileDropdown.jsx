@@ -66,14 +66,14 @@ export default function ProfileDropdown() {
       {isOpen && (
         <div
           ref={dropdownRef}
-          className="absolute right-0 mt-2 w-64 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg shadow-xl animate-in fade-in slide-in-from-top-2 duration-200 z-50"
+          className="absolute right-0 mt-2 w-64 bg-white dark:bg-[#111111] dark:border dark:border-[#222222] border border-gray-200 dark:border-slate-700 rounded-lg dark:shadow-[0_0_0_1px_#222222,0_4px_24px_rgba(0,0,0,0.8)] shadow-xl animate-in fade-in slide-in-from-top-2 duration-200 z-50"
         >
           {/* User Info Section */}
-          <div className="px-4 py-4 border-b border-gray-200 dark:border-slate-700">
-            <p className="text-lg font-bold text-gray-900 dark:text-slate-100 truncate">
+          <div className="px-4 py-4 border-b border-gray-200 dark:border-[#1A1A1A]">
+            <p className="text-lg font-bold text-gray-900 dark:text-[#FFFFFF] truncate">
               {userName}
             </p>
-            <p className="text-sm text-gray-600 dark:text-slate-400 truncate mt-1">
+            <p className="text-sm text-gray-600 dark:text-[#A1A1AA] truncate mt-1">
               {userEmail}
             </p>
           </div>
@@ -83,7 +83,7 @@ export default function ProfileDropdown() {
             {/* My Profile */}
             <button
               onClick={() => handleNavigate('/profile')}
-              className="w-full flex items-center gap-3 px-4 py-3 text-gray-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="w-full flex items-center gap-3 px-4 py-3 text-gray-700 dark:text-[#A1A1AA] hover:bg-blue-50 dark:hover:bg-[#0D0D0D] hover:text-blue-600 dark:hover:text-[#2563EB] transition-colors"
             >
               <User className="w-4 h-4" />
               <span className="font-medium">My Profile</span>
@@ -92,7 +92,7 @@ export default function ProfileDropdown() {
             {/* Progress */}
             <button
               onClick={() => handleNavigate('/progress')}
-              className="w-full flex items-center gap-3 px-4 py-3 text-gray-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="w-full flex items-center gap-3 px-4 py-3 text-gray-700 dark:text-[#A1A1AA] hover:bg-blue-50 dark:hover:bg-[#0D0D0D] hover:text-blue-600 dark:hover:text-[#2563EB] transition-colors"
             >
               <BarChart3 className="w-4 h-4" />
               <span className="font-medium">Progress</span>
@@ -101,7 +101,7 @@ export default function ProfileDropdown() {
             {/* Settings */}
             <button
               onClick={() => handleNavigate('/settings')}
-              className="w-full flex items-center gap-3 px-4 py-3 text-gray-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="w-full flex items-center gap-3 px-4 py-3 text-gray-700 dark:text-[#A1A1AA] hover:bg-blue-50 dark:hover:bg-[#0D0D0D] hover:text-blue-600 dark:hover:text-[#2563EB] transition-colors"
             >
               <Settings className="w-4 h-4" />
               <span className="font-medium">Settings</span>
@@ -109,14 +109,14 @@ export default function ProfileDropdown() {
           </div>
 
           {/* Divider */}
-          <div className="my-2 h-px bg-gray-200 dark:bg-slate-700"></div>
+          <div className="my-2 h-px bg-gray-200 dark:bg-[#1A1A1A]"></div>
 
           {/* Menu Items - Section 2 */}
           <div className="py-2">
             {/* Logout */}
             <button
               onClick={handleLogout}
-              className="w-full flex items-center gap-3 px-4 py-3 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+              className="w-full flex items-center gap-3 px-4 py-3 text-red-600 dark:text-[#EF4444] hover:bg-red-50 dark:hover:bg-[#1A0A0A] dark:hover:border dark:hover:border-[#3F1515] transition-colors rounded-b-lg"
             >
               <LogOut className="w-4 h-4" />
               <span className="font-medium">Logout</span>

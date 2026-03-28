@@ -7,27 +7,27 @@ function ActionCard({ icon: Icon, title, description, badge, score, onClick }) {
   return (
     <div 
       onClick={onClick}
-      className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 border-2 border-transparent hover:border-blue-400 dark:hover:border-blue-500 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer group"
+      className="bg-white dark:bg-gradient-to-br dark:from-[#111111] dark:to-[#0D0D0D] rounded-xl shadow-sm dark:shadow-[0_0_0_1px_#222222,0_4px_24px_rgba(0,0,0,0.8)] p-6 border-2 border-transparent dark:border-[#222222] hover:border-blue-400 dark:hover:border-[#333333] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer group dark:hover:shadow-[0_0_0_1px_#333333,0_0_20px_rgba(37,99,235,0.15)]"
     >
       {/* Icon */}
-      <div className="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/40 transition-colors">
-        <Icon className="w-6 h-6 text-blue-600" />
+      <div className="w-12 h-12 bg-blue-50 dark:bg-[rgba(37,99,235,0.08)] rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-100 dark:group-hover:bg-[rgba(37,99,235,0.12)] transition-colors">
+        <Icon className="w-6 h-6 text-blue-600 dark:text-[#2563EB]" />
       </div>
 
       {/* Title & Description */}
-      <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-100 mb-1">{title}</h3>
-      <p className="text-sm text-gray-600 dark:text-slate-400 mb-4">{description}</p>
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-[#FFFFFF] mb-1">{title}</h3>
+      <p className="text-sm text-gray-600 dark:text-[#A1A1AA] mb-4">{description}</p>
 
       {/* Badge */}
       <div className="flex items-center justify-between">
         {score ? (
-          <span className="text-sm font-semibold text-green-600 dark:text-green-400">{score}</span>
+          <span className="text-sm font-semibold text-green-600 dark:text-[#4ADE80]">{score}</span>
         ) : (
-          <span className="text-xs font-medium text-gray-500 dark:text-slate-400 bg-gray-100 dark:bg-slate-700 px-2 py-1 rounded">
+          <span className="text-xs font-medium text-gray-500 dark:text-[#71717A] bg-gray-100 dark:bg-[#111111] dark:border dark:border-[#222222] px-2 py-1 rounded">
             {badge}
           </span>
         )}
-        <ArrowRight className="w-4 h-4 text-gray-400 dark:text-slate-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
+        <ArrowRight className="w-4 h-4 text-gray-400 dark:text-[#52525B] group-hover:text-blue-600 dark:group-hover:text-[#2563EB] transition-colors" />
       </div>
     </div>
   );
@@ -101,7 +101,7 @@ export default function QuickActionCards() {
 
   return (
     <div className="px-4 md:px-6 py-6">
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">Focus Areas</h2>
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-[#FFFFFF] mb-6">Focus Areas</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {cardData.map((card) => (

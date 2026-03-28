@@ -29,16 +29,16 @@ export default function Sidebar({ isOpen, onClose, activeTab, setActiveTab }) {
 
       {/* Sidebar */}
       <aside
-        className={`fixed lg:static top-0 left-0 min-h-screen w-64 bg-white dark:bg-slate-800 border-r border-gray-200 dark:border-slate-700 p-6 z-50 transition-transform duration-300 ease-in-out flex flex-col ${
+        className={`fixed lg:static top-0 left-0 min-h-screen w-64 bg-white dark:bg-[#000000] border-r border-gray-200 dark:border-[#1A1A1A] p-6 z-50 transition-transform duration-300 ease-in-out flex flex-col ${
           isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         }`}
       >
         {/* Close Button (Mobile only) */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-full lg:hidden"
+          className="absolute top-4 right-4 p-2 hover:bg-gray-100 dark:hover:bg-[#0D0D0D] rounded-full lg:hidden"
         >
-          <X className="w-5 h-5 text-gray-600 dark:text-slate-400" />
+          <X className="w-5 h-5 text-gray-600 dark:text-[#A1A1AA]" />
         </button>
 
         {/* Brand */}
@@ -47,8 +47,8 @@ export default function Sidebar({ isOpen, onClose, activeTab, setActiveTab }) {
             <span className="text-white font-bold">P</span>
           </div>
           <div>
-            <h1 className="text-lg font-bold text-gray-900 dark:text-slate-100">Placement Prep</h1>
-            <p className="text-xs text-gray-600 dark:text-slate-400">ACADEMIC GALLERY</p>
+            <h1 className="text-lg font-bold text-gray-900 dark:text-[#FFFFFF]">Placement Prep</h1>
+            <p className="text-xs text-gray-600 dark:text-[#52525B]">ACADEMIC GALLERY</p>
           </div>
         </div>
 
@@ -97,7 +97,7 @@ export default function Sidebar({ isOpen, onClose, activeTab, setActiveTab }) {
           </button>
           <button
             onClick={handleLogout}
-            className="w-full bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30 text-red-600 dark:text-red-400 font-semibold py-3 px-4 rounded-lg transition-colors border border-red-200 dark:border-red-800"
+            className="w-full bg-red-50 dark:bg-transparent hover:bg-red-100 dark:hover:bg-[#1A0A0A] text-red-600 dark:text-[#EF4444] font-semibold py-3 px-4 rounded-lg transition-colors border border-red-200 dark:border-[#3F1515]"
           >
             Logout
           </button>
@@ -113,8 +113,8 @@ function NavItem({ icon: Icon, label, isActive, onClick }) {
       onClick={onClick}
       className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-semibold transition-all ${
         isActive
-          ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 border-l-4 border-blue-600'
-          : 'text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-700/50'
+          ? 'bg-[#111111] dark:bg-[#111111] text-blue-600 dark:text-[#FFFFFF] border-l-4 border-blue-600 dark:border-[#2563EB]'
+          : 'text-gray-700 dark:text-[#71717A] hover:bg-gray-50 dark:hover:bg-[#0D0D0D]'
       }`}
     >
       <Icon className="w-5 h-5" />
