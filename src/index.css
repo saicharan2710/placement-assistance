@@ -411,6 +411,5 @@ html.light button:not([class*="rounded-full"]):not([class*="bg-gradient"]) {
 
 html.dark button:not([class*="rounded-full"]):not([class*="bg-gradient"]) {
   border-radius: 10px;
-  color: #F4F4F5;
 }
 
