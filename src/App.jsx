@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import ProtectedRoute from './components/ProtectedRoute';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import DashboardPage from './pages/DashboardPage';
@@ -20,6 +21,12 @@ import AptitudePracticePage from './pages/AptitudePracticePage';
 import GDPracticePage from './pages/GDPracticePage';
 import MockInterviewPage from './pages/MockInterviewPage';
 import ResumeReviewPracticePage from './pages/ResumeReviewPracticePage';
+import CompaniesPage from './pages/hiring/CompaniesPage';
+import JobsPage from './pages/hiring/JobsPage';
+import TrackerPage from './pages/hiring/TrackerPage';
+import HiringResumesPage from './pages/hiring/HiringResumesPage';
+import NoticePage from './pages/hiring/NoticePage';
+import HiringCalendarPage from './pages/hiring/HiringCalendarPage';
 
 function App() {
   return (
@@ -45,6 +52,15 @@ function App() {
         <Route path="/practice/aptitude/history" element={<AptitudeHistoryPage />} />
         <Route path="/practice/gd/history" element={<GDHistoryPage />} />
         <Route path="/practice/interview/history" element={<InterviewHistoryPage />} />
+
+        <Route path="/hiring" element={<ProtectedRoute><Navigate to="/hiring/companies" replace /></ProtectedRoute>} />
+        <Route path="/hiring/companies" element={<ProtectedRoute><CompaniesPage /></ProtectedRoute>} />
+        <Route path="/hiring/jobs" element={<ProtectedRoute><JobsPage /></ProtectedRoute>} />
+        <Route path="/hiring/tracker" element={<ProtectedRoute><TrackerPage /></ProtectedRoute>} />
+        <Route path="/hiring/resumes" element={<ProtectedRoute><HiringResumesPage /></ProtectedRoute>} />
+        <Route path="/hiring/notice" element={<ProtectedRoute><NoticePage /></ProtectedRoute>} />
+        <Route path="/hiring/calendar" element={<ProtectedRoute><HiringCalendarPage /></ProtectedRoute>} />
+
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>

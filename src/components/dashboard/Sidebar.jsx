@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Home, BookOpen, User, TrendingUp, Settings, Zap } from 'lucide-react';
+import { X, Home, BookOpen, User, TrendingUp, Settings, Zap, BriefcaseBusiness } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Sidebar({ isOpen, onClose, activeTab, setActiveTab }) {
@@ -78,6 +78,19 @@ export default function Sidebar({ isOpen, onClose, activeTab, setActiveTab }) {
             isActive={activeTab === 'progress'}
             onClick={() => handleNavClick('progress', '/progress')}
           />
+
+          <div className="pt-3 mt-3 border-t border-gray-200 dark:border-[#1A1A1A]">
+            <p className="text-[10px] tracking-[0.12em] font-semibold text-gray-500 dark:text-[#71717A] px-1 mb-2">
+              VIRTUAL HIRING
+            </p>
+            <NavItem
+              icon={BriefcaseBusiness}
+              label="Hiring Portal"
+              isActive={activeTab === 'hiring'}
+              onClick={() => handleNavClick('hiring', '/hiring')}
+            />
+          </div>
+
           <NavItem
             icon={Settings}
             label="Settings"
