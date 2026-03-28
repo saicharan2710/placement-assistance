@@ -79,4 +79,231 @@ html {
 body {
   background: var(--bg-primary);
   color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* DARK MODE - GLASSMORPHISM DESIGN SYSTEM */
+.dark {
+  background: linear-gradient(135deg, #000000 0%, #0a0a1a 100%);
+  color: #F4F4F5;
+}
+
+.dark body {
+  @apply bg-black text-[#F4F4F5];
+}
+
+/* Glass Card Base Style */
+.glass-card {
+  @apply rounded-2xl backdrop-blur-xl transition-all duration-200;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Glass Card Brighter (for questions, content) */
+.glass-card-bright {
+  @apply rounded-2xl backdrop-blur-xl transition-all duration-200;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Glass Input Style */
+.glass-input {
+  @apply rounded-lg backdrop-blur-md transition-all duration-200 px-4 py-2;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #F4F4F5;
+}
+
+.glass-input::placeholder {
+  color: #A1A1AA;
+}
+
+.glass-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Glass Button Primary (Blue) */
+.glass-btn-primary {
+  @apply rounded-lg font-semibold px-6 py-2 transition-all duration-300;
+  background: #2563EB;
+  color: #FFFFFF;
+}
+
+.glass-btn-primary:hover {
+  background: #3B82F6;
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
+}
+
+/* Glass Button Outline */
+.glass-btn-outline {
+  @apply rounded-lg font-semibold px-6 py-2 transition-all duration-300;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #F4F4F5;
+}
+
+.glass-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Glass Pill Badge */
+.glass-pill {
+  @apply rounded-full px-3 py-1 text-sm font-medium transition-colors;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #A1A1AA;
+}
+
+/* Glass Pills - Color Variants */
+.glass-pill-blue {
+  background: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  color: #60A5FA;
+}
+
+.glass-pill-green {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #4ADE80;
+}
+
+.glass-pill-yellow {
+  background: rgba(234, 179, 8, 0.1);
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  color: #FACC15;
+}
+
+.glass-pill-red {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #F87171;
+}
+
+.glass-pill-orange {
+  background: rgba(234, 88, 12, 0.1);
+  border: 1px solid rgba(234, 88, 12, 0.3);
+  color: #FB923C;
+}
+
+/* Radio / Multiple Choice Options */
+.glass-option {
+  @apply rounded-xl p-4 cursor-pointer transition-all duration-200 border;
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.glass-option:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.glass-option.selected {
+  background: rgba(37, 99, 235, 0.15);
+  border-color: rgba(37, 99, 235, 0.4);
+}
+
+.glass-option.correct {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.4);
+}
+
+.glass-option.wrong {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+/* Chat Bubbles */
+.glass-bubble {
+  @apply rounded-2xl backdrop-blur-md px-4 py-3;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-bubble-user {
+  background: rgba(37, 99, 235, 0.2);
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+/* Modal / Dialog */
+.glass-modal {
+  @apply rounded-2xl backdrop-blur-3xl;
+  background: rgba(10, 10, 10, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8);
+}
+
+/* Toggle Switch Track */
+.glass-toggle-track {
+  @apply rounded-full transition-colors h-6 w-11;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.glass-toggle-track.active {
+  background: #2563EB;
+}
+
+/* Progress Bar Track */
+.glass-progress-track {
+  @apply rounded-full h-2;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.glass-progress-fill {
+  @apply rounded-full h-full transition-all duration-500;
+  background: linear-gradient(90deg, #2563EB, #3B82F6, #2563EB);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Upload Dashed Area */
+.glass-upload {
+  @apply rounded-xl p-8 text-center cursor-pointer transition-all duration-300 border-2 border-dashed;
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.glass-upload:hover {
+  border-color: rgba(37, 99, 235, 0.4);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Text Colors in Dark Mode */
+.dark .text-primary {
+  color: #F4F4F5;
+}
+
+.dark .text-secondary {
+  color: #A1A1AA;
+}
+
+.dark .text-muted {
+  color: #71717A;
+}
+
+.dark .text-accent {
+  color: #60A5FA;
+}
+
+.dark .text-success {
+  color: #4ADE80;
+}
+
+.dark .text-warning {
+  color: #FACC15;
+}
+
+.dark .text-error {
+  color: #F87171;
 }

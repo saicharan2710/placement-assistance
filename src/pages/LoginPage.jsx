@@ -52,18 +52,18 @@ export default function LoginPage() {
   return (
     <>
       <ToggleSwitch />
-      <div className="min-h-screen bg-white dark:bg-slate-900 flex items-center justify-center px-4 py-8">
+      <div className="min-h-screen bg-white dark:bg-black dark:bg-gradient-to-br dark:from-black dark:via-blue-950/20 dark:to-black flex items-center justify-center px-4 py-8">
       <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
         
         {/* Left Section - Branding */}
-        <div className="hidden lg:flex flex-col justify-center items-start bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-8 lg:p-12">
-          <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+        <div className="hidden lg:flex flex-col justify-center items-start bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-600/30 dark:to-blue-700/30 dark:backdrop-blur-xl rounded-3xl p-8 lg:p-12 dark:border dark:border-blue-500/20">
+          <h1 className="text-4xl lg:text-5xl font-bold text-white dark:text-[#F4F4F5] mb-4">
             PrepWay
           </h1>
-          <p className="text-blue-100 text-lg mb-12">
+          <p className="text-blue-100 dark:text-blue-200 text-lg mb-12">
             Your placement journey starts here
           </p>
-          <h2 className="text-3xl lg:text-4xl font-bold text-white leading-tight">
+          <h2 className="text-3xl lg:text-4xl font-bold text-white dark:text-[#F4F4F5] leading-tight">
             Master your interviews and land your dream job.
           </h2>
           <div className="flex gap-2 mt-8">
@@ -76,19 +76,19 @@ export default function LoginPage() {
         {/* Right Section - Login Form */}
         <div className="flex flex-col justify-center">
           <div className="mb-8">
-            <h1 className="text-3xl lg:hidden font-bold text-gray-900 dark:text-slate-100 mb-2">
+            <h1 className="text-3xl lg:hidden font-bold text-gray-900 dark:text-[#F4F4F5] mb-2">
               PrepWay
             </h1>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-2">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-[#F4F4F5] mb-2">
               Welcome Back
             </h2>
-            <p className="text-gray-600 dark:text-slate-400">
+            <p className="text-gray-600 dark:text-[#A1A1AA]">
               Please enter your details to sign in
             </p>
           </div>
 
           {errors.general && (
-            <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+            <div className="mb-4 p-3 dark:glass-card bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/30 rounded-lg">
               <p className="text-red-700 dark:text-red-400 text-sm">{errors.general}</p>
             </div>
           )}
@@ -96,11 +96,11 @@ export default function LoginPage() {
           <form onSubmit={handleLogin} className="space-y-5">
             {/* Email Input */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-800 dark:text-slate-200 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-800 dark:text-[#F4F4F5] mb-2">
                 Email Address
               </label>
               <div className="relative">
-                <Mail className="absolute left-4 top-3.5 w-5 h-5 text-gray-400 dark:text-slate-500" />
+                <Mail className="absolute left-4 top-3.5 w-5 h-5 text-gray-400 dark:text-[#71717A]" />
                 <input
                   id="email"
                   type="email"
@@ -110,28 +110,28 @@ export default function LoginPage() {
                     if (errors.email) setErrors({ ...errors, email: '' });
                   }}
                   placeholder="name@college.edu"
-                  className={`w-full pl-12 pr-4 py-3 bg-gray-100 dark:bg-slate-800 dark:text-slate-100 border-2 rounded-lg transition-all focus:outline-none focus:bg-white dark:focus:bg-slate-700 ${
-                    errors.email ? 'border-red-400' : 'border-gray-100 dark:border-slate-700 focus:border-blue-500'
+                  className={`glass-input w-full pl-12 pr-4 py-3 ${
+                    errors.email ? 'border-red-400 dark:border-red-500/50' : ''
                   }`}
                 />
               </div>
               {errors.email && (
-                <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                <p className="text-red-500 dark:text-red-400 text-xs mt-1">{errors.email}</p>
               )}
             </div>
 
             {/* Password Input */}
             <div>
               <div className="flex items-center justify-between mb-2">
-                <label htmlFor="password" className="block text-sm font-medium text-gray-800 dark:text-slate-200">
+                <label htmlFor="password" className="block text-sm font-medium text-gray-800 dark:text-[#F4F4F5]">
                   Password
                 </label>
-                <a href="#" className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
+                <a href="#" className="text-sm font-medium text-blue-600 dark:text-[#60A5FA] hover:text-blue-700 dark:hover:text-[#3B82F6] transition-colors">
                   Forgot password?
                 </a>
               </div>
               <div className="relative">
-                <Lock className="absolute left-4 top-3.5 w-5 h-5 text-gray-400 dark:text-slate-500" />
+                <Lock className="absolute left-4 top-3.5 w-5 h-5 text-gray-400 dark:text-[#71717A]" />
                 <input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
@@ -141,14 +141,14 @@ export default function LoginPage() {
                     if (errors.password) setErrors({ ...errors, password: '' });
                   }}
                   placeholder="••••••••"
-                  className={`w-full pl-12 pr-12 py-3 bg-gray-100 dark:bg-slate-800 dark:text-slate-100 border-2 rounded-lg transition-all focus:outline-none focus:bg-white dark:focus:bg-slate-700 ${
-                    errors.password ? 'border-red-400' : 'border-gray-100 dark:border-slate-700 focus:border-blue-500'
+                  className={`glass-input w-full pl-12 pr-12 py-3 ${
+                    errors.password ? 'border-red-400 dark:border-red-500/50' : ''
                   }`}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-3.5 text-gray-500 dark:text-slate-400 hover:text-gray-700 dark:hover:text-slate-200 transition-colors"
+                  className="absolute right-4 top-3.5 text-gray-500 dark:text-[#71717A] hover:text-gray-700 dark:hover:text-[#F4F4F5] transition-colors"
                   aria-label={showPassword ? 'Hide password' : 'Show password'}
                 >
                   {showPassword ? (
@@ -159,7 +159,7 @@ export default function LoginPage() {
                 </button>
               </div>
               {errors.password && (
-                <p className="text-red-500 text-xs mt-1">{errors.password}</p>
+                <p className="text-red-500 dark:text-red-400 text-xs mt-1">{errors.password}</p>
               )}
             </div>
 
@@ -168,9 +168,9 @@ export default function LoginPage() {
               <input
                 id="remember"
                 type="checkbox"
-                className="w-4 h-4 border-2 border-gray-300 dark:border-slate-600 rounded cursor-pointer accent-blue-600"
+                className="w-4 h-4 border-2 dark:border-[#222222] dark:checked:bg-[#2563EB] rounded cursor-pointer accent-blue-600"
               />
-              <label htmlFor="remember" className="text-sm text-gray-700 dark:text-slate-300 cursor-pointer">
+              <label htmlFor="remember" className="text-sm text-gray-700 dark:text-[#A1A1AA] cursor-pointer">
                 Keep me signed in for 30 days
               </label>
             </div>
@@ -178,7 +178,7 @@ export default function LoginPage() {
             {/* Login Button */}
             <button
               type="submit"
-              className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg mt-6"
+              className="glass-btn-primary w-full py-3 px-4 mt-6"
             >
               Sign In
             </button>
@@ -186,17 +186,17 @@ export default function LoginPage() {
 
           {/* Divider */}
           <div className="flex items-center gap-4 my-6">
-            <div className="flex-1 h-px bg-gray-300 dark:bg-slate-700"></div>
-            <span className="text-sm text-gray-500 dark:text-slate-400 font-medium">Or continue with</span>
-            <div className="flex-1 h-px bg-gray-300 dark:bg-slate-700"></div>
+            <div className="flex-1 h-px dark:bg-[#222222] bg-gray-300"></div>
+            <span className="text-sm text-gray-500 dark:text-[#A1A1AA] font-medium">Or continue with</span>
+            <div className="flex-1 h-px dark:bg-[#222222] bg-gray-300"></div>
           </div>
 
           {/* Google Login */}
           <button
             onClick={handleGoogleLogin}
-            className="w-full py-3 px-4 border-2 border-gray-300 dark:border-slate-700 hover:border-gray-400 dark:hover:border-slate-600 bg-white dark:bg-slate-800 rounded-lg transition-all duration-200 flex items-center justify-center gap-3 shadow-sm hover:shadow-md"
+            className="glass-btn-outline w-full py-3 px-4"
           >
-            <svg className="w-5 h-5" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 inline mr-3" viewBox="0 0 24 24">
               <path
                 fill="#4285F4"
                 d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -214,25 +214,25 @@ export default function LoginPage() {
                 d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
               />
             </svg>
-            <span className="text-gray-800 dark:text-slate-200 font-medium">Sign in with Google</span>
+            <span>Sign in with Google</span>
           </button>
 
           {/* Sign Up Link */}
           <div className="text-center mt-8">
-            <p className="text-gray-700 dark:text-slate-300">
+            <p className="text-gray-700 dark:text-[#A1A1AA]">
               Don't have an account?{' '}
-              <a href="/signup" className="text-blue-600 dark:text-blue-400 font-semibold hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
+              <a href="/signup" className="text-blue-600 dark:text-[#60A5FA] font-semibold hover:text-blue-700 dark:hover:text-[#3B82F6] transition-colors">
                 Sign Up
               </a>
             </p>
           </div>
 
           {/* Footer */}
-          <div className="text-center mt-8 pt-6 border-t border-gray-200 dark:border-slate-700">
-            <p className="text-xs text-gray-600 dark:text-slate-400 mb-2">
+          <div className="text-center mt-8 pt-6 border-t border-gray-200 dark:border-[#1A1A1A]">
+            <p className="text-xs text-gray-600 dark:text-[#71717A] mb-2">
               © 2024 PrepWay Learning Systems.
             </p>
-            <p className="text-xs text-gray-600 dark:text-slate-400">
+            <p className="text-xs text-gray-600 dark:text-[#71717A]">
               Trusted by 500+ Institutions.
             </p>
           </div>

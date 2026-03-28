@@ -87,15 +87,15 @@ export default function SignupPage() {
   return (
     <>
       <ToggleSwitch />
-      <div className="min-h-screen bg-white dark:bg-slate-900 flex items-center justify-center px-4 py-8">
+      <div className="min-h-screen bg-white dark:bg-black dark:bg-gradient-to-br dark:from-black dark:via-blue-950/20 dark:to-black flex items-center justify-center px-4 py-8">
       <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
         
         {/* Left Section - Benefits */}
         <div className="hidden lg:flex flex-col justify-center items-start">
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-slate-100 mb-6">
-            Elevate your <span className="text-blue-600">career path.</span>
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-[#F4F4F5] mb-6">
+            Elevate your <span className="text-blue-600 dark:text-[#60A5FA]">career path.</span>
           </h1>
-          <p className="text-gray-700 dark:text-slate-300 text-lg leading-relaxed mb-10">
+          <p className="text-gray-700 dark:text-[#A1A1AA] text-lg leading-relaxed mb-10">
             Join 10,000+ students preparing for their dream careers with curated mock tests, mentor sessions, and personalized study plans.
           </p>
 
