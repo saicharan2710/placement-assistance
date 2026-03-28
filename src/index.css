@@ -133,6 +133,17 @@ body {
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
+/* Native select dropdown list colors */
+select.glass-input option {
+  background: #FFFFFF;
+  color: #0F172A;
+}
+
+.dark select.glass-input option {
+  background: #0A0A0A;
+  color: #F4F4F5;
+}
+
 /* Glass Button Primary (Blue) */
 .glass-btn-primary {
   @apply rounded-lg font-semibold px-6 py-2 transition-all duration-300;

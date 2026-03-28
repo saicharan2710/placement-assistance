@@ -113,7 +113,7 @@ function NavItem({ icon: Icon, label, isActive, onClick }) {
       onClick={onClick}
       className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-semibold transition-all ${
         isActive
-          ? 'bg-[#111111] dark:bg-[#111111] text-blue-600 dark:text-[#FFFFFF] border-l-4 border-blue-600 dark:border-[#2563EB]'
+          ? 'bg-[#111111] text-blue-600 border-l-4 border-blue-600 dark:bg-[rgba(37,99,235,0.16)] dark:text-[#60A5FA] dark:border-[#2563EB]'
           : 'text-gray-700 dark:text-[#71717A] hover:bg-gray-50 dark:hover:bg-[#0D0D0D]'
       }`}
     >

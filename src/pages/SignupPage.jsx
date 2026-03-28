@@ -15,8 +15,8 @@ export default function SignupPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const streams = ['Select stream', 'Engineering', 'Arts', 'Science', 'Commerce', 'Other'];
-  const years = ['Select year', '1st Year', '2nd Year', '3rd Year', '4th Year'];
+  const streams = ['Engineering', 'Arts', 'Science', 'Commerce', 'Other'];
+  const years = ['1st Year', '2nd Year', '3rd Year', '4th Year'];
 
   const validateForm = () => {
     const newErrors = {};
@@ -37,11 +37,11 @@ export default function SignupPage() {
       newErrors.password = 'Password must be at least 8 characters';
     }
 
-    if (formData.stream === '' || formData.stream === 'Select stream') {
+    if (!formData.stream) {
       newErrors.stream = 'Please select a stream';
     }
 
-    if (formData.yearOfStudy === '' || formData.yearOfStudy === 'Select year') {
+    if (!formData.yearOfStudy) {
       newErrors.yearOfStudy = 'Please select your year of study';
     }
 
@@ -264,6 +264,9 @@ export default function SignupPage() {
                   paddingRight: '2.5rem',
                 }}
               >
+                <option value="" disabled>
+                  Select stream
+                </option>
                 {streams.map((stream) => (
                   <option key={stream} value={stream}>
                     {stream}
@@ -296,6 +299,9 @@ export default function SignupPage() {
                   paddingRight: '2.5rem',
                 }}
               >
+                <option value="" disabled>
+                  Select year
+                </option>
                 {years.map((year) => (
                   <option key={year} value={year}>
                     {year}
