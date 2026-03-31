@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, ChevronRight, CheckCircle, AlertCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 import Sidebar from '../components/dashboard/Sidebar';
 import TopBar from '../components/dashboard/TopBar';
 import { saveSession } from '../utils/progressTracker';
@@ -214,7 +215,12 @@ export default function MockInterviewPage() {
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
-        <div className="flex-1 overflow-y-auto">
+        <motion.div
+          className="flex-1 overflow-y-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
           <div className="max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-8">
             {/* STAGE 0: Interview Setup */}
             {stage === 0 && (
@@ -232,7 +238,7 @@ export default function MockInterviewPage() {
                 </div>
 
                 {/* Interview Mode Selection */}
-                <div className="mb-8 bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222]">
+                <motion.div className="mb-8 bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222]" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
                   <h3 className="text-base lg:text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Interview Format</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                     {/* Full Interview */}
@@ -329,15 +335,16 @@ export default function MockInterviewPage() {
                       </button>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Start Button */}
-                <button
+                <motion.button
                   onClick={handleStartInterview}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg transition-colors text-lg shadow-lg mb-8"
+                  className="w-full bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-bold py-4 px-6 rounded-lg transition-colors text-lg shadow-lg mb-8"
+                  whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                 >
                   Start Interview
-                </button>
+                </motion.button>
               </>
             )}
 
@@ -368,7 +375,7 @@ export default function MockInterviewPage() {
                 </div>
 
                 {/* AI Interviewer Panel */}
-                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222] mb-8 text-center">
+                <motion.div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222] mb-8 text-center" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
                   <div className="mb-6">
                     <div className="relative inline-block">
                       <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mx-auto mb-4">
@@ -387,7 +394,7 @@ export default function MockInterviewPage() {
                     </p>
                     <p className="text-base lg:text-lg font-semibold text-gray-900 dark:text-slate-100">{currentQuestion.question}</p>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* User Response Panel */}
                 <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222]">
@@ -548,7 +555,7 @@ export default function MockInterviewPage() {
               </>
             )}
           </div>
-        </div>
+        </motion.div>
       </main>
     </div>
   );

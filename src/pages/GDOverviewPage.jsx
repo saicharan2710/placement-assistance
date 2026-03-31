@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, ChevronDown, ChevronUp, MessageCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 import TopBar from '../components/dashboard/TopBar';
 import Sidebar from '../components/dashboard/Sidebar';
 
@@ -113,7 +114,12 @@ export default function GDOverviewPage() {
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
-        <div className="flex-1 overflow-y-auto bg-[#000000]">
+        <motion.div
+          className="flex-1 overflow-y-auto bg-[#000000]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
           <div className="max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-8">
             {/* Header */}
             <div className="mb-8">
@@ -127,37 +133,62 @@ export default function GDOverviewPage() {
               <h1 className="text-4xl font-bold text-slate-100 mb-2">Group Discussion</h1>
               <div className="flex items-center justify-between">
                 <p className="text-slate-400">Track your GD performance and communication skills</p>
-                <button
+                <motion.button
                   onClick={() => navigate('/practice/gd')}
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
+                  className="bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
+                  whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                 >
                   Enter GD Room
-                </button>
+                </motion.button>
               </div>
             </div>
 
             {/* Stats Row */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-              <div className="bg-[#111111] rounded-xl p-6 border border-[#222222]">
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+            >
+              <motion.div
+                className="bg-[#111111] rounded-xl p-6 border border-[#222222] hover:shadow-lg hover:shadow-blue-500/20"
+                whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
+              >
                 <p className="text-slate-400 text-sm mb-2">Best Participation</p>
                 <p className="text-3xl font-bold text-blue-400">78%</p>
-              </div>
-              <div className="bg-[#111111] rounded-xl p-6 border border-[#222222]">
+              </motion.div>
+              <motion.div
+                className="bg-[#111111] rounded-xl p-6 border border-[#222222] hover:shadow-lg hover:shadow-blue-500/20"
+                whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
+              >
                 <p className="text-slate-400 text-sm mb-2">Avg Speaking Time</p>
                 <p className="text-3xl font-bold text-blue-400">2m 45s</p>
-              </div>
-              <div className="bg-[#111111] rounded-xl p-6 border border-[#222222]">
+              </motion.div>
+              <motion.div
+                className="bg-[#111111] rounded-xl p-6 border border-[#222222] hover:shadow-lg hover:shadow-blue-500/20"
+                whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
+              >
                 <p className="text-slate-400 text-sm mb-2">Total Sessions</p>
                 <p className="text-3xl font-bold text-blue-400">5</p>
-              </div>
-              <div className="bg-[#111111] rounded-xl p-6 border border-[#222222]">
+              </motion.div>
+              <motion.div
+                className="bg-[#111111] rounded-xl p-6 border border-[#222222] hover:shadow-lg hover:shadow-blue-500/20"
+                whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
+              >
                 <p className="text-slate-400 text-sm mb-2">Topics Covered</p>
                 <p className="text-3xl font-bold text-blue-400">12</p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             {/* Next Target */}
-            <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
+            <motion.div
+              className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+            >
               <h2 className="text-2xl font-bold text-slate-100 mb-6">Next Target</h2>
               <div className="flex items-center justify-between mb-6">
                 <div className="flex gap-4">
@@ -181,16 +212,23 @@ export default function GDOverviewPage() {
               <p className="text-slate-300 mb-6">
                 Participate in <span className="font-bold text-yellow-300">3 more GD sessions</span> and maintain above 70% participation to reach Leader level
               </p>
-              <button
+              <motion.button
                 onClick={() => navigate('/practice/gd')}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+                className="bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+                whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
               >
                 Join GD Room
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
 
             {/* Participation Trend */}
-            <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
+            <motion.div
+              className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+            >
               <h2 className="text-2xl font-bold text-slate-100 mb-6">Participation Trend</h2>
               <div className="flex items-end justify-center gap-6 h-48">
                 {participationTrendData.map((item, idx) => (
@@ -206,10 +244,16 @@ export default function GDOverviewPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Skill Breakdown */}
-            <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
+            <motion.div
+              className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+            >
               <h2 className="text-2xl font-bold text-slate-100 mb-6">Skill Breakdown</h2>
               <div className="space-y-6">
                 {skillBreakdown.map((skill, idx) => (
@@ -232,21 +276,28 @@ export default function GDOverviewPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Recent Sessions */}
-            <div className="bg-[#111111] rounded-xl border border-[#222222] overflow-hidden mb-8">
+            <motion.div
+              className="bg-[#111111] rounded-xl border border-[#222222] overflow-hidden mb-8"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+            >
               <div className="p-8 border-b border-[#222222]">
                 <h2 className="text-2xl font-bold text-slate-100">Recent Sessions</h2>
               </div>
               <div>
                 {recentSessions.map((session) => (
                   <div key={session.id} className="border-b border-[#222222] last:border-0">
-                    <div
+                    <motion.div
                       onClick={() =>
                         setExpandedSessionId(expandedSessionId === session.id ? null : session.id)
                       }
-                      className="p-6 hover:bg-[rgba(26,26,26,0.5)] transition-colors cursor-pointer"
+                      className="p-6 hover:bg-[rgba(26,26,26,0.5)] hover:shadow-lg hover:shadow-blue-500/20 transition-colors cursor-pointer"
+                      whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex-1">
@@ -298,22 +349,29 @@ export default function GDOverviewPage() {
                             <p className="text-slate-300 text-sm">{session.feedback}</p>
                           </div>
 
-                          <button
+                          <motion.button
                             onClick={() => navigate('/practice/gd')}
-                            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+                            className="w-full bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+                            whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                           >
                             Practice this topic again
-                          </button>
+                          </motion.button>
                         </div>
                       )}
-                    </div>
+                    </motion.div>
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* AI Recommendations */}
-            <div className="bg-blue-900/20 border border-blue-800 rounded-xl p-8 mb-8">
+            <motion.div
+              className="bg-blue-900/20 border border-blue-800 rounded-xl p-8 mb-8"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+            >
               <h2 className="text-2xl font-bold text-slate-100 mb-6">AI Recommendations</h2>
               <div className="space-y-4">
                 {recommendations.map((rec, idx) => (
@@ -323,11 +381,11 @@ export default function GDOverviewPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             <div className="h-12"></div>
           </div>
-        </div>
+        </motion.div>
       </main>
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, ChevronDown, ChevronUp, CheckCircle, XCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 import Sidebar from '../components/dashboard/Sidebar';
 import TopBar from '../components/dashboard/TopBar';
 import { saveSession } from '../utils/progressTracker';
@@ -470,7 +471,12 @@ export default function AptitudePracticePage() {
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
-        <div className="flex-1 overflow-y-auto">
+        <motion.div
+          className="flex-1 overflow-y-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
           <div className="max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-8">
             {/* STAGE 0: Configuration */}
             {stage === 0 && (
@@ -487,7 +493,13 @@ export default function AptitudePracticePage() {
                   <p className="text-sm lg:text-base text-gray-600 dark:text-slate-400">Real aptitude questions from company hiring drives</p>
                 </div>
 
-                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222]">
+                <motion.div
+                  className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222]"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.7 }}
+                >
                   {/* Category Selector */}
                   <div className="mb-8">
                     <h3 className="text-base lg:text-lg font-semibold text-gray-900 dark:text-slate-100 mb-3">Category</h3>
@@ -556,13 +568,14 @@ export default function AptitudePracticePage() {
                   </div>
 
                   {/* Start Test Button */}
-                  <button
+                  <motion.button
                     onClick={handleStartTest}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg transition-colors text-lg shadow-lg"
+                    className="w-full bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-bold py-4 px-6 rounded-lg transition-colors text-lg shadow-lg"
+                    whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                   >
                     Start Test
-                  </button>
-                </div>
+                  </motion.button>
+                </motion.div>
               </>
             )}
 
@@ -597,7 +610,13 @@ export default function AptitudePracticePage() {
                 </div>
 
                 {/* Question Card */}
-                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222] mb-6">
+                <motion.div
+                  className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222] mb-6"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.7 }}
+                >
                   {/* Category Tag */}
                   <div className="mb-4">
                     <span className={`inline-block px-3 py-1 rounded-full text-xs lg:text-sm font-semibold ${
@@ -637,18 +656,19 @@ export default function AptitudePracticePage() {
                       }
 
                       return (
-                        <button
+                        <motion.button
                           key={index}
                           onClick={() => handleAnswerSelect(index)}
                           disabled={isAnswered}
-                          className={`w-full p-4 rounded-lg border-2 text-left font-semibold transition-all ${bgColor} ${borderColor} text-gray-900 dark:text-slate-100 ${!isAnswered ? 'cursor-pointer' : 'cursor-default'}`}
+                          className={`w-full p-4 rounded-lg border-2 text-left font-semibold transition-all hover:shadow-lg hover:shadow-blue-500/20 ${bgColor} ${borderColor} text-gray-900 dark:text-slate-100 ${!isAnswered ? 'cursor-pointer' : 'cursor-default'}`}
+                          whileHover={!isAnswered ? { scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } } : undefined}
                         >
                           <div className="flex items-center justify-between">
                             <span>{String.fromCharCode(65 + index)}. {option}</span>
                             {showResult && isCorrect && <CheckCircle className="w-5 h-5 text-green-600" />}
                             {showResult && isSelected && !isCorrect && <XCircle className="w-5 h-5 text-red-600" />}
                           </div>
-                        </button>
+                        </motion.button>
                       );
                     })}
                   </div>
@@ -660,7 +680,7 @@ export default function AptitudePracticePage() {
                       <p className="text-gray-600 dark:text-slate-400 text-sm">{currentQuestion.explanation}</p>
                     </div>
                   )}
-                </div>
+                </motion.div>
               </>
             )}
 
@@ -673,7 +693,13 @@ export default function AptitudePracticePage() {
                 </div>
 
                 {/* Performance Section */}
-                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222] mb-6">
+                <motion.div
+                  className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222] mb-6"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.7 }}
+                >
                   <div className="text-center mb-8">
                     <div className="inline-block">
                       <div className="text-4xl lg:text-6xl font-bold text-blue-600 mb-2">{results.correctAnswers}/{results.totalQuestions}</div>
@@ -699,10 +725,16 @@ export default function AptitudePracticePage() {
                       <p className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-slate-100">{results.date}</p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Category Breakdown */}
-                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
+                <motion.div
+                  className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.7 }}
+                >
                   <h3 className="text-xl font-bold text-gray-900 dark:text-slate-100 mb-6">Category Breakdown</h3>
                   <div className="space-y-6">
                     {Object.entries(results.categoryBreakdown).map(([category, data]) => (
@@ -722,46 +754,61 @@ export default function AptitudePracticePage() {
                       )
                     ))}
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Question Breakdown */}
-                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
+                <motion.div
+                  className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.7 }}
+                >
                   <h3 className="text-xl font-bold text-gray-900 dark:text-slate-100 mb-6">Question Breakdown</h3>
                   <div className="space-y-3">
                     {results.questions.map((q, index) => (
                       <QuestionBreakdownItem key={index} question={q} index={index} />
                     ))}
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-4 mb-8">
-                  <button
+                <motion.div
+                  className="flex gap-4 mb-8"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.7 }}
+                >
+                  <motion.button
                     onClick={() => {
                       setStage(0);
                       setAnswers({});
                     }}
-                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
+                    className="flex-1 bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
+                    whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                   >
                     Retry Test
-                  </button>
-                  <button
+                  </motion.button>
+                  <motion.button
                     onClick={() => navigate('/practice')}
-                    className="flex-1 bg-gray-200 dark:bg-[#1A1A1A] hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-900 dark:text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
+                    className="flex-1 bg-gray-200 dark:bg-[#1A1A1A] hover:bg-gray-300 dark:hover:bg-slate-600 hover:shadow-lg hover:shadow-blue-500/20 text-gray-900 dark:text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
+                    whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                   >
                     Back to Practice
-                  </button>
-                  <button
+                  </motion.button>
+                  <motion.button
                     onClick={() => navigate('/practice/aptitude/history')}
-                    className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
+                    className="flex-1 bg-emerald-600 hover:bg-emerald-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
+                    whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                   >
                     View Full History
-                  </button>
-                </div>
+                  </motion.button>
+                </motion.div>
               </>
             )}
           </div>
-        </div>
+        </motion.div>
       </main>
     </div>
   );

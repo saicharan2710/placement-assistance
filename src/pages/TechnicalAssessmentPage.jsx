@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Clock, CheckCircle, XCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 import Sidebar from '../components/dashboard/Sidebar';
 import TopBar from '../components/dashboard/TopBar';
 
@@ -308,7 +309,12 @@ export default function TechnicalAssessmentPage() {
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
-        <div className="flex-1 overflow-y-auto bg-[#000000]">
+        <motion.div
+          className="flex-1 overflow-y-auto bg-[#000000]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
           {stage === 'landing' && (
             <div className="max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-8">
               {/* Header */}
@@ -325,27 +331,27 @@ export default function TechnicalAssessmentPage() {
               </div>
 
               {/* Stats Row */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                <div className="bg-[#111111] rounded-xl p-4 lg:p-6 border border-[#222222]">
+              <motion.div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
+                <motion.div className="bg-[#111111] rounded-xl p-4 lg:p-6 border border-[#222222] hover:shadow-lg hover:shadow-blue-500/20" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
                   <p className="text-slate-400 text-xs lg:text-sm mb-2">Best Score</p>
                   <p className="text-2xl lg:text-3xl font-bold text-blue-400">{technicalData?.bestScore || 0}%</p>
-                </div>
-                <div className="bg-[#111111] rounded-xl p-4 lg:p-6 border border-[#222222]">
+                </motion.div>
+                <motion.div className="bg-[#111111] rounded-xl p-4 lg:p-6 border border-[#222222] hover:shadow-lg hover:shadow-blue-500/20" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
                   <p className="text-slate-400 text-xs lg:text-sm mb-2">Average Score</p>
                   <p className="text-2xl lg:text-3xl font-bold text-blue-400">{technicalData?.averageScore || 0}%</p>
-                </div>
-                <div className="bg-[#111111] rounded-xl p-4 lg:p-6 border border-[#222222]">
+                </motion.div>
+                <motion.div className="bg-[#111111] rounded-xl p-4 lg:p-6 border border-[#222222] hover:shadow-lg hover:shadow-blue-500/20" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
                   <p className="text-slate-400 text-xs lg:text-sm mb-2">Total Attempts</p>
                   <p className="text-2xl lg:text-3xl font-bold text-blue-400">{technicalData?.totalAttempts || 0}</p>
-                </div>
-                <div className="bg-[#111111] rounded-xl p-4 lg:p-6 border border-[#222222]">
+                </motion.div>
+                <motion.div className="bg-[#111111] rounded-xl p-4 lg:p-6 border border-[#222222] hover:shadow-lg hover:shadow-blue-500/20" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
                   <p className="text-slate-400 text-xs lg:text-sm mb-2">Last Attempted</p>
                   <p className="text-xs lg:text-sm font-semibold text-blue-400">{technicalData?.attempts?.[0]?.date || 'Never'}</p>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
 
               {/* Configuration Card */}
-              <div className="bg-[#111111] rounded-xl p-4 lg:p-8 border border-[#222222] mb-8">
+              <motion.div className="bg-[#111111] rounded-xl p-4 lg:p-8 border border-[#222222] mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
                 <h2 className="text-xl lg:text-2xl font-bold text-slate-100 mb-6">Configure Your Assessment</h2>
 
                 {/* Number of Questions */}
@@ -400,17 +406,18 @@ export default function TechnicalAssessmentPage() {
                   <p className="text-xs text-slate-400">Branch specific questions coming soon</p>
                 </div>
 
-                <button
+                <motion.button
                   onClick={startAssessment}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg transition-colors text-lg"
+                  className="w-full bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-bold py-4 px-6 rounded-lg transition-colors text-lg"
+                  whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                 >
                   Start Assessment
-                </button>
-              </div>
+                </motion.button>
+              </motion.div>
 
               {/* Previous Attempts */}
               {technicalData?.attempts && technicalData.attempts.length > 0 && (
-                <div className="bg-[#111111] rounded-xl p-8 border border-[#222222]">
+                <motion.div className="bg-[#111111] rounded-xl p-8 border border-[#222222]" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
                   <h2 className="text-2xl font-bold text-slate-100 mb-6">Previous Attempts</h2>
                   <div className="space-y-3">
                     {technicalData.attempts.slice(0, 3).map((attempt, idx) => (
@@ -455,7 +462,7 @@ export default function TechnicalAssessmentPage() {
                       </div>
                     ))}
                   </div>
-                </div>
+                </motion.div>
               )}
             </div>
           )}
@@ -483,7 +490,7 @@ export default function TechnicalAssessmentPage() {
               {/* Question */}
               <div className="flex-1 flex items-center justify-center p-6">
                 <div className="max-w-2xl w-full">
-                  <div className="bg-[#111111] rounded-xl p-8 border border-[#222222]">
+                  <motion.div className="bg-[#111111] rounded-xl p-8 border border-[#222222]" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
                     {/* Topic Tag */}
                     <div className="mb-6">
                       <span
@@ -507,11 +514,11 @@ export default function TechnicalAssessmentPage() {
                     {/* Options */}
                     <div className="space-y-3 mb-6">
                       {assessmentQuestions[currentQuestionIndex].options.map((option, idx) => (
-                        <button
+                        <motion.button
                           key={idx}
                           onClick={() => handleAnswer(idx)}
                           disabled={isAnswered}
-                          className={`w-full p-4 rounded-lg text-left font-medium transition-all ${
+                          className={`w-full p-4 rounded-lg text-left font-medium transition-all hover:shadow-lg hover:shadow-blue-500/20 ${
                             isAnswered
                               ? idx === assessmentQuestions[currentQuestionIndex].correct
                                 ? 'bg-green-600 border border-green-500 text-white'
@@ -522,6 +529,7 @@ export default function TechnicalAssessmentPage() {
                               ? 'bg-blue-600 border-2 border-blue-500 text-white'
                               : 'bg-[#1A1A1A] border border-[#2A2A2A] text-slate-300 hover:border-blue-400'
                           }`}
+                          whileHover={!isAnswered ? { scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } } : undefined}
                         >
                           <div className="flex items-center justify-between">
                             <span>{option}</span>
@@ -532,7 +540,7 @@ export default function TechnicalAssessmentPage() {
                               <XCircle className="w-5 h-5" />
                             )}
                           </div>
-                        </button>
+                        </motion.button>
                       ))}
                     </div>
 
@@ -543,7 +551,7 @@ export default function TechnicalAssessmentPage() {
                         <p className="text-slate-300 text-sm">{assessmentQuestions[currentQuestionIndex].explanation}</p>
                       </div>
                     )}
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </div>
@@ -589,7 +597,7 @@ export default function TechnicalAssessmentPage() {
                             <span className="text-blue-400 font-semibold">{data.correct}/{data.total}</span>
                           </div>
                           <div className="w-full h-2 bg-[#1A1A1A] rounded-full overflow-hidden">
-                            <div
+                            <motion.div
                               className="h-full bg-blue-600 rounded-full transition-all"
                               style={{ width: `${percentage}%` }}
                             />
@@ -659,7 +667,7 @@ export default function TechnicalAssessmentPage() {
               </div>
             </div>
           )}
-        </div>
+        </motion.div>
       </main>
     </div>
   );

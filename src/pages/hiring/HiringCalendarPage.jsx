@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { motion } from 'framer-motion';
 import HiringLayout from '../../components/hiring/HiringLayout';
 
 const events = [
@@ -32,18 +33,18 @@ export default function HiringCalendarPage() {
 
   return (
     <HiringLayout>
-      <div className="mb-6">
+      <motion.div className="mb-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, ease: 'easeOut' }}>
         <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-[#F4F4F5]">Placement Calendar</h1>
         <p className="text-sm text-gray-600 dark:text-[#A1A1AA] mt-1">Track upcoming drives, tests and interviews</p>
-      </div>
+      </motion.div>
 
-      <div className="flex items-center justify-between mb-4 glass-card px-4 py-3">
-        <button className="glass-button-outline px-3 py-1">&lt;</button>
+      <motion.div className="flex items-center justify-between mb-4 glass-card px-4 py-3" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
+        <motion.button className="glass-button-outline px-3 py-1 hover:shadow-lg hover:shadow-blue-500/20" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>&lt;</motion.button>
         <p className="font-semibold text-gray-900 dark:text-[#F4F4F5]">March 2026</p>
-        <button className="glass-button-outline px-3 py-1">&gt;</button>
-      </div>
+        <motion.button className="glass-button-outline px-3 py-1 hover:shadow-lg hover:shadow-blue-500/20" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>&gt;</motion.button>
+      </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-4">
+      <motion.div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-4" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
         <div className="space-y-4">
           <div className="glass-card p-4">
             <div className="grid grid-cols-7 text-center text-xs font-semibold text-gray-600 dark:text-[#A1A1AA] mb-2">
@@ -56,7 +57,7 @@ export default function HiringCalendarPage() {
                 const dayEvents = events.filter((e) => e.date === date);
                 const isToday = day === 28;
                 return (
-                  <button
+                  <motion.button
                     key={day}
                     onClick={() => setSelectedDate(date)}
                     className={`h-14 rounded-lg border text-sm flex flex-col items-center justify-center ${
@@ -64,6 +65,7 @@ export default function HiringCalendarPage() {
                         ? 'border-blue-600 bg-blue-600/20'
                         : 'border-white/10 hover:border-blue-500/50'
                     } ${isToday ? 'bg-blue-600/15' : ''}`}
+                    whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                   >
                     <span className="text-gray-900 dark:text-[#F4F4F5]">{day}</span>
                     <div className="flex gap-1 mt-1">
@@ -71,7 +73,7 @@ export default function HiringCalendarPage() {
                         <span key={idx} className={`w-1.5 h-1.5 rounded-full ${dotColor[e.type] || 'bg-purple-500'}`} />
                       ))}
                     </div>
-                  </button>
+                  </motion.button>
                 );
               })}
             </div>
@@ -81,11 +83,11 @@ export default function HiringCalendarPage() {
             <h3 className="font-semibold text-gray-900 dark:text-[#F4F4F5] mb-3">Upcoming This Week</h3>
             <div className="space-y-2">
               {upcoming.map((e, idx) => (
-                <div key={`${e.title}-${idx}`} className="flex items-center gap-2 text-sm">
+                <motion.div key={`${e.title}-${idx}`} className="flex items-center gap-2 text-sm hover:shadow-lg hover:shadow-blue-500/20 rounded-lg px-2 py-1" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
                   <span className={`w-2 h-2 rounded-full ${dotColor[e.type] || 'bg-purple-500'}`} />
                   <span className="text-gray-900 dark:text-[#F4F4F5]">{e.title}</span>
                   <span className="text-gray-600 dark:text-[#A1A1AA] ml-auto">{e.time}</span>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -96,15 +98,15 @@ export default function HiringCalendarPage() {
           <div className="space-y-3">
             {dateEvents.length === 0 && <p className="text-sm text-gray-600 dark:text-[#A1A1AA]">No events</p>}
             {dateEvents.map((e, idx) => (
-              <div key={`${e.title}-${idx}`} className="glass-card p-3 border-l-2 border-blue-500">
+              <motion.div key={`${e.title}-${idx}`} className="glass-card p-3 border-l-2 border-blue-500 hover:shadow-lg hover:shadow-blue-500/20" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
                 <p className="font-semibold text-gray-900 dark:text-[#F4F4F5] text-sm">{e.title}</p>
                 <p className="text-xs text-gray-600 dark:text-[#A1A1AA]">{e.company} • {e.time}</p>
                 <span className={`mt-2 inline-block ${e.type === 'Interview' ? 'glass-pill-green' : e.type === 'Deadline' ? 'glass-pill-yellow' : 'glass-pill-blue'}`}>{e.type}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
     </HiringLayout>
   );
 }

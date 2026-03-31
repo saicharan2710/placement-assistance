@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, XCircle, Share2, RotateCcw } from 'lucide-react';
+import { motion } from 'framer-motion';
 import TopBar from '../components/dashboard/TopBar';
 import Sidebar from '../components/dashboard/Sidebar';
 
@@ -209,7 +210,12 @@ export default function DailyDrivePage() {
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
-        <div className="flex-1 overflow-y-auto bg-[#000000]">
+        <motion.div
+          className="flex-1 overflow-y-auto bg-[#000000]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
           {stage === 'landing' && (
             <div className="flex items-center justify-center min-h-[calc(100vh-80px)] p-6">
               <div className="max-w-2xl w-full">
@@ -231,7 +237,13 @@ export default function DailyDrivePage() {
                 </div>
 
                 {/* Challenge Card */}
-                <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
+                <motion.div
+                  className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.7 }}
+                >
                   <div className="mb-6">
                     <p className="text-slate-400 text-sm font-semibold uppercase mb-2">Today's Challenge</p>
                     <p className="text-2xl font-bold text-slate-100">{getTodayDate()}</p>
@@ -275,10 +287,10 @@ export default function DailyDrivePage() {
                       <p className="text-lg font-bold text-blue-400">{dailyDriveData?.totalDrives || 0}</p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Start Button */}
-                <button
+                <motion.button
                   onClick={() => {
                     if (!isCompletedToday) {
                       setStage('question');
@@ -292,11 +304,12 @@ export default function DailyDrivePage() {
                   className={`w-full py-4 px-6 rounded-lg font-bold text-lg transition-colors ${
                     isCompletedToday
                       ? 'bg-[#1A1A1A] text-slate-400 cursor-not-allowed'
-                      : 'bg-blue-600 hover:bg-blue-700 text-white'
+                      : 'bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white'
                   }`}
+                  whileHover={!isCompletedToday ? { scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } } : undefined}
                 >
                   {isCompletedToday ? 'Come back tomorrow for your next drive 🌟' : "Start Today's Drive"}
-                </button>
+                </motion.button>
               </div>
             </div>
           )}
@@ -324,7 +337,13 @@ export default function DailyDrivePage() {
               {/* Question Card */}
               <div className="flex-1 flex items-center justify-center p-6">
                 <div className="max-w-2xl w-full">
-                  <div className="bg-[#111111] rounded-xl p-8 border border-[#222222]">
+                  <motion.div
+                    className="bg-[#111111] rounded-xl p-8 border border-[#222222]"
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.2 }}
+                    transition={{ duration: 0.7 }}
+                  >
                     {/* Type Tag */}
                     <div className="mb-6">
                       <span
@@ -347,7 +366,7 @@ export default function DailyDrivePage() {
                     {!questions[currentQuestionIndex].isTextInput ? (
                       <div className="space-y-3">
                         {questions[currentQuestionIndex].options.map((option, idx) => (
-                          <button
+                          <motion.button
                             key={idx}
                             onClick={() => handleAnswer(idx)}
                             disabled={isAnswered}
@@ -360,8 +379,9 @@ export default function DailyDrivePage() {
                                   : 'bg-[#1A1A1A] border border-[#2A2A2A] text-slate-300'
                                 : selectedAnswer === idx
                                 ? 'bg-blue-600 border-2 border-blue-500 text-white'
-                                : 'bg-[#1A1A1A] border border-[#2A2A2A] text-slate-300 hover:border-blue-400'
+                                : 'bg-[#1A1A1A] border border-[#2A2A2A] text-slate-300 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-500/20'
                             }`}
+                              whileHover={!isAnswered ? { scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } } : undefined}
                           >
                             <div className="flex items-center justify-between">
                               <span>{option}</span>
@@ -372,7 +392,7 @@ export default function DailyDrivePage() {
                                 <XCircle className="w-5 h-5" />
                               )}
                             </div>
-                          </button>
+                          </motion.button>
                         ))}
                       </div>
                     ) : (
@@ -384,16 +404,17 @@ export default function DailyDrivePage() {
                           rows="4"
                           disabled={isAnswered}
                         />
-                        <button
+                        <motion.button
                           onClick={() => {
                             const text = document.getElementById('hr-input')?.value || '';
                             handleTextAnswer(text);
                           }}
                           disabled={isAnswered}
-                          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:opacity-50"
+                          className="w-full bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:opacity-50"
+                          whileHover={!isAnswered ? { scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } } : undefined}
                         >
                           Submit
-                        </button>
+                        </motion.button>
                         {isAnswered && (
                           <div className="p-4 bg-green-900/20 border border-green-800 rounded-lg">
                             <p className="text-green-300 text-sm font-semibold">✓ Tip: {questions[currentQuestionIndex].tip}</p>
@@ -408,7 +429,7 @@ export default function DailyDrivePage() {
                         <p className="text-green-300 text-sm font-semibold">💡 {questions[currentQuestionIndex].tip}</p>
                       </div>
                     )}
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </div>
@@ -418,7 +439,7 @@ export default function DailyDrivePage() {
             <div className="flex items-center justify-center min-h-[calc(100vh-80px)] p-6">
               <div className="max-w-2xl w-full">
                 {/* Result Header */}
-                <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] text-center mb-8">
+                <motion.div className="bg-[#111111] rounded-xl p-8 border border-[#222222] text-center mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
                   <p className="text-4xl font-bold text-slate-100 mb-4">{getScoreMessage()}</p>
                   <div className="flex justify-around mb-6">
                     <div>
@@ -434,7 +455,7 @@ export default function DailyDrivePage() {
                       <p className="text-slate-400">time taken</p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Streak Update */}
                 {!isCompletedToday && (
@@ -445,7 +466,7 @@ export default function DailyDrivePage() {
                 )}
 
                 {/* Question Breakdown */}
-                <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
+                <motion.div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
                   <h3 className="text-xl font-bold text-slate-100 mb-4">Question Breakdown</h3>
                   <div className="space-y-3">
                     {questions.map((q, idx) => (
@@ -474,40 +495,42 @@ export default function DailyDrivePage() {
                       </div>
                     ))}
                   </div>
-                </div>
+                </motion.div>
 
                 {/* XP Section */}
-                <div className="bg-[#111111] rounded-xl p-6 border border-[#222222] mb-8 text-center">
+                <motion.div className="bg-[#111111] rounded-xl p-6 border border-[#222222] mb-8 text-center" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
                   <p className="text-2xl font-bold text-blue-400 mb-2">🎯 You earned {score * 10} XP today!</p>
                   <div className="w-full h-2 bg-[#1A1A1A] rounded-full overflow-hidden mb-3">
                     <div className="h-full bg-blue-600" style={{ width: '45%' }} />
                   </div>
                   <p className="text-slate-300 font-semibold">Level 3 — Placement Warrior</p>
-                </div>
+                </motion.div>
 
                 {/* Action Buttons */}
                 <div className="grid grid-cols-3 gap-4">
-                  <button
+                  <motion.button
                     onClick={() => navigate('/dashboard')}
-                    className="bg-[#1A1A1A] hover:bg-slate-600 text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
+                    className="bg-[#1A1A1A] hover:bg-slate-600 hover:shadow-lg hover:shadow-blue-500/20 text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
+                    whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                   >
                     Back to Dashboard
-                  </button>
-                  <button
+                  </motion.button>
+                  <motion.button
                     onClick={() => navigate('/progress')}
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
+                    className="bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
+                    whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                   >
                     View Progress
-                  </button>
-                  <button className="bg-[#1A1A1A] hover:bg-slate-600 text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2">
+                  </motion.button>
+                  <motion.button className="bg-[#1A1A1A] hover:bg-slate-600 hover:shadow-lg hover:shadow-blue-500/20 text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
                     <Share2 className="w-4 h-4" />
                     Share
-                  </button>
+                  </motion.button>
                 </div>
               </div>
             </div>
           )}
-        </div>
+        </motion.div>
       </main>
     </div>
   );

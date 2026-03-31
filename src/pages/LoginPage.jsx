@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock } from 'lucide-react';
+import { motion } from 'framer-motion';
 import ToggleSwitch from '../components/ToggleSwitch';
 
 export default function LoginPage() {
@@ -53,11 +54,29 @@ export default function LoginPage() {
   return (
     <>
       <ToggleSwitch />
-      <div className="min-h-screen bg-white dark:bg-black dark:bg-gradient-to-br dark:from-black dark:via-blue-950/20 dark:to-black flex items-center justify-center px-4 py-8">
-      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+      <motion.div
+        className="min-h-screen bg-white dark:bg-black dark:bg-gradient-to-br dark:from-black dark:via-blue-950/20 dark:to-black flex items-center justify-center px-4 py-8"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+      >
+      <motion.div
+        className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.2 }}
+        transition={{ duration: 0.7 }}
+      >
         
         {/* Left Section - Branding */}
-        <div className="hidden lg:flex flex-col justify-center items-start bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-600/30 dark:to-blue-700/30 dark:backdrop-blur-xl rounded-3xl p-8 lg:p-12 dark:border dark:border-blue-500/20">
+        <motion.div
+          className="hidden lg:flex flex-col justify-center items-start bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-600/30 dark:to-blue-700/30 dark:backdrop-blur-xl rounded-3xl p-8 lg:p-12 dark:border dark:border-blue-500/20 hover:shadow-lg hover:shadow-blue-500/20"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.7 }}
+          whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
+        >
           <h1 className="text-4xl lg:text-5xl font-bold text-white dark:text-[#F4F4F5] mb-4">
             PrepWay
           </h1>
@@ -72,10 +91,16 @@ export default function LoginPage() {
             <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
             <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Section - Login Form */}
-        <div className="flex flex-col justify-center">
+        <motion.div
+          className="flex flex-col justify-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.7 }}
+        >
           <div className="mb-8">
             <h1 className="text-3xl lg:hidden font-bold text-gray-900 dark:text-[#F4F4F5] mb-2">
               PrepWay
@@ -177,12 +202,13 @@ export default function LoginPage() {
             </div>
 
             {/* Login Button */}
-            <button
+            <motion.button
               type="submit"
-              className="glass-btn-primary w-full py-3 px-4 mt-6"
+              className="glass-btn-primary w-full py-3 px-4 mt-6 hover:shadow-lg hover:shadow-blue-500/20"
+              whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
             >
               Sign In
-            </button>
+            </motion.button>
           </form>
 
           {/* Divider */}
@@ -193,9 +219,10 @@ export default function LoginPage() {
           </div>
 
           {/* Google Login */}
-          <button
+          <motion.button
             onClick={handleGoogleLogin}
-            className="glass-btn-outline w-full py-3 px-4"
+            className="glass-btn-outline w-full py-3 px-4 hover:shadow-lg hover:shadow-blue-500/20"
+            whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
           >
             <svg className="w-5 h-5 inline mr-3" viewBox="0 0 24 24">
               <path
@@ -216,7 +243,7 @@ export default function LoginPage() {
               />
             </svg>
             <span>Sign in with Google</span>
-          </button>
+          </motion.button>
 
           {/* Sign Up Link */}
           <div className="text-center mt-8">
@@ -237,9 +264,9 @@ export default function LoginPage() {
               Trusted by 500+ Institutions.
             </p>
           </div>
-        </div>
-      </div>
-      </div>
+        </motion.div>
+      </motion.div>
+      </motion.div>
     </>
   );
 }

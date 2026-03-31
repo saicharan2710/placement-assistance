@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Camera, Lock, Upload, FileText, X, Mail, ArrowLeft } from 'lucide-react';
+import { motion } from 'framer-motion';
 import TopBar from '../components/dashboard/TopBar';
 import Toast from '../components/Toast';
 import Sidebar from '../components/dashboard/Sidebar';
@@ -158,7 +159,12 @@ export default function ProfilePage() {
         <TopBar userName={formData.fullName || userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
         {/* Content Area */}
-        <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-[#000000]">
+        <motion.div
+          className="flex-1 overflow-y-auto bg-gray-50 dark:bg-[#000000]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
           <div className="max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-8">
             {/* Page Header */}
             <div className="mb-8">
@@ -178,7 +184,13 @@ export default function ProfilePage() {
             </div>
 
             {/* Card 1: Profile Header */}
-            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]">
+            <motion.div
+              className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+            >
               <div className="flex flex-col items-center">
                 {/* Profile Photo */}
                 <div className="relative mb-6">
@@ -189,7 +201,7 @@ export default function ProfilePage() {
                       <span className="text-5xl font-bold text-white">{getInitials(formData.fullName || userName)}</span>
                     )}
                   </div>
-                  <label className="absolute bottom-0 right-0 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full cursor-pointer transition-colors shadow-lg">
+                  <label className="absolute bottom-0 right-0 bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white p-3 rounded-full cursor-pointer transition-colors shadow-lg">
                     <Camera className="w-5 h-5" />
                     <input
                       type="file"
@@ -218,10 +230,16 @@ export default function ProfilePage() {
                   )}
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Card 2: Academic Information */}
-            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]">
+            <motion.div
+              className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+            >
               <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">
                 Academic Profile
               </h2>
@@ -325,10 +343,16 @@ export default function ProfilePage() {
                   />
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Card 3: Resume Upload */}
-            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]">
+            <motion.div
+              className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+            >
               <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">
                 Your Resume
               </h2>
@@ -342,13 +366,14 @@ export default function ProfilePage() {
                   <p className="text-sm text-gray-600 dark:text-slate-400 mb-4">
                     PDF format, max 5MB
                   </p>
-                  <button
+                  <motion.button
                     onClick={() => resumeInputRef.current?.click()}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold rounded-lg transition-colors"
+                    whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                   >
                     <Upload className="w-4 h-4" />
                     Upload Resume
-                  </button>
+                  </motion.button>
                   <input
                     ref={resumeInputRef}
                     type="file"
@@ -371,21 +396,23 @@ export default function ProfilePage() {
                     </div>
                   </div>
                   <div className="flex flex-col sm:flex-row gap-3">
-                    <button className="px-4 py-2 bg-white dark:bg-[#1A1A1A] border-2 border-blue-600 text-blue-600 dark:text-blue-400 font-semibold rounded-lg hover:bg-blue-50 dark:hover:bg-slate-600 transition-colors">
+                    <motion.button className="px-4 py-2 bg-white dark:bg-[#1A1A1A] border-2 border-blue-600 text-blue-600 dark:text-blue-400 font-semibold rounded-lg hover:bg-blue-50 dark:hover:bg-slate-600 hover:shadow-lg hover:shadow-blue-500/20 transition-colors" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
                       View Resume
-                    </button>
-                    <button
+                    </motion.button>
+                    <motion.button
                       onClick={() => resumeInputRef.current?.click()}
-                      className="px-4 py-2 bg-white dark:bg-[#1A1A1A] border-2 border-blue-600 text-blue-600 dark:text-blue-400 font-semibold rounded-lg hover:bg-blue-50 dark:hover:bg-slate-600 transition-colors"
+                      className="px-4 py-2 bg-white dark:bg-[#1A1A1A] border-2 border-blue-600 text-blue-600 dark:text-blue-400 font-semibold rounded-lg hover:bg-blue-50 dark:hover:bg-slate-600 hover:shadow-lg hover:shadow-blue-500/20 transition-colors"
+                      whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                     >
                       Replace
-                    </button>
-                    <button
+                    </motion.button>
+                    <motion.button
                       onClick={handleRemoveResume}
-                      className="px-4 py-2 bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 font-semibold rounded-lg hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors"
+                      className="px-4 py-2 bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 font-semibold rounded-lg hover:bg-red-100 dark:hover:bg-red-900/30 hover:shadow-lg hover:shadow-blue-500/20 transition-colors"
+                      whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                     >
                       Remove
-                    </button>
+                    </motion.button>
                   </div>
                 </div>
               )}
@@ -397,10 +424,16 @@ export default function ProfilePage() {
                   tailored to your experience.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Card 4: Skills */}
-            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]">
+            <motion.div
+              className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+            >
               <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">
                 Your Skills
               </h2>
@@ -441,19 +474,20 @@ export default function ProfilePage() {
                   to your expertise.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Save Button */}
             <div className="mb-8">
-              <button
+              <motion.button
                 onClick={handleSaveProfile}
-                className="w-full py-4 px-6 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-lg transition-colors shadow-md hover:shadow-lg"
+                className="w-full py-4 px-6 bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-bold text-lg rounded-lg transition-colors shadow-md"
+                whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
               >
                 Save Profile
-              </button>
+              </motion.button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </main>
 
       {/* Toast Notification */}

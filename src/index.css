@@ -2,6 +2,12 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
 * {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-duration: 300ms;
@@ -21,6 +27,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
+  overflow-y: auto;
+}
+
+/* Ensure nested flex scroll areas can shrink and remain scrollable across routes. */
+main.flex-1.flex.flex-col {
+  min-height: 0;
+}
+
+main.flex-1.flex.flex-col > .flex-1.overflow-y-auto {
+  min-height: 0;
 }
 
 /* Theme roots */

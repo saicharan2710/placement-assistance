@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Send } from 'lucide-react';
+import { motion } from 'framer-motion';
 import Sidebar from '../components/dashboard/Sidebar';
 import TopBar from '../components/dashboard/TopBar';
 import { saveSession } from '../utils/progressTracker';
@@ -223,7 +224,12 @@ export default function GDPracticePage() {
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
-        <div className="flex-1 overflow-y-auto">
+        <motion.div
+          className="flex-1 overflow-y-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
           <div className="max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-8">
             {/* STAGE 0: GD Lobby */}
             {stage === 0 && (
@@ -240,9 +246,9 @@ export default function GDPracticePage() {
                   <p className="text-sm lg:text-base text-gray-600 dark:text-slate-400">Practice discussion skills with AI participants</p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+                <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
                   {/* Topic Card */}
-                  <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222]">
+                  <motion.div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222] hover:shadow-lg hover:shadow-blue-500/20" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
                     <p className="text-xs lg:text-sm font-semibold text-gray-600 dark:text-slate-400 mb-3">Today's Topic</p>
                     <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4">{selectedTopic}</h2>
                     <div className="flex gap-3 mb-6">
@@ -253,16 +259,17 @@ export default function GDPracticePage() {
                         Medium
                       </span>
                     </div>
-                    <button
+                    <motion.button
                       onClick={handleChangeTopic}
-                      className="w-full bg-gray-200 dark:bg-[#1A1A1A] hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-900 dark:text-slate-100 font-semibold py-2 px-4 rounded-lg transition-colors text-sm"
+                      className="w-full bg-gray-200 dark:bg-[#1A1A1A] hover:bg-gray-300 dark:hover:bg-slate-600 hover:shadow-lg hover:shadow-blue-500/20 text-gray-900 dark:text-slate-100 font-semibold py-2 px-4 rounded-lg transition-colors text-sm"
+                      whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                     >
                       Change Topic
-                    </button>
-                  </div>
+                    </motion.button>
+                  </motion.div>
 
                   {/* Rules Card */}
-                  <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222]">
+                  <motion.div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222] hover:shadow-lg hover:shadow-blue-500/20" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
                     <h3 className="text-base lg:text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">How It Works</h3>
                     <div className="space-y-4">
                       <RuleRow icon="🕐" text="Discussion lasts 10 minutes" />
@@ -270,11 +277,11 @@ export default function GDPracticePage() {
                       <RuleRow icon="👥" text="3 AI participants will also respond" />
                       <RuleRow icon="📊" text="You'll get feedback on grammar and communication" />
                     </div>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
 
                 {/* Participants Panel */}
-                <div className="mt-8 bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222]">
+                <motion.div className="mt-8 bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222]" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
                   <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">You will discuss with:</h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                     {participants.map((p) => (
@@ -287,13 +294,14 @@ export default function GDPracticePage() {
                       </div>
                     ))}
                   </div>
-                  <button
+                  <motion.button
                     onClick={handleJoinDiscussion}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg transition-colors text-lg shadow-lg"
+                    className="w-full bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-bold py-4 px-6 rounded-lg transition-colors text-lg shadow-lg"
+                    whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                   >
                     Join Discussion
-                  </button>
-                </div>
+                  </motion.button>
+                </motion.div>
               </>
             )}
 
@@ -416,14 +424,15 @@ export default function GDPracticePage() {
                         <span className="text-xs text-gray-600 dark:text-slate-400">
                           {userMessage.length} / 300
                         </span>
-                        <button
+                        <motion.button
                           onClick={handleSendMessage}
                           disabled={!userMessage.trim()}
-                          className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-semibold py-2 px-6 rounded-lg transition-colors flex items-center gap-2"
+                          className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-2 px-6 rounded-lg transition-colors flex items-center gap-2"
+                          whileHover={userMessage.trim() ? { scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } } : undefined}
                         >
                           <Send className="w-4 h-4" />
                           Send
-                        </button>
+                        </motion.button>
                       </div>
                     </div>
                   </div>
@@ -434,7 +443,7 @@ export default function GDPracticePage() {
             {/* STAGE 2: End Overlay */}
             {stage === 2 && showEndOverlay && (
               <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-                <div className="bg-white dark:bg-[#111111] rounded-xl p-8 text-center max-w-md">
+                <motion.div className="bg-white dark:bg-[#111111] rounded-xl p-8 text-center max-w-md" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-slate-100 mb-6">
                     Discussion Complete! 🎉
                   </h2>
@@ -450,13 +459,14 @@ export default function GDPracticePage() {
                     </p>
                   </div>
                   <p className="text-sm text-gray-600 dark:text-slate-400 mb-6">Generating your feedback...</p>
-                  <button
+                  <motion.button
                     onClick={handleEndDiscussion}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+                    className="w-full bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+                    whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                   >
                     View Detailed Feedback
-                  </button>
-                </div>
+                  </motion.button>
+                </motion.div>
               </div>
             )}
 
@@ -474,13 +484,13 @@ export default function GDPracticePage() {
                 </div>
 
                 {/* Performance Badge */}
-                <div className="mb-8 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-8 text-white text-center">
+                <motion.div className="mb-8 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-8 text-white text-center" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
                   <div className="text-5xl mb-3">{getPerformanceBadge().emoji}</div>
                   <h2 className="text-2xl font-bold">{getPerformanceBadge().text}</h2>
-                </div>
+                </motion.div>
 
                 {/* Score Overview */}
-                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
+                <motion.div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
                   <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-8">Score Overview</h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     <ScoreCircle label="Participation" score={feedback.participation} />
@@ -488,10 +498,10 @@ export default function GDPracticePage() {
                     <ScoreCircle label="Communication" score={Math.round(feedback.communication)} />
                     <ScoreCircle label="Timing" score={Math.round(feedback.timing)} />
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Grammar Feedback */}
-                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
+                <motion.div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
                   <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Grammar & Language</h3>
                   <div className="space-y-4">
                     <FeedbackItem color="green" text="✓ Sentence structure was mostly correct" />
@@ -499,10 +509,10 @@ export default function GDPracticePage() {
                     <FeedbackItem color="yellow" text="⚠ Avoid starting sentences with 'And' or 'But'" />
                     <FeedbackItem color="yellow" text="⚠ Use more formal vocabulary in discussions" />
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Communication Feedback */}
-                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
+                <motion.div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
                   <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Communication Style</h3>
                   <div className="space-y-4">
                     <FeedbackItem color="green" text="✓ Made clear and structured points" />
@@ -510,10 +520,10 @@ export default function GDPracticePage() {
                     <FeedbackItem color="yellow" text="⚠ Try to elaborate more on each point" />
                     <FeedbackItem color="yellow" text="⚠ Use real world examples to support arguments" />
                   </div>
-                </div>
+                </motion.div>
 
                 {/* What to Avoid */}
-                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
+                <motion.div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
                   <h3 className="text-lg font-bold text-red-600 dark:text-red-400 mb-6">⚠️ What To Avoid in GDs</h3>
                   <div className="space-y-3">
                     <WarningItem text="Don't interrupt other speakers" />
@@ -522,10 +532,10 @@ export default function GDPracticePage() {
                     <WarningItem text="Avoid going off topic" />
                     <WarningItem text="Don't stay silent for long periods" />
                   </div>
-                </div>
+                </motion.div>
 
                 {/* What to Improve */}
-                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
+                <motion.div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
                   <h3 className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-6">💡 Focus On These Next Time</h3>
                   <div className="space-y-3">
                     <ImproveItem text="Open the discussion confidently in the first 2 minutes" />
@@ -533,7 +543,7 @@ export default function GDPracticePage() {
                     <ImproveItem text="Try to summarize the discussion at the end" />
                     <ImproveItem text="Reference other participants' points to show active listening" />
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Your Messages Review */}
                 <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
@@ -553,30 +563,33 @@ export default function GDPracticePage() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-4 mb-8">
-                  <button
+                <motion.div className="flex gap-4 mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
+                  <motion.button
                     onClick={() => window.location.reload()}
-                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
+                    className="flex-1 bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
+                    whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                   >
                     Practice Again
-                  </button>
-                  <button
+                  </motion.button>
+                  <motion.button
                     onClick={() => navigate('/practice')}
-                    className="flex-1 bg-gray-200 dark:bg-[#1A1A1A] hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-900 dark:text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
+                    className="flex-1 bg-gray-200 dark:bg-[#1A1A1A] hover:bg-gray-300 dark:hover:bg-slate-600 hover:shadow-lg hover:shadow-blue-500/20 text-gray-900 dark:text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
+                    whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                   >
                     Back to Practice
-                  </button>
-                  <button
+                  </motion.button>
+                  <motion.button
                     onClick={() => navigate('/practice/gd/history')}
-                    className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
+                    className="flex-1 bg-emerald-600 hover:bg-emerald-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
+                    whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                   >
                     View GD History
-                  </button>
-                </div>
+                  </motion.button>
+                </motion.div>
               </>
             )}
           </div>
-        </div>
+        </motion.div>
       </main>
     </div>
   );

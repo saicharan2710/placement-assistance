@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Check, AlertCircle, Upload, Eye, RefreshCw } from 'lucide-react';
+import { motion } from 'framer-motion';
 import TopBar from '../components/dashboard/TopBar';
 import Sidebar from '../components/dashboard/Sidebar';
 
@@ -67,7 +68,12 @@ export default function ResumeReviewPage() {
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
-        <div className="flex-1 overflow-y-auto bg-[#000000]">
+        <motion.div
+          className="flex-1 overflow-y-auto bg-[#000000]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
           <div className="max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-8">
             {/* Header */}
             <div className="mb-8">
@@ -81,18 +87,19 @@ export default function ResumeReviewPage() {
               <h1 className="text-4xl font-bold text-slate-100 mb-2">Resume Review</h1>
               <div className="flex items-center justify-between">
                 <p className="text-slate-400">Get AI feedback on your resume</p>
-                <button
+                <motion.button
                   onClick={() => setHasResume(!hasResume)}
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors flex items-center gap-2"
+                  className="bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-2 px-6 rounded-lg transition-colors flex items-center gap-2"
+                  whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                 >
                   <Upload className="w-4 h-4" />
                   Upload New Resume
-                </button>
+                </motion.button>
               </div>
             </div>
 
             {/* Current Resume Status */}
-            <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
+            <motion.div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
               <h2 className="text-2xl font-bold text-slate-100 mb-6">Current Resume Status</h2>
               {hasResume ? (
                 <div className="space-y-6">
@@ -109,14 +116,14 @@ export default function ResumeReviewPage() {
                     </div>
                   </div>
                   <div className="flex gap-4">
-                    <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2">
+                    <motion.button className="flex-1 bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
                       <Eye className="w-4 h-4" />
                       View Resume
-                    </button>
-                    <button className="flex-1 bg-[#1A1A1A] hover:bg-slate-600 text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2">
+                    </motion.button>
+                    <motion.button className="flex-1 bg-[#1A1A1A] hover:bg-slate-600 hover:shadow-lg hover:shadow-blue-500/20 text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
                       <RefreshCw className="w-4 h-4" />
                       Replace Resume
-                    </button>
+                    </motion.button>
                   </div>
                 </div>
               ) : (
@@ -126,15 +133,15 @@ export default function ResumeReviewPage() {
                   </div>
                   <p className="text-slate-300 font-semibold mb-2">Upload your resume to get started</p>
                   <p className="text-slate-400 text-sm mb-6">Supported format: PDF</p>
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+                  <motion.button className="bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-3 px-6 rounded-lg transition-colors" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
                     Upload PDF
-                  </button>
+                  </motion.button>
                 </div>
               )}
-            </div>
+            </motion.div>
 
             {/* ATS Score */}
-            <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
+            <motion.div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
               <h2 className="text-2xl font-bold text-slate-100 mb-8">ATS Compatibility Score</h2>
               <div className="flex flex-col items-center mb-8">
                 <div className="relative w-40 h-40 mb-4">
@@ -177,10 +184,10 @@ export default function ResumeReviewPage() {
                   <p className="text-2xl font-bold text-green-400">75%</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Resume Strengths */}
-            <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
+            <motion.div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
                   <Check className="w-5 h-5 text-white" />
@@ -195,10 +202,10 @@ export default function ResumeReviewPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Issues Found */}
-            <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
+            <motion.div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-8 bg-yellow-600 rounded-full flex items-center justify-center">
                   <AlertCircle className="w-5 h-5 text-white" />
@@ -216,10 +223,10 @@ export default function ResumeReviewPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Keyword Analysis */}
-            <div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8">
+            <motion.div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
               <h2 className="text-2xl font-bold text-slate-100 mb-6">Keyword Analysis for CSE Roles</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
                 {/* Keywords Found */}
@@ -261,10 +268,10 @@ export default function ResumeReviewPage() {
               <p className="text-slate-400 text-sm">
                 💡 Add missing keywords naturally in your projects and skills section
               </p>
-            </div>
+            </motion.div>
 
             {/* AI Recommendations */}
-            <div className="bg-blue-900/20 border border-blue-800 rounded-xl p-8 mb-8">
+            <motion.div className="bg-blue-900/20 border border-blue-800 rounded-xl p-8 mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
               <h2 className="text-2xl font-bold text-slate-100 mb-6">AI Recommendations</h2>
               <div className="space-y-4">
                 {recommendations.map((rec, idx) => (
@@ -274,11 +281,11 @@ export default function ResumeReviewPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             <div className="h-12"></div>
           </div>
-        </div>
+        </motion.div>
       </main>
     </div>
   );

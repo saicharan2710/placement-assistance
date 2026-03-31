@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BriefcaseBusiness, X } from 'lucide-react';
+import { motion } from 'framer-motion';
 import HiringLayout from '../../components/hiring/HiringLayout';
 
 const companies = [
@@ -39,11 +40,11 @@ export default function CompaniesPage() {
 
   return (
     <HiringLayout>
-      <div className="mb-6">
+      <motion.div className="mb-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, ease: 'easeOut' }}>
         <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-[#F4F4F5]">Companies</h1>
-      </div>
+      </motion.div>
 
-      <div className="flex flex-col lg:flex-row gap-4 lg:items-center mb-6">
+      <motion.div className="flex flex-col lg:flex-row gap-4 lg:items-center mb-6" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
         <input
           type="text"
           value={search}
@@ -53,25 +54,27 @@ export default function CompaniesPage() {
         />
         <div className="flex flex-wrap gap-2">
           {filters.map((item) => (
-            <button
+            <motion.button
               key={item}
               onClick={() => setFilter(item)}
               className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 filter === item ? 'glass-pill-blue' : 'glass-pill-grey'
               }`}
+              whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
             >
               {item}
-            </button>
+            </motion.button>
           ))}
         </div>
-      </div>
+      </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+      <motion.div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
         {filteredCompanies.map((company) => (
-          <button
+          <motion.button
             key={company.id}
             onClick={() => setSelectedCompany(company)}
-            className="glass-card p-5 text-left"
+            className="glass-card p-5 text-left hover:shadow-lg hover:shadow-blue-500/20"
+            whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
           >
             <div className="flex items-start justify-between mb-4">
               <div className={`w-12 h-12 rounded-xl ${company.color} text-white font-bold text-lg flex items-center justify-center`}>
@@ -82,18 +85,19 @@ export default function CompaniesPage() {
             <h3 className="text-lg font-bold text-gray-900 dark:text-[#F4F4F5] mb-1">{company.name}</h3>
             <p className="text-sm text-blue-600 dark:text-[#60A5FA] mb-1">{company.roles} roles open</p>
             <p className="text-sm text-green-600 dark:text-[#4ADE80] mb-4">{company.ctc}</p>
-            <button
+            <motion.button
               className="glass-button-outline px-3 py-2 text-sm"
               onClick={(e) => {
                 e.stopPropagation();
                 navigate(`/hiring/jobs?company=${encodeURIComponent(company.short)}`);
               }}
+              whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
             >
               View Jobs
-            </button>
-          </button>
+            </motion.button>
+          </motion.button>
         ))}
-      </div>
+      </motion.div>
 
       {selectedCompany && (
         <>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, User, GraduationCap, BookOpen, Users } from 'lucide-react';
+import { motion } from 'framer-motion';
 import ToggleSwitch from '../components/ToggleSwitch';
 
 export default function SignupPage() {
@@ -88,11 +89,28 @@ export default function SignupPage() {
   return (
     <>
       <ToggleSwitch />
-      <div className="min-h-screen bg-white dark:bg-black dark:bg-gradient-to-br dark:from-black dark:via-blue-950/20 dark:to-black flex items-center justify-center px-4 py-8">
-      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+      <motion.div
+        className="min-h-screen bg-white dark:bg-black dark:bg-gradient-to-br dark:from-black dark:via-blue-950/20 dark:to-black flex items-center justify-center px-4 py-8"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+      >
+      <motion.div
+        className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.2 }}
+        transition={{ duration: 0.7 }}
+      >
         
         {/* Left Section - Benefits */}
-        <div className="hidden lg:flex flex-col justify-center items-start">
+        <motion.div
+          className="hidden lg:flex flex-col justify-center items-start"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.7 }}
+        >
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-[#F4F4F5] mb-6">
             Elevate your <span className="text-blue-600 dark:text-[#60A5FA]">career path.</span>
           </h1>
@@ -145,10 +163,16 @@ export default function SignupPage() {
               Trusted by the next generation of engineers and leaders.
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Section - Signup Form */}
-        <div className="flex flex-col justify-center">
+        <motion.div
+          className="flex flex-col justify-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.7 }}
+        >
           {/* Mobile Logo */}
           <div className="lg:hidden text-center mb-8">
             <div className="flex items-center justify-center gap-2 mb-6">
@@ -315,12 +339,13 @@ export default function SignupPage() {
             </div>
 
             {/* Create Account Button */}
-            <button
+            <motion.button
               type="submit"
-              className="glass-btn-primary w-full py-3 px-4 mt-6"
+              className="glass-btn-primary w-full py-3 px-4 mt-6 hover:shadow-lg hover:shadow-blue-500/20"
+              whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
             >
               Create Account
-            </button>
+            </motion.button>
           </form>
 
           {/* Divider */}
@@ -331,9 +356,10 @@ export default function SignupPage() {
           </div>
 
           {/* Google Signup */}
-          <button
+          <motion.button
             onClick={handleGoogleSignup}
-            className="glass-btn-outline w-full py-3 px-4"
+            className="glass-btn-outline w-full py-3 px-4 hover:shadow-lg hover:shadow-blue-500/20"
+            whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
           >
             <svg className="w-5 h-5 inline mr-3" viewBox="0 0 24 24">
               <path
@@ -354,7 +380,7 @@ export default function SignupPage() {
               />
             </svg>
             <span>Continue with Google</span>
-          </button>
+          </motion.button>
 
           {/* Login Link */}
           <div className="text-center mt-8">
@@ -372,9 +398,9 @@ export default function SignupPage() {
               © 2024 PrepWay Learning Systems. All rights reserved.
             </p>
           </div>
-        </div>
-      </div>
-      </div>
+        </motion.div>
+      </motion.div>
+      </motion.div>
     </>
   );
 }

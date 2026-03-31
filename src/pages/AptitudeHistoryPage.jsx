@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, XCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 import TopBar from '../components/dashboard/TopBar';
 import Sidebar from '../components/dashboard/Sidebar';
 import { getSessionHistory, getHighScore, getAverageScore, getTotalSessions } from '../utils/progressTracker';
@@ -43,87 +44,23 @@ export default function AptitudeHistoryPage() {
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-white dark:bg-[#000000]">
-      {/* Desktop Sidebar */}
-      <aside className="hidden md:flex flex-col w-64 bg-white dark:bg-[#111111] border-r border-gray-200 dark:border-[#222222] p-6">
-        <div className="flex items-center gap-2 mb-8">
-          <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold">P</span>
-          </div>
-          <div>
-            <h1 className="text-lg font-bold text-gray-900 dark:text-slate-100">Placement Prep</h1>
-            <p className="text-xs text-gray-600 dark:text-slate-400">ACADEMIC GALLERY</p>
-          </div>
-        </div>
-
-        <nav className="space-y-2">
-          <NavItem
-            icon={Home}
-            label="Home"
-            isActive={activeTab === 'home'}
-            onClick={() => {
-              setActiveTab('home');
-              navigate('/dashboard');
-            }}
-          />
-          <NavItem
-            icon={BookOpen}
-            label="Practice"
-            isActive={activeTab === 'practice'}
-            onClick={() => {
-              setActiveTab('practice');
-              navigate('/practice');
-            }}
-          />
-          <NavItem
-            icon={User}
-            label="My Profile"
-            isActive={activeTab === 'profile'}
-            onClick={() => {
-              setActiveTab('profile');
-              navigate('/profile');
-            }}
-          />
-          <NavItem
-            icon={TrendingUp}
-            label="Progress"
-            isActive={activeTab === 'progress'}
-            onClick={() => {
-              setActiveTab('progress');
-              navigate('/progress');
-            }}
-          />
-          <NavItem
-            icon={Settings}
-            label="Settings"
-            isActive={activeTab === 'settings'}
-            onClick={() => {
-              setActiveTab('settings');
-              navigate('/settings');
-            }}
-          />
-        </nav>
-
-        <div className="mt-auto space-y-3">
-          <button className="w-full bg-white dark:bg-[#1A1A1A] border-2 border-blue-600 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-slate-600 font-semibold py-3 px-4 rounded-lg transition-colors">
-            Start Mock Test
-          </button>
-          <button
-            onClick={() => {
-              localStorage.removeItem('prepway_user');
-              navigate('/');
-            }}
-            className="w-full bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30 text-red-600 dark:text-red-400 font-semibold py-3 px-4 rounded-lg transition-colors border border-red-200 dark:border-red-800"
-          >
-            Logout
-          </button>
-        </div>
-      </aside>
+      <Sidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
-        <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-[#000000]">
+        <motion.div
+          className="flex-1 overflow-y-auto bg-gray-50 dark:bg-[#000000]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
           <div className="max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-8">
             {/* Back Button */}
             <button
@@ -146,47 +83,70 @@ export default function AptitudeHistoryPage() {
 
             {/* Stats Cards */}
             {sessions.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 border border-gray-200 dark:border-[#222222] text-center">
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.7 }}
+              >
+                <motion.div
+                  className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 border border-gray-200 dark:border-[#222222] text-center hover:shadow-lg hover:shadow-blue-500/20"
+                  whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
+                >
                   <p className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
                     {getHighScore('aptitude')}%
                   </p>
                   <p className="text-sm text-gray-600 dark:text-slate-400">High Score</p>
-                </div>
-                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 border border-gray-200 dark:border-[#222222] text-center">
+                </motion.div>
+                <motion.div
+                  className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 border border-gray-200 dark:border-[#222222] text-center hover:shadow-lg hover:shadow-blue-500/20"
+                  whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
+                >
                   <p className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
                     {getAverageScore('aptitude')}%
                   </p>
                   <p className="text-sm text-gray-600 dark:text-slate-400">Average Score</p>
-                </div>
-                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 border border-gray-200 dark:border-[#222222] text-center">
+                </motion.div>
+                <motion.div
+                  className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 border border-gray-200 dark:border-[#222222] text-center hover:shadow-lg hover:shadow-blue-500/20"
+                  whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
+                >
                   <p className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
                     {getTotalSessions('aptitude')}
                   </p>
                   <p className="text-sm text-gray-600 dark:text-slate-400">Total Sessions</p>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             )}
 
             {/* Session History */}
-            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm border border-gray-200 dark:border-[#222222] overflow-hidden">
+            <motion.div
+              className="bg-white dark:bg-[#111111] rounded-xl shadow-sm border border-gray-200 dark:border-[#222222] overflow-hidden"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+            >
               {sessions.length === 0 ? (
                 <div className="p-12 text-center">
                   <p className="text-lg text-gray-600 dark:text-slate-400 mb-4">
                     📋 No sessions yet — start your first aptitude test!
                   </p>
-                  <button
+                  <motion.button
                     onClick={() => navigate('/practice/aptitude')}
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
+                    className="bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
+                    whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                   >
                     Start Practice
-                  </button>
+                  </motion.button>
                 </div>
               ) : (
                 sessions.map((session) => (
                   <div key={session.id} className="border-b border-gray-200 dark:border-[#222222] last:border-0">
-                    <div
-                      className="p-6 cursor-pointer hover:bg-gray-50 dark:hover:bg-[rgba(26,26,26,0.5)] transition-colors"
+                    <motion.div
+                      className="p-6 cursor-pointer hover:bg-gray-50 dark:hover:bg-[rgba(26,26,26,0.5)] hover:shadow-lg hover:shadow-blue-500/20 transition-colors"
+                      whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                       onClick={() =>
                         setExpandedSessionId(expandedSessionId === session.id ? null : session.id)
                       }
@@ -257,15 +217,15 @@ export default function AptitudeHistoryPage() {
                           </div>
                         </div>
                       )}
-                    </div>
+                    </motion.div>
                   </div>
                 ))
               )}
-            </div>
+            </motion.div>
 
             <div className="h-12 md:h-0"></div>
           </div>
-        </div>
+        </motion.div>
       </main>
     </div>
   );

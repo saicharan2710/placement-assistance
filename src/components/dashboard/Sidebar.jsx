@@ -29,7 +29,7 @@ export default function Sidebar({ isOpen, onClose, activeTab, setActiveTab }) {
 
       {/* Sidebar */}
       <aside
-        className={`glass-sidebar fixed lg:static top-0 left-0 min-h-screen w-64 p-6 z-50 transition-transform duration-300 ease-in-out flex flex-col ${
+        className={`glass-sidebar fixed lg:static top-0 left-0 h-screen lg:h-auto lg:min-h-screen lg:self-stretch w-64 p-6 z-50 transition-transform duration-300 ease-in-out flex flex-col overflow-y-auto lg:overflow-visible ${
           isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         }`}
       >
@@ -53,7 +53,7 @@ export default function Sidebar({ isOpen, onClose, activeTab, setActiveTab }) {
         </div>
 
         {/* Navigation */}
-        <nav className="space-y-2 flex-1">
+        <nav className="space-y-2 flex-1 min-h-0">
           <NavItem
             icon={Home}
             label="Home"
@@ -100,17 +100,17 @@ export default function Sidebar({ isOpen, onClose, activeTab, setActiveTab }) {
         </nav>
 
         {/* CTA Buttons */}
-        <div className="mt-auto space-y-3">
+        <div className="mt-auto space-y-3 pt-4">
           <button
             onClick={() => handleNavClick('daily-drive', '/daily-drive')}
-            className="w-full glass-button-primary text-white font-semibold py-3 px-4 flex items-center justify-center gap-2"
+            className="w-full glass-button-primary text-white font-semibold py-3 px-4 flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-blue-500/20"
           >
             <Zap className="w-5 h-5" />
             Daily Drive
           </button>
           <button
             onClick={handleLogout}
-            className="w-full glass-button-outline text-red-600 dark:text-[#EF4444] font-semibold py-3 px-4 border border-red-200 dark:border-[#3F1515]"
+            className="w-full glass-button-outline text-red-600 dark:text-[#EF4444] font-semibold py-3 px-4 border border-red-200 dark:border-[#3F1515] hover:shadow-lg hover:shadow-blue-500/20"
           >
             Logout
           </button>

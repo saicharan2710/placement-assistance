@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { BriefcaseBusiness, X } from 'lucide-react';
+import { motion } from 'framer-motion';
 import HiringLayout from '../../components/hiring/HiringLayout';
 
 const STORAGE_KEY = 'prepway_applications';
@@ -97,11 +98,11 @@ export default function JobsPage() {
 
   return (
     <HiringLayout>
-      <div className="mb-6">
+      <motion.div className="mb-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, ease: 'easeOut' }}>
         <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-[#F4F4F5]">Jobs</h1>
-      </div>
+      </motion.div>
 
-      <div className="space-y-3 mb-4">
+      <motion.div className="space-y-3 mb-4" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
         <input
           type="text"
           value={query}
@@ -112,33 +113,34 @@ export default function JobsPage() {
 
         <div className="flex flex-wrap gap-2">
           {jobTabs.map((t) => (
-            <button key={t} onClick={() => setTab(t)} className={tab === t ? 'glass-pill-blue' : 'glass-pill-grey'}>
+            <motion.button key={t} onClick={() => setTab(t)} className={tab === t ? 'glass-pill-blue' : 'glass-pill-grey'} whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
               {t}
-            </button>
+            </motion.button>
           ))}
         </div>
 
         <div className="flex flex-wrap gap-2">
           {typeTabs.map((t) => (
-            <button key={t} onClick={() => setTypeTab(t)} className={typeTab === t ? 'glass-pill-blue' : 'glass-pill-grey'}>
+            <motion.button key={t} onClick={() => setTypeTab(t)} className={typeTab === t ? 'glass-pill-blue' : 'glass-pill-grey'} whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
               {t}
-            </button>
+            </motion.button>
           ))}
         </div>
 
         <p className="text-sm text-gray-600 dark:text-[#A1A1AA]">{filteredJobs.length} Jobs</p>
-      </div>
+      </motion.div>
 
-      <div className="glass-card overflow-hidden">
+      <motion.div className="glass-card overflow-hidden" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
         <div className="hidden lg:grid grid-cols-7 gap-3 px-4 py-3 text-xs font-semibold text-gray-600 dark:text-[#A1A1AA] border-b border-white/10">
           <span>Company</span><span>Role</span><span>Apply By</span><span>Type</span><span>CTC</span><span>Status</span><span>Action</span>
         </div>
         <div className="divide-y divide-white/10">
           {filteredJobs.map((job) => (
-            <button
+            <motion.button
               key={job.id}
               className="w-full text-left lg:grid lg:grid-cols-7 gap-3 px-4 py-4 glass-card hover:bg-white/5"
               onClick={() => setSelectedJob(job)}
+              whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
             >
               <div className="flex items-center gap-2 font-semibold text-gray-900 dark:text-[#F4F4F5]">
                 <span className="w-7 h-7 rounded-md bg-blue-600 text-white text-xs flex items-center justify-center">{job.company[0]}</span>
@@ -151,25 +153,26 @@ export default function JobsPage() {
               <div><span className={statusPill[job.status] || 'glass-pill-grey'}>{job.status}</span></div>
               <div>
                 {job.status === 'Not Applied' ? (
-                  <button
+                  <motion.button
                     className="glass-button-primary px-3 py-1.5 text-sm"
                     onClick={(e) => {
                       e.stopPropagation();
                       setConfirmJob(job);
                     }}
+                    whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                   >
                     Apply Now
-                  </button>
+                  </motion.button>
                 ) : (
                   <button className="glass-button-outline px-3 py-1.5 text-sm opacity-70" disabled>
                     {job.status === 'Applied' ? 'Applied ✓' : job.status}
                   </button>
                 )}
               </div>
-            </button>
+            </motion.button>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {confirmJob && (
         <>

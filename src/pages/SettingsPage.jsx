@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Moon, Sun, Globe, Lock, ChevronRight, Trash2, X, ArrowLeft } from 'lucide-react';
+import { motion } from 'framer-motion';
 import TopBar from '../components/dashboard/TopBar';
 import Sidebar from '../components/dashboard/Sidebar';
 import { useTheme } from '../context/ThemeContext';
@@ -95,7 +96,10 @@ export default function SettingsPage() {
   };
 
   const SettingsRow = ({ icon: Icon, label, description, children }) => (
-    <div className="py-4 flex items-start justify-between border-b border-gray-200 dark:border-[#222222] last:border-0">
+    <motion.div
+      className="py-4 flex items-start justify-between border-b border-gray-200 dark:border-[#222222] last:border-0 hover:shadow-lg hover:shadow-blue-500/20"
+      whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
+    >
       <div className="flex items-start gap-3 flex-1">
         {Icon && <Icon className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" />}
         <div>
@@ -104,7 +108,7 @@ export default function SettingsPage() {
         </div>
       </div>
       {children}
-    </div>
+    </motion.div>
   );
 
   const Toggle = ({ checked, onChange }) => (
@@ -130,7 +134,12 @@ export default function SettingsPage() {
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
-        <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-[#000000]">
+        <motion.div
+          className="flex-1 overflow-y-auto bg-gray-50 dark:bg-[#000000]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
           <div className="max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-8">
             {/* Page Header */}
             <div className="mb-8">
@@ -150,7 +159,7 @@ export default function SettingsPage() {
             </div>
 
             {/* Card 1: Appearance */}
-            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 mb-6 border border-gray-200 dark:border-[#222222]">
+            <motion.div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 mb-6 border border-gray-200 dark:border-[#222222]" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
               <h2 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Appearance</h2>
               
               <SettingsRow 
@@ -170,10 +179,10 @@ export default function SettingsPage() {
                   <option>English</option>
                 </select>
               </SettingsRow>
-            </div>
+            </motion.div>
 
             {/* Card 2: Notifications */}
-            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 mb-6 border border-gray-200 dark:border-[#222222]">
+            <motion.div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 mb-6 border border-gray-200 dark:border-[#222222]" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
               <h2 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Notifications</h2>
               
               <SettingsRow 
@@ -205,10 +214,10 @@ export default function SettingsPage() {
                   onChange={() => handleNotificationToggle('placementTips')}
                 />
               </SettingsRow>
-            </div>
+            </motion.div>
 
             {/* Card 3: Account */}
-            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 mb-6 border border-gray-200 dark:border-[#222222]">
+            <motion.div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 mb-6 border border-gray-200 dark:border-[#222222]" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
               <h2 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Account</h2>
               
               <SettingsRow 
@@ -252,15 +261,16 @@ export default function SettingsPage() {
                     className="w-full px-4 py-2 border border-gray-300 dark:border-[#2A2A2A] rounded-lg bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-slate-100 placeholder-gray-500 dark:placeholder-slate-400"
                   />
                   <div className="flex gap-3">
-                    <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
+                    <motion.button className="flex-1 bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-2 px-4 rounded-lg transition-colors" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
                       Save
-                    </button>
-                    <button 
+                    </motion.button>
+                    <motion.button 
                       onClick={() => setShowPasswordForm(false)}
-                      className="flex-1 bg-gray-200 dark:bg-[#262626] hover:bg-gray-300 dark:hover:bg-slate-500 text-gray-900 dark:text-slate-100 font-semibold py-2 px-4 rounded-lg transition-colors"
+                      className="flex-1 bg-gray-200 dark:bg-[#262626] hover:bg-gray-300 dark:hover:bg-slate-500 hover:shadow-lg hover:shadow-blue-500/20 text-gray-900 dark:text-slate-100 font-semibold py-2 px-4 rounded-lg transition-colors"
+                      whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                     >
                       Cancel
-                    </button>
+                    </motion.button>
                   </div>
                 </div>
               )}
@@ -269,10 +279,10 @@ export default function SettingsPage() {
                 label="Connected Accounts"
                 description="Not connected"
               />
-            </div>
+            </motion.div>
 
             {/* Card 4: Privacy & Data */}
-            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 mb-6 border border-gray-200 dark:border-[#222222]">
+            <motion.div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 mb-6 border border-gray-200 dark:border-[#222222]" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
               <h2 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Privacy & Data</h2>
               
               <SettingsRow 
@@ -306,10 +316,10 @@ export default function SettingsPage() {
                   Delete
                 </button>
               </SettingsRow>
-            </div>
+            </motion.div>
 
             {/* Card 5: About */}
-            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 mb-6 border border-gray-200 dark:border-[#222222]">
+            <motion.div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 mb-6 border border-gray-200 dark:border-[#222222]" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
               <h2 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">About</h2>
               
               <div className="mb-6 pb-6 border-b border-gray-200 dark:border-[#222222]">
@@ -328,17 +338,17 @@ export default function SettingsPage() {
               <SettingsRow label="Contact Support">
                 <ChevronRight className="w-5 h-5 text-gray-400" />
               </SettingsRow>
-            </div>
+            </motion.div>
 
             <div className="h-12 md:h-0"></div>
           </div>
-        </div>
+        </motion.div>
       </main>
 
       {/* Delete Account Dialog */}
       {showDeleteDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-[#111111] rounded-xl shadow-lg p-6 max-w-sm w-full border border-gray-200 dark:border-[#222222]">
+          <motion.div className="bg-white dark:bg-[#111111] rounded-xl shadow-lg p-6 max-w-sm w-full border border-gray-200 dark:border-[#222222]" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100">Delete Account</h3>
               <button 
@@ -352,21 +362,23 @@ export default function SettingsPage() {
               Are you sure? This will delete all your data permanently.
             </p>
             <div className="flex gap-3">
-              <button 
+              <motion.button 
                 onClick={() => setShowDeleteDialog(false)}
-                className="flex-1 bg-gray-200 dark:bg-[#1A1A1A] hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-900 dark:text-slate-100 font-semibold py-2 px-4 rounded-lg transition-colors"
+                className="flex-1 bg-gray-200 dark:bg-[#1A1A1A] hover:bg-gray-300 dark:hover:bg-slate-600 hover:shadow-lg hover:shadow-blue-500/20 text-gray-900 dark:text-slate-100 font-semibold py-2 px-4 rounded-lg transition-colors"
+                whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
               >
                 Cancel
-              </button>
-              <button 
+              </motion.button>
+              <motion.button 
                 onClick={handleDeleteAccount}
-                className="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
+                className="flex-1 bg-red-600 hover:bg-red-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
+                whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
               >
                 <Trash2 className="w-4 h-4" />
                 Delete
-              </button>
+              </motion.button>
             </div>
-          </div>
+          </motion.div>
         </div>
       )}
     </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Brain, Users, Mic, FileText, ArrowRight, Zap, ArrowLeft } from 'lucide-react';
+import { motion } from 'framer-motion';
 import TopBar from '../components/dashboard/TopBar';
 import Sidebar from '../components/dashboard/Sidebar';
 
@@ -72,7 +73,14 @@ export default function PracticePage() {
   }, [navigate]);
 
   const RoundCard = ({ icon: Icon, title, description, badge, badgeColor, buttonText, onClick, historyPath, hasHistory }) => (
-    <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 border border-gray-200 dark:border-[#222222] hover:shadow-md transition-shadow">
+    <motion.div
+      className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-6 border border-gray-200 dark:border-[#222222] hover:shadow-lg hover:shadow-blue-500/20 transition-shadow"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false, amount: 0.2 }}
+      transition={{ duration: 0.7 }}
+      whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
+    >
       <div className="flex items-start justify-between mb-4">
         <Icon className="w-10 h-10 text-blue-600 dark:text-blue-400" />
         <span className={`px-3 py-1 rounded-full text-xs font-semibold ${badgeColor}`}>
@@ -81,32 +89,41 @@ export default function PracticePage() {
       </div>
       <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-2">{title}</h3>
       <p className="text-sm text-gray-600 dark:text-slate-400 mb-6">{description}</p>
-      <button
+      <motion.button
         onClick={onClick}
-        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 mb-2"
+        className="w-full bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 mb-2"
+        whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
       >
         {buttonText}
         <ArrowRight className="w-4 h-4" />
-      </button>
+      </motion.button>
       {hasHistory && (
-        <button
+        <motion.button
           onClick={() => navigate(historyPath)}
-          className="w-full text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold py-2 px-4 text-sm transition-colors"
+          className="w-full text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:shadow-lg hover:shadow-blue-500/20 font-semibold py-2 px-4 text-sm transition-colors rounded-lg"
+          whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
         >
           View History
-        </button>
+        </motion.button>
       )}
-    </div>
+    </motion.div>
   );
 
   const StatCard = ({ label, value, icon: Icon }) => (
-    <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-6 border border-gray-200 dark:border-[#222222] text-center">
+    <motion.div
+      className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-6 border border-gray-200 dark:border-[#222222] text-center hover:shadow-lg hover:shadow-blue-500/20"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false, amount: 0.2 }}
+      transition={{ duration: 0.7 }}
+      whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
+    >
       <div className="flex items-center justify-center mb-3">
         {Icon ? <Icon className="w-6 h-6 text-blue-600 dark:text-blue-400" /> : null}
       </div>
       <p className="text-2xl lg:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">{value}</p>
       <p className="text-xs lg:text-sm text-gray-600 dark:text-slate-400">{label}</p>
-    </div>
+    </motion.div>
   );
 
   return (
@@ -125,7 +142,12 @@ export default function PracticePage() {
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
         {/* Content Area */}
-        <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-[#000000]">
+        <motion.div
+          className="flex-1 overflow-y-auto bg-gray-50 dark:bg-[#000000]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
           <div className="max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-8">
             {/* Page Header */}
             <div className="mb-8">
@@ -197,7 +219,13 @@ export default function PracticePage() {
             {/* Section 2: Recommended For You */}
             <div className="mb-8">
               <h2 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">Recommended Next Step</h2>
-              <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl shadow-sm p-8 text-white">
+              <motion.div
+                className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl shadow-sm p-8 text-white"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.7 }}
+              >
                 {gdStarted ? (
                   <>
                     <p className="text-xl font-bold mb-2">Keep practicing GD sessions</p>
@@ -213,14 +241,15 @@ export default function PracticePage() {
                     </p>
                   </>
                 )}
-                <button
+                <motion.button
                   onClick={() => navigate('/practice/gd')}
-                  className="bg-white hover:bg-gray-100 text-blue-600 font-semibold py-3 px-6 rounded-lg transition-colors flex items-center gap-2"
+                  className="bg-white hover:bg-gray-100 hover:shadow-lg hover:shadow-blue-500/20 text-blue-600 font-semibold py-3 px-6 rounded-lg transition-colors flex items-center gap-2"
+                  whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                 >
                   {gdStarted ? 'Continue Practice' : 'Start Now'}
                   <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
+                </motion.button>
+              </motion.div>
             </div>
 
             {/* Section 3: Quick Stats */}
@@ -235,7 +264,7 @@ export default function PracticePage() {
 
             <div className="h-6 lg:h-12"></div>
           </div>
-        </div>
+        </motion.div>
       </main>
     </div>
   );

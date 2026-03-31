@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, CloudUpload, FileText, CheckCircle, AlertCircle, XCircle, ChevronDown } from 'lucide-react';
+import { motion } from 'framer-motion';
 import Sidebar from '../components/dashboard/Sidebar';
 import TopBar from '../components/dashboard/TopBar';
 
@@ -207,7 +208,12 @@ export default function ResumeReviewPracticePage() {
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
-        <div className="flex-1 overflow-y-auto">
+        <motion.div
+          className="flex-1 overflow-y-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
           <div className="max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-8">
             {/* STAGE 0: Upload Screen */}
             {stage === 0 && (
@@ -225,7 +231,7 @@ export default function ResumeReviewPracticePage() {
                 </div>
 
                 {/* Upload Area */}
-                <div className="bg-white dark:bg-[#111111] rounded-xl border-2 border-dashed border-gray-300 dark:border-[#2A2A2A] p-8 lg:p-12 text-center mb-8" onDragOver={handleDragOver} onDrop={handleDrop}>
+                <motion.div className="bg-white dark:bg-[#111111] rounded-xl border-2 border-dashed border-gray-300 dark:border-[#2A2A2A] p-8 lg:p-12 text-center mb-8" onDragOver={handleDragOver} onDrop={handleDrop} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
                   <div className="mb-4 flex justify-center">
                     <CloudUpload className="w-12 lg:w-16 h-12 lg:h-16 text-blue-600 dark:text-blue-400" />
                   </div>
@@ -235,16 +241,17 @@ export default function ResumeReviewPracticePage() {
 
                   <label className="inline-block">
                     <input type="file" accept=".pdf" onChange={handleFileInputChange} className="hidden" />
-                    <button
+                    <motion.button
                       onClick={(e) => {
                         e.currentTarget.parentElement?.querySelector('input[type="file"]')?.click();
                       }}
-                      className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors border border-blue-600 dark:border-blue-600 cursor-pointer inline-block"
+                      className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-2 px-6 rounded-lg transition-colors border border-blue-600 dark:border-blue-600 cursor-pointer inline-block"
+                      whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                     >
                       Browse Files
-                    </button>
+                    </motion.button>
                   </label>
-                </div>
+                </motion.div>
 
                 {isAnalyzing && (
                   <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-4 lg:p-8 border border-gray-200 dark:border-[#222222]">
@@ -287,7 +294,7 @@ export default function ResumeReviewPracticePage() {
                 </div>
 
                 {/* ATS Score Card */}
-                <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6">
+                <motion.div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 border border-gray-200 dark:border-[#222222] mb-6" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
                   <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-8 text-center">ATS Compatibility Score</h3>
                   <div className="flex flex-col items-center mb-8">
                     <ScoreCircle score={72} />
@@ -305,7 +312,7 @@ export default function ResumeReviewPracticePage() {
                       <strong>ATS</strong> (Applicant Tracking System) scans resumes before a human ever reads them. A score above 80% is recommended.
                     </p>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Quick Summary */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -453,34 +460,37 @@ export default function ResumeReviewPracticePage() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-4 mb-8">
-                  <button
+                <motion.div className="flex gap-4 mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
+                  <motion.button
                     onClick={() => {
                       setStage(0);
                       setFileName('');
                       setFileSize(0);
                     }}
-                    className="flex-1 bg-gray-200 dark:bg-[#1A1A1A] hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-900 dark:text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
+                    className="flex-1 bg-gray-200 dark:bg-[#1A1A1A] hover:bg-gray-300 dark:hover:bg-slate-600 hover:shadow-lg hover:shadow-blue-500/20 text-gray-900 dark:text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
+                    whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                   >
                     Re-upload Resume
-                  </button>
-                  <button
+                  </motion.button>
+                  <motion.button
                     onClick={() => navigate('/practice')}
-                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
+                    className="flex-1 bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
+                    whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                   >
                     Back to Practice
-                  </button>
-                  <button
+                  </motion.button>
+                  <motion.button
                     onClick={() => setShowTipsModal(true)}
-                    className="flex-1 bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-300 font-semibold py-3 px-4 rounded-lg transition-colors border border-blue-300 dark:border-blue-700"
+                    className="flex-1 bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/50 hover:shadow-lg hover:shadow-blue-500/20 text-blue-700 dark:text-blue-300 font-semibold py-3 px-4 rounded-lg transition-colors border border-blue-300 dark:border-blue-700"
+                    whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                   >
                     View Resume Tips
-                  </button>
-                </div>
+                  </motion.button>
+                </motion.div>
               </>
             )}
           </div>
-        </div>
+        </motion.div>
       </main>
 
       {/* Tips Modal */}

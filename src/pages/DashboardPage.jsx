@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
 import TopBar from '../components/dashboard/TopBar';
 import Sidebar from '../components/dashboard/Sidebar';
 import ReadinessBar from '../components/dashboard/ReadinessBar';
@@ -8,12 +10,22 @@ import NextStepCard from '../components/dashboard/NextStepCard';
 import { getReadinessScore, getSessionHistory } from '../utils/progressTracker';
 import { Zap } from 'lucide-react';
 
+const DEFAULT_DAILY_DRIVE_DATA = {
+  lastCompleted: null,
+  streak: 0,
+  bestStreak: 0,
+  totalDrives: 0,
+  history: [],
+};
+
 export default function DashboardPage() {
   const navigate = useNavigate();
+  const dailyDriveRef = useRef(null);
+  const isDailyDriveInView = useInView(dailyDriveRef, { once: false, amount: 0.2 });
   const [activeTab, setActiveTab] = useState('home');
   const [userName, setUserName] = useState('User');
   const [readinessScore, setReadinessScore] = useState(42);
-  const [dailyDriveData, setDailyDriveData] = useState(null);
+  const [dailyDriveData, setDailyDriveData] = useState(DEFAULT_DAILY_DRIVE_DATA);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   
   useEffect(() => {
@@ -27,13 +39,17 @@ export default function DashboardPage() {
       const score = getReadinessScore();
       setReadinessScore(score);
 
-      const driveData = JSON.parse(localStorage.getItem('prepway_daily_drive')) || {
-        lastCompleted: null,
-        streak: 0,
-        bestStreak: 0,
-        totalDrives: 0,
-        history: [],
-      };
+      // Keep the card visible even if persisted data is absent or malformed.
+      let driveData = DEFAULT_DAILY_DRIVE_DATA;
+      try {
+        const rawDriveData = localStorage.getItem('prepway_daily_drive');
+        if (rawDriveData) {
+          const parsed = JSON.parse(rawDriveData);
+          driveData = { ...DEFAULT_DAILY_DRIVE_DATA, ...parsed };
+        }
+      } catch {
+        driveData = DEFAULT_DAILY_DRIVE_DATA;
+      }
       setDailyDriveData(driveData);
     }
   }, [navigate]);
@@ -55,17 +71,26 @@ export default function DashboardPage() {
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
         {/* Content Area */}
-        <div className="flex-1 overflow-y-auto">
+        <motion.div 
+          className="flex-1 overflow-y-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
           {/* Readiness Bar */}
           <ReadinessBar percentage={readinessScore} tierName="Silver Tier" />
 
           {/* Daily Drive Status Card */}
-          {dailyDriveData && (
-            <div className={`mx-4 lg:mx-6 my-6 p-4 lg:p-6 rounded-lg border-l-4 ${
-              dailyDriveData.lastCompleted === new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
-                ? 'bg-green-50 dark:bg-[linear-gradient(135deg,rgba(9,17,12,0.95),rgba(12,26,18,0.9))] border-l-green-500 border border-green-200 dark:border-[rgba(34,197,94,0.35)] dark:shadow-[0_8px_28px_rgba(16,185,129,0.16)]'
-                : 'bg-orange-50 dark:bg-[linear-gradient(135deg,rgba(22,12,6,0.96),rgba(38,15,8,0.9))] border-l-orange-500 border border-orange-200 dark:border-[rgba(249,115,22,0.38)] dark:shadow-[0_8px_28px_rgba(249,115,22,0.18)]'
-            }`}>
+          <motion.div
+              ref={dailyDriveRef}
+              initial={{ opacity: 0, y: 40 }}
+              animate={isDailyDriveInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+              className={`mx-4 lg:mx-6 my-6 p-4 lg:p-6 rounded-lg border-l-4 ${
+                dailyDriveData.lastCompleted === new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+                  ? 'bg-green-50 dark:bg-[linear-gradient(135deg,rgba(9,17,12,0.95),rgba(12,26,18,0.9))] border-l-green-500 border border-green-200 dark:border-[rgba(34,197,94,0.35)] dark:shadow-[0_8px_28px_rgba(16,185,129,0.16)]'
+                  : 'bg-orange-50 dark:bg-[linear-gradient(135deg,rgba(22,12,6,0.96),rgba(38,15,8,0.9))] border-l-orange-500 border border-orange-200 dark:border-[rgba(249,115,22,0.38)] dark:shadow-[0_8px_28px_rgba(249,115,22,0.18)]'
+              }`}>
               <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
                 <div className="flex-1">
                   <h3 className="text-base lg:text-lg font-bold text-slate-900 dark:text-[#FFFFFF] flex items-center gap-2 mb-1">
@@ -84,17 +109,19 @@ export default function DashboardPage() {
                     )}
                 </div>
                 {dailyDriveData.lastCompleted !== new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) && (
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 10 }}
                     onClick={() => navigate('/daily-drive')}
-                    className="w-full lg:w-auto bg-orange-600 hover:bg-orange-700 dark:bg-[linear-gradient(90deg,#F97316,#EA580C)] dark:hover:bg-[linear-gradient(90deg,#FB923C,#F97316)] text-white font-semibold py-2 px-4 lg:px-6 rounded-lg transition-all duration-200 dark:shadow-[0_6px_20px_rgba(249,115,22,0.35)] dark:border dark:border-[rgba(255,255,255,0.18)] flex items-center justify-center gap-2 min-h-[44px]"
+                    className="w-full lg:w-auto bg-orange-600 hover:bg-orange-700 dark:bg-[linear-gradient(90deg,#F97316,#EA580C)] dark:hover:bg-[linear-gradient(90deg,#FB923C,#F97316)] text-white font-semibold py-2 px-4 lg:px-6 rounded-lg transition-all duration-200 dark:shadow-[0_6px_20px_rgba(249,115,22,0.35)] dark:border dark:border-[rgba(255,255,255,0.18)] flex items-center justify-center gap-2 min-h-[44px] hover:shadow-lg hover:shadow-orange-400/20 dark:hover:shadow-orange-400/10"
                   >
                     <Zap className="w-4 h-4" />
                     Start Now
-                  </button>
+                  </motion.button>
                 )}
               </div>
-            </div>
-          )}
+            </motion.div>
+
 
           {/* Quick Action Cards */}
           <QuickActionCards />
@@ -108,7 +135,7 @@ export default function DashboardPage() {
 
           {/* Padding for mobile bottom nav */}
           <div className="h-6 lg:h-12"></div>
-        </div>
+        </motion.div>
       </main>
     </div>
   );

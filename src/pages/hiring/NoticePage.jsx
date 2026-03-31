@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Download } from 'lucide-react';
+import { motion } from 'framer-motion';
 import HiringLayout from '../../components/hiring/HiringLayout';
 
 const notices = [
@@ -70,8 +71,23 @@ export default function NoticePage() {
 
   return (
     <HiringLayout>
-      <div className="grid grid-cols-1 lg:grid-cols-[35%_65%] gap-4">
-        <div className="glass-card p-4">
+      <motion.div
+        className="grid grid-cols-1 lg:grid-cols-[35%_65%] gap-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+      >
+        <motion.div
+          className="glass-card p-4 hover:shadow-lg hover:shadow-blue-500/20"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.7 }}
+          whileHover={{
+            scale: 1.03,
+            transition: { type: 'spring', stiffness: 400, damping: 10 },
+          }}
+        >
           <h2 className="text-lg font-bold text-gray-900 dark:text-[#F4F4F5] mb-3">Notices</h2>
           <input
             className="glass-input w-full mb-3"
@@ -88,10 +104,18 @@ export default function NoticePage() {
 
           <div className="space-y-2 max-h-[70vh] overflow-y-auto pr-1">
             {filtered.map((n) => (
-              <button
+              <motion.button
                 key={n.id}
                 onClick={() => setSelectedId(n.id)}
-                className={`glass-card w-full text-left p-3 border-l-2 ${selected?.id === n.id ? 'border-l-blue-600' : 'border-l-transparent'}`}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.7 }}
+                whileHover={{
+                  scale: 1.03,
+                  transition: { type: 'spring', stiffness: 400, damping: 10 },
+                }}
+                className={`glass-card w-full text-left p-3 border-l-2 hover:shadow-lg hover:shadow-blue-500/20 ${selected?.id === n.id ? 'border-l-blue-600' : 'border-l-transparent'}`}
               >
                 <div className="flex items-start justify-between gap-2">
                   <p className="font-semibold text-gray-900 dark:text-[#F4F4F5] text-sm">{n.title}</p>
@@ -99,23 +123,39 @@ export default function NoticePage() {
                 </div>
                 <p className="text-xs text-gray-600 dark:text-[#A1A1AA] mt-1">{n.by} • {n.date}</p>
                 <p className="text-xs text-gray-600 dark:text-[#A1A1AA] mt-2 truncate">{n.content}</p>
-              </button>
+              </motion.button>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="glass-card p-5">
+        <motion.div
+          className="glass-card p-5 hover:shadow-lg hover:shadow-blue-500/20"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.7 }}
+          whileHover={{
+            scale: 1.03,
+            transition: { type: 'spring', stiffness: 400, damping: 10 },
+          }}
+        >
           <h1 className="text-2xl font-bold text-gray-900 dark:text-[#F4F4F5] mb-2">{selected.title}</h1>
           <p className="text-sm text-gray-600 dark:text-[#A1A1AA] mb-4">{selected.by} • {selected.date}</p>
           {selected.attachment && (
-            <button className="glass-button-outline px-3 py-2 text-sm inline-flex items-center gap-2 mb-4">
+            <motion.button
+              className="glass-button-outline px-3 py-2 text-sm inline-flex items-center gap-2 mb-4 hover:shadow-lg hover:shadow-blue-500/20"
+              whileHover={{
+                scale: 1.03,
+                transition: { type: 'spring', stiffness: 400, damping: 10 },
+              }}
+            >
               <Download className="w-4 h-4" />
               {selected.attachment}
-            </button>
+            </motion.button>
           )}
           <p className="text-sm leading-7 text-gray-700 dark:text-[#D4D4D8]">{selected.content}</p>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </HiringLayout>
   );
 }

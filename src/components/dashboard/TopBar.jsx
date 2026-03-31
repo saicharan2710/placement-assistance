@@ -36,7 +36,7 @@ export default function TopBar({ userName = 'Rahul', onHamburgerClick }) {
         {/* Left Section - Greeting */}
         <div className="flex-1 lg:flex-none">
           <h1 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-[#FFFFFF]">
-            Hi, {userName} 👋
+            Hi, {userName} 
           </h1>
           <p className="text-xs lg:text-sm text-gray-600 dark:text-[#A1A1AA] mt-1">Continue your placement journey</p>
         </div>

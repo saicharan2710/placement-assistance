@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BarChart3, Users, Code, User, Trophy, ArrowLeft } from 'lucide-react';
+import { motion } from 'framer-motion';
 import TopBar from '../components/dashboard/TopBar';
 import Sidebar from '../components/dashboard/Sidebar';
 import { getReadinessScore, getSessionHistory, getAverageScoreOverall } from '../utils/progressTracker';
@@ -130,12 +131,13 @@ export default function ProgressPage() {
 
   // Round Performance Card
   const RoundCard = ({ icon: Icon, title, score, lastAttempted, isAttempted }) => (
-    <div
+    <motion.div
       className={`p-6 rounded-xl border-2 ${
         isAttempted
           ? 'bg-white dark:bg-[#111111] border-gray-200 dark:border-[#222222]'
           : 'bg-gray-50 dark:bg-[rgba(17,17,17,0.5)] border-gray-200 dark:border-[rgba(34,34,34,0.5)] opacity-70'
-      } transition-all`}
+      } transition-all hover:shadow-lg hover:shadow-blue-500/20`}
+      whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
     >
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
@@ -167,7 +169,7 @@ export default function ProgressPage() {
           </span>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 
   // Skill Bar Component
@@ -191,7 +193,10 @@ export default function ProgressPage() {
   // Session History Row
   const SessionRow = ({ type, date, score, icon: Icon }) => (
     <>
-      <div className="flex items-center justify-between py-4 px-6">
+      <motion.div
+        className="flex items-center justify-between py-4 px-6 hover:shadow-lg hover:shadow-blue-500/20"
+        whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
+      >
         <div className="flex items-center gap-4 flex-1">
           <Icon className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0" />
           <div className="flex-1">
@@ -204,7 +209,7 @@ export default function ProgressPage() {
             {score}%
           </span>
         </div>
-      </div>
+      </motion.div>
       <div className="h-px bg-gray-200 dark:bg-[#1A1A1A]" />
     </>
   );
@@ -219,7 +224,12 @@ export default function ProgressPage() {
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
         {/* Content Area */}
-        <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-[#000000]">
+        <motion.div
+          className="flex-1 overflow-y-auto bg-gray-50 dark:bg-[#000000]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
           <div className="max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-8">
             {/* Page Header */}
             <div className="mb-8">
@@ -239,17 +249,29 @@ export default function ProgressPage() {
             </div>
 
             {/* Card 1: Overall Readiness Ring */}
-            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]">
+            <motion.div
+              className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+            >
               <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-slate-100 mb-8 text-center">
                 Overall Placement Readiness
               </h2>
               <div className="flex justify-center">
                 <CircularProgress percentage={readinessScore} label="Placement Ready" />
               </div>
-            </div>
+            </motion.div>
 
             {/* Card 2: Round wise Performance */}
-            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]">
+            <motion.div
+              className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+            >
               <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">
                 Performance by Round
               </h2>
@@ -283,10 +305,16 @@ export default function ProgressPage() {
                   isAttempted={overallAverage > 0}
                 />
               </div>
-            </div>
+            </motion.div>
 
             {/* Card 3: Skill Improvement */}
-            <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]">
+            <motion.div
+              className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-8 mb-6 border border-gray-200 dark:border-[#222222]"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+            >
               <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-slate-100 mb-6">
                 Skill Assessment
               </h2>
@@ -300,11 +328,17 @@ export default function ProgressPage() {
                   <SkillBar name="Overall Readiness" current={readinessScore} />
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Card 4: Session History */}
             {sessionHistory.length > 0 && (
-              <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm mb-6 border border-gray-200 dark:border-[#222222] overflow-hidden">
+              <motion.div
+                className="bg-white dark:bg-[#111111] rounded-xl shadow-sm mb-6 border border-gray-200 dark:border-[#222222] overflow-hidden"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.7 }}
+              >
                 <div className="p-8 border-b border-gray-200 dark:border-[#222222]">
                   <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-slate-100">
                     Recent Sessions
@@ -321,12 +355,18 @@ export default function ProgressPage() {
                     />
                   ))}
                 </div>
-              </div>
+              </motion.div>
             )}
 
             {/* Card 5: Motivation Card */}
             {sessionHistory.length > 0 && (
-              <div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 rounded-xl shadow-sm p-8 mb-8 border border-blue-200 dark:border-blue-800/50">
+              <motion.div
+                className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 rounded-xl shadow-sm p-8 mb-8 border border-blue-200 dark:border-blue-800/50"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.7 }}
+              >
                 <div className="flex items-center gap-6">
                   <Trophy className="w-16 h-16 text-blue-600 dark:text-blue-400 flex-shrink-0" />
                   <div>
@@ -339,26 +379,33 @@ export default function ProgressPage() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )}
 
             {sessionHistory.length === 0 && (
-              <div className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-12 border border-gray-200 dark:border-[#222222] text-center">
+              <motion.div
+                className="bg-white dark:bg-[#111111] rounded-xl shadow-sm p-12 border border-gray-200 dark:border-[#222222] text-center"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.7 }}
+              >
                 <p className="text-lg text-gray-600 dark:text-slate-400 mb-4">
                   📋 No sessions yet — start your first practice!
                 </p>
-                <button
+                <motion.button
                   onClick={() => navigate('/practice')}
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
+                  className="bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
+                  whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                 >
                   Start Practicing
-                </button>
-              </div>
+                </motion.button>
+              </motion.div>
             )}
 
             <div className="h-12 md:h-0"></div>
           </div>
-        </div>
+        </motion.div>
       </main>
     </div>
   );
