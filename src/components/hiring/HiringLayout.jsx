@@ -26,7 +26,7 @@ export default function HiringLayout({ children }) {
 
       <main className="flex-1 flex flex-col pb-20 lg:pb-0">
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1">
           <HiringSubNav />
           <div className="px-4 lg:px-6 py-6">{children}</div>
         </div>
