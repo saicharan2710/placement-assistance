@@ -115,16 +115,15 @@ export default function TrackerPage() {
               {isOpen && (
                 <div className="space-y-2 px-3 pb-3">
                   {visibleRows.map((row, idx) => (
-                    <motion.div key={`${row.company}-${idx}`} className="glass-card p-3 grid lg:grid-cols-6 gap-2 text-sm border-l-2 border-blue-600 hover:shadow-lg hover:shadow-blue-500/20" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
-                      <motion.div
-                        key={`${row.company}-${idx}`}
-                        className="glass-card p-3 grid lg:grid-cols-6 gap-2 text-sm border-l-2 border-blue-600 hover:shadow-lg hover:shadow-blue-500/20"
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false, amount: 0.08 }}
-                        transition={{ duration: 0.7 }}
-                        whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
-                      >
+                    <motion.div
+                      key={`${row.company}-${idx}`}
+                      className="glass-card p-3 grid lg:grid-cols-6 gap-2 text-sm border-l-2 border-blue-600 hover:shadow-lg hover:shadow-blue-500/20"
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: false, amount: 0.08 }}
+                      transition={{ duration: 0.7 }}
+                      whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
+                    >
                       <span className="font-medium text-gray-900 dark:text-[#F4F4F5]">{row.company}</span>
                       <span className="text-gray-700 dark:text-[#A1A1AA] truncate">{row.job}</span>
                       <span className="text-gray-700 dark:text-[#A1A1AA]">{row.round}</span>
