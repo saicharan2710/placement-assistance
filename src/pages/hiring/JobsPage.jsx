@@ -102,7 +102,7 @@ export default function JobsPage() {
         <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-[#F4F4F5]">Jobs</h1>
       </motion.div>
 
-      <motion.div className="space-y-3 mb-4" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
+      <motion.div className="space-y-3 mb-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
         <input
           type="text"
           value={query}
@@ -130,7 +130,7 @@ export default function JobsPage() {
         <p className="text-sm text-gray-600 dark:text-[#A1A1AA]">{filteredJobs.length} Jobs</p>
       </motion.div>
 
-      <motion.div className="glass-card overflow-hidden" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
+      <motion.div className="glass-card overflow-hidden" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
         <div className="hidden lg:grid grid-cols-7 gap-3 px-4 py-3 text-xs font-semibold text-gray-600 dark:text-[#A1A1AA] border-b border-white/10">
           <span>Company</span><span>Role</span><span>Apply By</span><span>Type</span><span>CTC</span><span>Status</span><span>Action</span>
         </div>
@@ -140,6 +140,10 @@ export default function JobsPage() {
               key={job.id}
               className="w-full text-left lg:grid lg:grid-cols-7 gap-3 px-4 py-4 glass-card hover:bg-white/5"
               onClick={() => setSelectedJob(job)}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.08 }}
+              transition={{ duration: 0.7 }}
               whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
             >
               <div className="flex items-center gap-2 font-semibold text-gray-900 dark:text-[#F4F4F5]">
