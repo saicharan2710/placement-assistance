@@ -61,7 +61,7 @@ export default function ResumeReviewPage() {
   ];
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-[#000000] overflow-x-hidden">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-slate-50 dark:bg-[#000000] overflow-x-hidden">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Main Content */}
@@ -69,7 +69,7 @@ export default function ResumeReviewPage() {
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
         <motion.div
-          className="flex-1 overflow-y-auto bg-[#000000]"
+          className="flex-1 overflow-y-auto bg-slate-50 dark:bg-[#000000]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -79,14 +79,14 @@ export default function ResumeReviewPage() {
             <div className="mb-8">
               <button
                 onClick={() => navigate('/dashboard')}
-                className="flex items-center gap-2 text-blue-400 hover:text-blue-300 mb-4 font-semibold transition-colors"
+                className="flex items-center gap-2 text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 mb-4 font-semibold transition-colors"
               >
                 <ArrowLeft className="w-5 h-5" />
                 Back to Dashboard
               </button>
-              <h1 className="text-4xl font-bold text-slate-100 mb-2">Resume Review</h1>
+              <h1 className="text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">Resume Review</h1>
               <div className="flex items-center justify-between">
-                <p className="text-slate-400">Get AI feedback on your resume</p>
+                <p className="text-slate-600 dark:text-slate-400">Get AI feedback on your resume</p>
                 <motion.button
                   onClick={() => setHasResume(!hasResume)}
                   className="bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-2 px-6 rounded-lg transition-colors flex items-center gap-2"
@@ -99,19 +99,19 @@ export default function ResumeReviewPage() {
             </div>
 
             {/* Current Resume Status */}
-            <motion.div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
-              <h2 className="text-2xl font-bold text-slate-100 mb-6">Current Resume Status</h2>
+            <motion.div className="bg-white dark:bg-[#111111] rounded-xl p-8 border border-slate-200 dark:border-[#222222] mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-6">Current Resume Status</h2>
               {hasResume ? (
                 <div className="space-y-6">
                   <div>
-                    <p className="text-slate-400 text-sm mb-2">Resume File</p>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm mb-2">Resume File</p>
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 bg-red-900/30 rounded-lg flex items-center justify-center">
-                        <span className="text-red-400 font-bold text-sm">PDF</span>
+                      <div className="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center">
+                        <span className="text-red-600 dark:text-red-400 font-bold text-sm">PDF</span>
                       </div>
                       <div>
-                        <p className="font-semibold text-slate-100">{resumeName}</p>
-                        <p className="text-sm text-slate-400">Uploaded on {uploadDate}</p>
+                        <p className="font-semibold text-slate-900 dark:text-slate-100">{resumeName}</p>
+                        <p className="text-sm text-slate-600 dark:text-slate-400">Uploaded on {uploadDate}</p>
                       </div>
                     </div>
                   </div>
@@ -120,19 +120,19 @@ export default function ResumeReviewPage() {
                       <Eye className="w-4 h-4" />
                       View Resume
                     </motion.button>
-                    <motion.button className="flex-1 bg-[#1A1A1A] hover:bg-slate-600 hover:shadow-lg hover:shadow-blue-500/20 text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
+                    <motion.button className="flex-1 bg-slate-200 hover:bg-slate-300 dark:bg-[#1A1A1A] dark:hover:bg-slate-600 hover:shadow-lg hover:shadow-blue-500/20 text-slate-900 dark:text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
                       <RefreshCw className="w-4 h-4" />
                       Replace Resume
                     </motion.button>
                   </div>
                 </div>
               ) : (
-                <div className="border-2 border-dashed border-[#2A2A2A] rounded-xl p-12 text-center">
-                  <div className="w-16 h-16 bg-[#1A1A1A] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Upload className="w-8 h-8 text-slate-400" />
+                <div className="border-2 border-dashed border-slate-300 dark:border-[#2A2A2A] rounded-xl p-12 text-center">
+                  <div className="w-16 h-16 bg-slate-100 dark:bg-[#1A1A1A] rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Upload className="w-8 h-8 text-slate-500 dark:text-slate-400" />
                   </div>
-                  <p className="text-slate-300 font-semibold mb-2">Upload your resume to get started</p>
-                  <p className="text-slate-400 text-sm mb-6">Supported format: PDF</p>
+                  <p className="text-slate-700 dark:text-slate-300 font-semibold mb-2">Upload your resume to get started</p>
+                  <p className="text-slate-500 dark:text-slate-400 text-sm mb-6">Supported format: PDF</p>
                   <motion.button className="bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white font-semibold py-3 px-6 rounded-lg transition-colors" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
                     Upload PDF
                   </motion.button>
@@ -141,13 +141,13 @@ export default function ResumeReviewPage() {
             </motion.div>
 
             {/* ATS Score */}
-            <motion.div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
-              <h2 className="text-2xl font-bold text-slate-100 mb-8">ATS Compatibility Score</h2>
+            <motion.div className="bg-white dark:bg-[#111111] rounded-xl p-8 border border-slate-200 dark:border-[#222222] mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-8">ATS Compatibility Score</h2>
               <div className="flex flex-col items-center mb-8">
                 <div className="relative w-40 h-40 mb-4">
-                  <svg className="w-full h-full" viewBox="0 0 200 200">
+                  <svg className="w-full h-full text-slate-300 dark:text-slate-700" viewBox="0 0 200 200">
                     {/* Background circle */}
-                    <circle cx="100" cy="100" r="90" fill="none" stroke="#334155" strokeWidth="8" />
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" strokeWidth="8" />
                     {/* Progress circle */}
                     <circle
                       cx="100"
@@ -161,85 +161,85 @@ export default function ResumeReviewPage() {
                       transform="rotate(-90 100 100)"
                     />
                     {/* Text */}
-                    <text x="100" y="105" textAnchor="middle" className="text-4xl font-bold fill-blue-400" fontSize="40">
+                    <text x="100" y="105" textAnchor="middle" className="text-4xl font-bold fill-blue-600 dark:fill-blue-400" fontSize="40">
                       72%
                     </text>
                   </svg>
                 </div>
-                <p className="text-center text-slate-300 font-medium">Your resume is moderately ATS friendly</p>
+                <p className="text-center text-slate-700 dark:text-slate-300 font-medium">Your resume is moderately ATS friendly</p>
               </div>
 
               {/* Score Pills */}
               <div className="grid grid-cols-3 gap-4">
-                <div className="bg-[#1A1A1A] rounded-lg p-4 text-center">
-                  <p className="text-slate-400 text-sm mb-2">Keywords</p>
-                  <p className="text-2xl font-bold text-yellow-400">68%</p>
+                <div className="bg-slate-50 dark:bg-[#1A1A1A] rounded-lg p-4 text-center border border-slate-200 dark:border-transparent">
+                  <p className="text-slate-500 dark:text-slate-400 text-sm mb-2">Keywords</p>
+                  <p className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">68%</p>
                 </div>
-                <div className="bg-[#1A1A1A] rounded-lg p-4 text-center">
-                  <p className="text-slate-400 text-sm mb-2">Formatting</p>
+                <div className="bg-slate-50 dark:bg-[#1A1A1A] rounded-lg p-4 text-center border border-slate-200 dark:border-transparent">
+                  <p className="text-slate-500 dark:text-slate-400 text-sm mb-2">Formatting</p>
                   <p className="text-2xl font-bold text-green-400">85%</p>
                 </div>
-                <div className="bg-[#1A1A1A] rounded-lg p-4 text-center">
-                  <p className="text-slate-400 text-sm mb-2">Readability</p>
+                <div className="bg-slate-50 dark:bg-[#1A1A1A] rounded-lg p-4 text-center border border-slate-200 dark:border-transparent">
+                  <p className="text-slate-500 dark:text-slate-400 text-sm mb-2">Readability</p>
                   <p className="text-2xl font-bold text-green-400">75%</p>
                 </div>
               </div>
             </motion.div>
 
             {/* Resume Strengths */}
-            <motion.div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
+            <motion.div className="bg-white dark:bg-[#111111] rounded-xl p-8 border border-slate-200 dark:border-[#222222] mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
                   <Check className="w-5 h-5 text-white" />
                 </div>
-                <h2 className="text-2xl font-bold text-slate-100">Resume Strengths</h2>
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Resume Strengths</h2>
               </div>
               <div className="space-y-3">
                 {strengths.map((strength, idx) => (
-                  <div key={idx} className="flex items-start gap-3 p-4 bg-[rgba(26,26,26,0.5)] rounded-lg border border-green-900/30">
-                    <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                    <p className="text-slate-300">{strength}</p>
+                  <div key={idx} className="flex items-start gap-3 p-4 bg-green-50 dark:bg-[rgba(26,26,26,0.5)] rounded-lg border border-green-200 dark:border-green-900/30">
+                    <Check className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+                    <p className="text-slate-700 dark:text-slate-300">{strength}</p>
                   </div>
                 ))}
               </div>
             </motion.div>
 
             {/* Issues Found */}
-            <motion.div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
+            <motion.div className="bg-white dark:bg-[#111111] rounded-xl p-8 border border-slate-200 dark:border-[#222222] mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-8 bg-yellow-600 rounded-full flex items-center justify-center">
                   <AlertCircle className="w-5 h-5 text-white" />
                 </div>
-                <h2 className="text-2xl font-bold text-slate-100">Issues to Fix</h2>
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Issues to Fix</h2>
               </div>
               <div className="space-y-4">
                 {issues.map((issue, idx) => (
-                  <div key={idx} className="p-4 bg-[rgba(26,26,26,0.5)] rounded-lg border border-yellow-900/30">
+                  <div key={idx} className="p-4 bg-yellow-50 dark:bg-[rgba(26,26,26,0.5)] rounded-lg border border-yellow-200 dark:border-yellow-900/30">
                     <div className="flex items-start gap-3 mb-2">
-                      <AlertCircle className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
-                      <p className="font-semibold text-slate-100">{issue.title}</p>
+                      <AlertCircle className="w-5 h-5 text-yellow-600 dark:text-yellow-400 flex-shrink-0 mt-0.5" />
+                      <p className="font-semibold text-slate-900 dark:text-slate-100">{issue.title}</p>
                     </div>
-                    <p className="text-sm text-slate-400 ml-8">💡 {issue.suggestion}</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 ml-8">💡 {issue.suggestion}</p>
                   </div>
                 ))}
               </div>
             </motion.div>
 
             {/* Keyword Analysis */}
-            <motion.div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
-              <h2 className="text-2xl font-bold text-slate-100 mb-6">Keyword Analysis for CSE Roles</h2>
+            <motion.div className="bg-white dark:bg-[#111111] rounded-xl p-8 border border-slate-200 dark:border-[#222222] mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-6">Keyword Analysis for CSE Roles</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
                 {/* Keywords Found */}
                 <div>
-                  <h3 className="font-semibold text-slate-100 mb-4 flex items-center gap-2">
-                    <Check className="w-5 h-5 text-green-400" />
+                  <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-4 flex items-center gap-2">
+                    <Check className="w-5 h-5 text-green-600 dark:text-green-400" />
                     Keywords Found
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {keywordsFound.map((keyword, idx) => (
                       <span
                         key={idx}
-                        className="px-3 py-2 bg-green-900/30 border border-green-800 text-green-300 text-sm font-medium rounded-full"
+                        className="px-3 py-2 bg-green-100 border border-green-300 text-green-700 dark:bg-green-900/30 dark:border-green-800 dark:text-green-300 text-sm font-medium rounded-full"
                       >
                         {keyword}
                       </span>
@@ -249,7 +249,7 @@ export default function ResumeReviewPage() {
 
                 {/* Keywords Missing */}
                 <div>
-                  <h3 className="font-semibold text-slate-100 mb-4 flex items-center gap-2">
+                  <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-4 flex items-center gap-2">
                     <AlertCircle className="w-5 h-5 text-red-400" />
                     Keywords Missing
                   </h3>
@@ -257,7 +257,7 @@ export default function ResumeReviewPage() {
                     {keywordsMissing.map((keyword, idx) => (
                       <span
                         key={idx}
-                        className="px-3 py-2 bg-red-900/30 border border-red-800 text-red-300 text-sm font-medium rounded-full"
+                        className="px-3 py-2 bg-red-100 border border-red-300 text-red-700 dark:bg-red-900/30 dark:border-red-800 dark:text-red-300 text-sm font-medium rounded-full"
                       >
                         {keyword}
                       </span>
@@ -265,19 +265,19 @@ export default function ResumeReviewPage() {
                   </div>
                 </div>
               </div>
-              <p className="text-slate-400 text-sm">
+              <p className="text-slate-600 dark:text-slate-400 text-sm">
                 💡 Add missing keywords naturally in your projects and skills section
               </p>
             </motion.div>
 
             {/* AI Recommendations */}
-            <motion.div className="bg-blue-900/20 border border-blue-800 rounded-xl p-8 mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
-              <h2 className="text-2xl font-bold text-slate-100 mb-6">AI Recommendations</h2>
+            <motion.div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-8 mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-6">AI Recommendations</h2>
               <div className="space-y-4">
                 {recommendations.map((rec, idx) => (
                   <div key={idx} className="flex gap-4 items-start">
                     <span className="text-2xl">{rec.icon}</span>
-                    <p className="text-slate-300">{rec.text}</p>
+                    <p className="text-slate-700 dark:text-slate-300">{rec.text}</p>
                   </div>
                 ))}
               </div>

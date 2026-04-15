@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, CheckCircle, XCircle, Share2, RotateCcw } from 'lucide-react';
+import { CheckCircle, XCircle, Share2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import TopBar from '../components/dashboard/TopBar';
 import Sidebar from '../components/dashboard/Sidebar';
@@ -203,7 +203,7 @@ export default function DailyDrivePage() {
   const isCompletedToday = dailyDriveData?.lastCompleted && dailyDriveData.lastCompleted === getTodayDate();
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-[#000000] overflow-x-hidden">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-slate-50 dark:bg-[#000000] overflow-x-hidden">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Main Content */}
@@ -211,7 +211,7 @@ export default function DailyDrivePage() {
         <TopBar userName={userName} onHamburgerClick={() => setSidebarOpen(true)} />
 
         <motion.div
-          className="flex-1 overflow-y-auto bg-[#000000]"
+          className="flex-1 overflow-y-auto bg-slate-50 dark:bg-[#000000]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -222,69 +222,69 @@ export default function DailyDrivePage() {
                 {/* Header */}
                 <div className="text-center mb-12">
                   <div className="text-6xl mb-4">🔥</div>
-                  <h1 className="text-5xl font-bold text-slate-100 mb-2">Daily Drive</h1>
-                  <p className="text-xl text-slate-400">5 questions. 5 minutes. Every day.</p>
+                  <h1 className="text-5xl font-bold text-slate-900 dark:text-slate-100 mb-2">Daily Drive</h1>
+                  <p className="text-xl text-slate-600 dark:text-slate-400">5 questions. 5 minutes. Every day.</p>
                 </div>
 
                 {/* Streak */}
                 <div className="flex justify-center gap-4 mb-12">
-                  <div className="px-6 py-3 bg-orange-900/30 border border-orange-800 rounded-full text-center">
-                    <p className="text-orange-400 font-bold text-lg">🔥 {dailyDriveData?.streak || 0} Day Streak</p>
+                  <div className="px-6 py-3 bg-orange-50 border border-orange-300 shadow-sm shadow-orange-100 rounded-full text-center dark:bg-orange-900/30 dark:border-orange-800 dark:shadow-none">
+                    <p className="text-orange-600 dark:text-orange-400 font-bold text-lg">🔥 {dailyDriveData?.streak || 0} Day Streak</p>
                   </div>
-                  <div className="px-6 py-3 bg-[#1A1A1A] border border-[#2A2A2A] rounded-full text-center">
-                    <p className="text-slate-300 font-semibold">Best: {dailyDriveData?.bestStreak || 0} days</p>
+                  <div className="px-6 py-3 bg-white border border-slate-200 dark:bg-[#1A1A1A] dark:border-[#2A2A2A] rounded-full text-center">
+                    <p className="text-slate-700 dark:text-slate-300 font-semibold">Best: {dailyDriveData?.bestStreak || 0} days</p>
                   </div>
                 </div>
 
                 {/* Challenge Card */}
                 <motion.div
-                  className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8"
+                  className="bg-white dark:bg-[#111111] rounded-xl p-8 border border-slate-200 dark:border-[#222222] mb-8"
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: false, amount: 0.2 }}
                   transition={{ duration: 0.7 }}
                 >
                   <div className="mb-6">
-                    <p className="text-slate-400 text-sm font-semibold uppercase mb-2">Today's Challenge</p>
-                    <p className="text-2xl font-bold text-slate-100">{getTodayDate()}</p>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm font-semibold uppercase mb-2">Today's Challenge</p>
+                    <p className="text-2xl font-bold text-slate-900 dark:text-slate-100">{getTodayDate()}</p>
                   </div>
 
                   <div className="flex flex-wrap gap-3 mb-6">
-                    <span className="px-4 py-2 bg-blue-900/30 border border-blue-800 text-blue-300 text-sm font-semibold rounded-full">
+                    <span className="px-4 py-2 bg-blue-100 border border-blue-300 text-blue-700 dark:bg-blue-900/30 dark:border-blue-800 dark:text-blue-300 text-sm font-semibold rounded-full">
                       2x Aptitude
                     </span>
-                    <span className="px-4 py-2 bg-purple-900/30 border border-purple-800 text-purple-300 text-sm font-semibold rounded-full">
+                    <span className="px-4 py-2 bg-purple-100 border border-purple-300 text-purple-700 dark:bg-purple-900/30 dark:border-purple-800 dark:text-purple-300 text-sm font-semibold rounded-full">
                       2x Technical
                     </span>
-                    <span className="px-4 py-2 bg-green-900/30 border border-green-800 text-green-300 text-sm font-semibold rounded-full">
+                    <span className="px-4 py-2 bg-green-100 border border-green-300 text-green-700 dark:bg-green-900/30 dark:border-green-800 dark:text-green-300 text-sm font-semibold rounded-full">
                       1x HR
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between text-slate-300 text-sm mb-6">
+                  <div className="flex items-center justify-between text-slate-600 dark:text-slate-300 text-sm mb-6">
                     <span>Estimated time: ~4 minutes</span>
-                    <span className="px-3 py-1 bg-yellow-900/30 border border-yellow-800 text-yellow-300 rounded-full font-semibold">
+                    <span className="px-3 py-1 bg-yellow-100 border border-yellow-300 text-yellow-700 dark:bg-yellow-900/30 dark:border-yellow-800 dark:text-yellow-300 rounded-full font-semibold">
                       Medium
                     </span>
                   </div>
 
-                  <div className="h-px bg-[#1A1A1A] mb-6" />
+                  <div className="h-px bg-slate-200 dark:bg-[#1A1A1A] mb-6" />
 
                   {/* Stats Row */}
                   <div className="grid grid-cols-3 gap-4">
                     <div className="text-center">
-                      <p className="text-slate-400 text-sm mb-1">Today's Status</p>
+                      <p className="text-slate-500 dark:text-slate-400 text-sm mb-1">Today's Status</p>
                       <p className={`text-lg font-bold ${isCompletedToday ? 'text-green-400' : 'text-red-400'}`}>
                         {isCompletedToday ? '✓ Completed' : 'Not Done'}
                       </p>
                     </div>
                     <div className="text-center">
-                      <p className="text-slate-400 text-sm mb-1">This Week</p>
-                      <p className="text-lg font-bold text-blue-400">4/7 days</p>
+                      <p className="text-slate-500 dark:text-slate-400 text-sm mb-1">This Week</p>
+                      <p className="text-lg font-bold text-blue-600 dark:text-blue-400">4/7 days</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-slate-400 text-sm mb-1">Total Drives</p>
-                      <p className="text-lg font-bold text-blue-400">{dailyDriveData?.totalDrives || 0}</p>
+                      <p className="text-slate-500 dark:text-slate-400 text-sm mb-1">Total Drives</p>
+                      <p className="text-lg font-bold text-blue-600 dark:text-blue-400">{dailyDriveData?.totalDrives || 0}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -303,7 +303,7 @@ export default function DailyDrivePage() {
                   disabled={isCompletedToday}
                   className={`w-full py-4 px-6 rounded-lg font-bold text-lg transition-colors ${
                     isCompletedToday
-                      ? 'bg-[#1A1A1A] text-slate-400 cursor-not-allowed'
+                        ? 'bg-slate-200 text-slate-500 dark:bg-[#1A1A1A] dark:text-slate-400 cursor-not-allowed'
                       : 'bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 text-white'
                   }`}
                   whileHover={!isCompletedToday ? { scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } } : undefined}
@@ -317,16 +317,16 @@ export default function DailyDrivePage() {
           {stage === 'question' && (
             <div className="flex flex-col min-h-[calc(100vh-80px)]">
               {/* Top Bar */}
-              <div className="bg-[#111111] border-b border-[#222222] sticky top-0 z-50">
+              <div className="bg-white dark:bg-[#111111] border-b border-slate-200 dark:border-[#222222] sticky top-0 z-50">
                 <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-                  <h2 className="text-lg font-bold text-slate-100">Daily Drive</h2>
-                  <p className="text-sm text-slate-300">{currentQuestionIndex + 1} / {questions.length}</p>
+                  <h2 className="text-lg font-bold text-slate-900 dark:text-slate-100">Daily Drive</h2>
+                  <p className="text-sm text-slate-600 dark:text-slate-300">{currentQuestionIndex + 1} / {questions.length}</p>
                   <div className={`text-lg font-bold font-mono ${timeLeft < 60 ? 'text-red-400' : timeLeft < 120 ? 'text-yellow-400' : 'text-blue-400'}`}>
                     {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}
                   </div>
                 </div>
                 {/* Progress Bar */}
-                <div className="h-1 bg-[#1A1A1A]">
+                <div className="h-1 bg-slate-200 dark:bg-[#1A1A1A]">
                   <div
                     className="h-full bg-gradient-to-r from-blue-600 to-green-600 transition-all duration-300"
                     style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
@@ -338,7 +338,7 @@ export default function DailyDrivePage() {
               <div className="flex-1 flex items-center justify-center p-6">
                 <div className="max-w-2xl w-full">
                   <motion.div
-                    className="bg-[#111111] rounded-xl p-8 border border-[#222222]"
+                    className="bg-white dark:bg-[#111111] rounded-xl p-8 border border-slate-200 dark:border-[#222222]"
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, amount: 0.2 }}
@@ -349,10 +349,10 @@ export default function DailyDrivePage() {
                       <span
                         className={`inline-block px-4 py-2 rounded-full text-sm font-semibold ${
                           questions[currentQuestionIndex].type === 'APTITUDE'
-                            ? 'bg-blue-900/30 text-blue-300 border border-blue-800'
+                            ? 'bg-blue-100 text-blue-700 border border-blue-300 dark:bg-blue-900/30 dark:text-blue-300 dark:border-blue-800'
                             : questions[currentQuestionIndex].type === 'TECHNICAL'
-                            ? 'bg-purple-900/30 text-purple-300 border border-purple-800'
-                            : 'bg-green-900/30 text-green-300 border border-green-800'
+                            ? 'bg-purple-100 text-purple-700 border border-purple-300 dark:bg-purple-900/30 dark:text-purple-300 dark:border-purple-800'
+                            : 'bg-green-100 text-green-700 border border-green-300 dark:bg-green-900/30 dark:text-green-300 dark:border-green-800'
                         }`}
                       >
                         {questions[currentQuestionIndex].type}
@@ -360,7 +360,7 @@ export default function DailyDrivePage() {
                     </div>
 
                     {/* Question Text */}
-                    <h3 className="text-2xl font-bold text-slate-100 mb-8">{questions[currentQuestionIndex].question}</h3>
+                    <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-8">{questions[currentQuestionIndex].question}</h3>
 
                     {/* Options or Input */}
                     {!questions[currentQuestionIndex].isTextInput ? (
@@ -373,13 +373,13 @@ export default function DailyDrivePage() {
                             className={`w-full p-4 rounded-lg text-left font-medium transition-all ${
                               isAnswered
                                 ? idx === questions[currentQuestionIndex].correct
-                                  ? 'bg-green-600 border border-green-500 text-white'
+                                  ? 'bg-green-100 border border-green-300 text-green-800 dark:bg-green-600 dark:border-green-500 dark:text-white'
                                   : selectedAnswer === idx
-                                  ? 'bg-red-600 border border-red-500 text-white'
-                                  : 'bg-[#1A1A1A] border border-[#2A2A2A] text-slate-300'
+                                  ? 'bg-red-100 border border-red-300 text-red-800 dark:bg-red-600 dark:border-red-500 dark:text-white'
+                                  : 'bg-white border border-slate-300 text-slate-700 dark:bg-[#1A1A1A] dark:border-[#2A2A2A] dark:text-slate-300'
                                 : selectedAnswer === idx
                                 ? 'bg-blue-600 border-2 border-blue-500 text-white'
-                                : 'bg-[#1A1A1A] border border-[#2A2A2A] text-slate-300 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-500/20'
+                                : 'bg-white border border-slate-300 text-slate-700 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-500/20 dark:bg-[#1A1A1A] dark:border-[#2A2A2A] dark:text-slate-300'
                             }`}
                               whileHover={!isAnswered ? { scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } } : undefined}
                           >
@@ -400,7 +400,7 @@ export default function DailyDrivePage() {
                         <textarea
                           id="hr-input"
                           placeholder="Type your answer here..."
-                          className="w-full p-4 bg-[#1A1A1A] border border-[#2A2A2A] rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                          className="w-full p-4 bg-white border border-slate-300 dark:bg-[#1A1A1A] dark:border-[#2A2A2A] rounded-lg text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
                           rows="4"
                           disabled={isAnswered}
                         />
@@ -416,8 +416,8 @@ export default function DailyDrivePage() {
                           Submit
                         </motion.button>
                         {isAnswered && (
-                          <div className="p-4 bg-green-900/20 border border-green-800 rounded-lg">
-                            <p className="text-green-300 text-sm font-semibold">✓ Tip: {questions[currentQuestionIndex].tip}</p>
+                          <div className="p-4 bg-green-50 border border-green-300 dark:bg-green-900/20 dark:border-green-800 rounded-lg">
+                            <p className="text-green-700 dark:text-green-300 text-sm font-semibold">✓ Tip: {questions[currentQuestionIndex].tip}</p>
                           </div>
                         )}
                       </div>
@@ -425,8 +425,8 @@ export default function DailyDrivePage() {
 
                     {/* Tip for MCQ */}
                     {!questions[currentQuestionIndex].isTextInput && isAnswered && (
-                      <div className="mt-6 p-4 bg-green-900/20 border border-green-800 rounded-lg">
-                        <p className="text-green-300 text-sm font-semibold">💡 {questions[currentQuestionIndex].tip}</p>
+                      <div className="mt-6 p-4 bg-green-50 border border-green-300 dark:bg-green-900/20 dark:border-green-800 rounded-lg">
+                        <p className="text-green-700 dark:text-green-300 text-sm font-semibold">💡 {questions[currentQuestionIndex].tip}</p>
                       </div>
                     )}
                   </motion.div>
@@ -439,20 +439,20 @@ export default function DailyDrivePage() {
             <div className="flex items-center justify-center min-h-[calc(100vh-80px)] p-6">
               <div className="max-w-2xl w-full">
                 {/* Result Header */}
-                <motion.div className="bg-[#111111] rounded-xl p-8 border border-[#222222] text-center mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
-                  <p className="text-4xl font-bold text-slate-100 mb-4">{getScoreMessage()}</p>
+                <motion.div className="bg-white dark:bg-[#111111] rounded-xl p-8 border border-slate-200 dark:border-[#222222] text-center mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
+                  <p className="text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4">{getScoreMessage()}</p>
                   <div className="flex justify-around mb-6">
                     <div>
-                      <p className="text-5xl font-bold text-blue-400 mb-2">{score}</p>
-                      <p className="text-slate-400">out of {questions.length}</p>
+                      <p className="text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">{score}</p>
+                      <p className="text-slate-500 dark:text-slate-400">out of {questions.length}</p>
                     </div>
                     <div className="text-center">
                       <p className="text-4xl font-bold text-green-400 mb-2">{Math.round((score / questions.length) * 100)}%</p>
-                      <p className="text-slate-400">accuracy</p>
+                      <p className="text-slate-500 dark:text-slate-400">accuracy</p>
                     </div>
                     <div>
                       <p className="text-2xl font-bold text-orange-400 mb-2">{formatTime(300 - timeLeft)}</p>
-                      <p className="text-slate-400">time taken</p>
+                      <p className="text-slate-500 dark:text-slate-400">time taken</p>
                     </div>
                   </div>
                 </motion.div>
@@ -466,25 +466,25 @@ export default function DailyDrivePage() {
                 )}
 
                 {/* Question Breakdown */}
-                <motion.div className="bg-[#111111] rounded-xl p-8 border border-[#222222] mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
-                  <h3 className="text-xl font-bold text-slate-100 mb-4">Question Breakdown</h3>
+                <motion.div className="bg-white dark:bg-[#111111] rounded-xl p-8 border border-slate-200 dark:border-[#222222] mb-8" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4">Question Breakdown</h3>
                   <div className="space-y-3">
                     {questions.map((q, idx) => (
-                      <div key={idx} className="p-4 bg-[rgba(26,26,26,0.5)] rounded-lg border border-[#2A2A2A]">
+                      <div key={idx} className="p-4 bg-slate-50 dark:bg-[rgba(26,26,26,0.5)] rounded-lg border border-slate-200 dark:border-[#2A2A2A]">
                         <div className="flex items-center justify-between mb-2">
                           <div className="flex items-center gap-3 flex-1">
                             <span
                               className={`px-3 py-1 rounded text-xs font-semibold ${
                                 q.type === 'APTITUDE'
-                                  ? 'bg-blue-900/30 text-blue-300'
+                                  ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300'
                                   : q.type === 'TECHNICAL'
-                                  ? 'bg-purple-900/30 text-purple-300'
-                                  : 'bg-green-900/30 text-green-300'
+                                  ? 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300'
+                                  : 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300'
                               }`}
                             >
                               {q.type}
                             </span>
-                            <p className="text-slate-300 text-sm flex-1 line-clamp-1">{q.question}</p>
+                            <p className="text-slate-700 dark:text-slate-300 text-sm flex-1 line-clamp-1">{q.question}</p>
                           </div>
                           {answers[idx]?.correct || q.type === 'HR' ? (
                             <CheckCircle className="w-5 h-5 text-green-400" />
@@ -498,19 +498,19 @@ export default function DailyDrivePage() {
                 </motion.div>
 
                 {/* XP Section */}
-                <motion.div className="bg-[#111111] rounded-xl p-6 border border-[#222222] mb-8 text-center" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
-                  <p className="text-2xl font-bold text-blue-400 mb-2">🎯 You earned {score * 10} XP today!</p>
-                  <div className="w-full h-2 bg-[#1A1A1A] rounded-full overflow-hidden mb-3">
+                <motion.div className="bg-white dark:bg-[#111111] rounded-xl p-6 border border-slate-200 dark:border-[#222222] mb-8 text-center" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
+                  <p className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">🎯 You earned {score * 10} XP today!</p>
+                  <div className="w-full h-2 bg-slate-200 dark:bg-[#1A1A1A] rounded-full overflow-hidden mb-3">
                     <div className="h-full bg-blue-600" style={{ width: '45%' }} />
                   </div>
-                  <p className="text-slate-300 font-semibold">Level 3 — Placement Warrior</p>
+                  <p className="text-slate-700 dark:text-slate-300 font-semibold">Level 3 - Placement Warrior</p>
                 </motion.div>
 
                 {/* Action Buttons */}
                 <div className="grid grid-cols-3 gap-4">
                   <motion.button
                     onClick={() => navigate('/dashboard')}
-                    className="bg-[#1A1A1A] hover:bg-slate-600 hover:shadow-lg hover:shadow-blue-500/20 text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
+                    className="bg-slate-200 hover:bg-slate-300 dark:bg-[#1A1A1A] dark:hover:bg-slate-600 hover:shadow-lg hover:shadow-blue-500/20 text-slate-900 dark:text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors"
                     whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                   >
                     Back to Dashboard
@@ -522,7 +522,7 @@ export default function DailyDrivePage() {
                   >
                     View Progress
                   </motion.button>
-                  <motion.button className="bg-[#1A1A1A] hover:bg-slate-600 hover:shadow-lg hover:shadow-blue-500/20 text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
+                  <motion.button className="bg-slate-200 hover:bg-slate-300 dark:bg-[#1A1A1A] dark:hover:bg-slate-600 hover:shadow-lg hover:shadow-blue-500/20 text-slate-900 dark:text-slate-100 font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}>
                     <Share2 className="w-4 h-4" />
                     Share
                   </motion.button>
